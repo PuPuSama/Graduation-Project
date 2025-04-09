@@ -146,3 +146,7 @@ if __name__ == "__main__":
             break
         print("AI:", end=' ', flush=True)
         ask(user_input)
+"""
+测试
+
+"""
