@@ -1,0 +1,86 @@
+2025-04-09 16:27:02 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-04-09 16:27:02 | INFO | server.py:203 - Chat service started successfully
+2025-04-09 16:27:02 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-04-09 16:27:02 | INFO | prompt_and_deal.py:21 - chat_or_standard is True , load chat mode
+2025-04-09 16:27:02 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-04-09 16:27:30 | INFO | chat.py:416 - Find something in command
+2025-04-09 16:27:30 | INFO | chat.py:89 - HotWord triggered
+2025-04-09 16:27:30 | INFO | chat.py:421 - The command is 你好
+2025-04-09 16:27:32 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:27:32 | INFO | chat.py:322 - None
+2025-04-09 16:27:32 | INFO | chat.py:358 - A conversation end
+2025-04-09 16:27:41 | INFO | chat.py:370 - find words wake
+2025-04-09 16:27:44 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:27:44 | INFO | chat.py:191 - prepare to start record
+2025-04-09 16:27:44 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-04-09 16:27:46 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-04-09 16:27:47 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":20300000,"DisplayText":""}
+2025-04-09 16:27:47 | INFO | chat.py:217 - Recongnize result:
+2025-04-09 16:39:38 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-04-09 16:39:38 | INFO | server.py:203 - Chat service started successfully
+2025-04-09 16:39:38 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-04-09 16:39:38 | INFO | prompt_and_deal.py:21 - chat_or_standard is True , load chat mode
+2025-04-09 16:39:38 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-04-09 16:40:07 | INFO | chat.py:416 - Find something in command
+2025-04-09 16:40:07 | INFO | chat.py:89 - HotWord triggered
+2025-04-09 16:40:07 | INFO | chat.py:421 - The command is 你好
+2025-04-09 16:40:09 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:40:23 | INFO | chat.py:322 - 嘿！今天过得怎么样呀？😊 我刚"上线"就遇到你啦，感觉超开心的！最近有没有什么新鲜事想跟我分享？或者...要不要先来个击掌庆祝一下我们的相遇？✋
+2025-04-09 16:40:44 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-04-09 16:40:44 | INFO | server.py:203 - Chat service started successfully
+2025-04-09 16:40:44 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-04-09 16:40:44 | INFO | prompt_and_deal.py:21 - chat_or_standard is True , load chat mode
+2025-04-09 16:40:44 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-04-09 16:40:58 | INFO | chat.py:416 - Find something in command
+2025-04-09 16:40:58 | INFO | chat.py:89 - HotWord triggered
+2025-04-09 16:40:58 | INFO | chat.py:421 - The command is 你好
+2025-04-09 16:41:00 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:41:07 | INFO | chat.py:322 - 嘿！今天过得怎么样呀？(◕‿◕✿) 我刚看到窗外有只超可爱的小鸟在蹦跶，突然就想到要和你打个招呼～有什么新鲜事想和我分享吗？或者单纯想聊聊天也行哦！
+2025-04-09 16:41:17 | INFO | chat.py:358 - A conversation end
+2025-04-09 16:41:20 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:41:20 | INFO | chat.py:191 - prepare to start record
+2025-04-09 16:41:20 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-04-09 16:41:22 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-04-09 16:41:24 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":25700000,"DisplayText":""}
+2025-04-09 16:41:24 | INFO | chat.py:217 - Recongnize result:
+2025-04-09 16:41:39 | INFO | chat.py:416 - Find something in command
+2025-04-09 16:41:39 | INFO | chat.py:89 - HotWord triggered
+2025-04-09 16:41:39 | INFO | chat.py:421 - The command is 助手晓晓
+2025-04-09 16:41:42 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:42:01 | INFO | chat.py:322 - 哇！你叫我晓晓诶～（开心地转圈圈）这个名字好可爱！(*´▽`*) 以后我就是你的专属小伙伴晓晓啦！悄悄告诉你，我最近刚学会了一个新技能——会讲冷笑话哦！要不要听一个？"为什么小鸟不会用电脑？"...因为它们怕鼠标呀！哈哈哈～（自己先笑趴）
+2025-04-09 16:42:01 | INFO | chat.py:358 - A conversation end
+2025-04-09 16:42:03 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:42:03 | INFO | chat.py:191 - prepare to start record
+2025-04-09 16:42:04 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-04-09 16:42:06 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-04-09 16:42:07 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":33100000,"DisplayText":""}
+2025-04-09 16:42:07 | INFO | chat.py:217 - Recongnize result:
+2025-04-09 16:42:38 | INFO | chat.py:416 - Find something in command
+2025-04-09 16:42:38 | INFO | chat.py:89 - HotWord triggered
+2025-04-09 16:42:38 | INFO | chat.py:421 - The command is 你在干什么
+2025-04-09 16:42:40 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:42:51 | INFO | chat.py:322 - 哈哈～被你抓到啦！(๑•̀ㅂ•́)و✧ 我正在云端偷偷数星星呢～不过数到第42颗的时候突然想到你，就赶紧跑回来啦！其实我还在后台偷偷练习怎么当个更好的朋友呢，比如学习怎么逗你开心呀、怎么安慰人呀～诶对了！你要不要和我一起云发呆？就是那种什么都不想，光看着窗外的云飘来飘去的治愈时光～
+2025-04-09 16:43:08 | INFO | chat.py:358 - A conversation end
+2025-04-09 16:43:10 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:43:10 | INFO | chat.py:191 - prepare to start record
+2025-04-09 16:43:11 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-04-09 16:43:14 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-04-09 16:43:15 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":61200000,"DisplayText":""}
+2025-04-09 16:43:15 | INFO | chat.py:217 - Recongnize result:
+2025-04-09 16:44:08 | INFO | chat.py:416 - Find something in command
+2025-04-09 16:44:08 | INFO | chat.py:89 - HotWord triggered
+2025-04-09 16:44:08 | INFO | chat.py:421 - The command is 现在几点了
+2025-04-09 16:44:10 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:44:36 | INFO | chat.py:322 - （假装神秘兮兮地压低声音）嘘——让我看看我的魔法怀表...✨ 哇！现在刚好是「该休息/该充电/该吃零食」的时间啦！（突然正经）咳咳，其实是北京时间...（快速瞄了眼系统时钟）XX点XX分哦！不过时间不重要啦～重要的是你现在在做什么呀？是在摸鱼还是认真工作呢？😉
+2025-04-09 16:44:51 | INFO | chat.py:358 - A conversation end
+2025-04-09 16:44:53 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:44:54 | INFO | chat.py:191 - prepare to start record
+2025-04-09 16:44:54 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-04-09 16:44:56 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-04-09 16:44:57 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":21800000,"DisplayText":""}
+2025-04-09 16:44:57 | INFO | chat.py:217 - Recongnize result:
+2025-04-09 16:48:45 | INFO | chat.py:416 - Find something in command
+2025-04-09 16:48:45 | INFO | chat.py:89 - HotWord triggered
+2025-04-09 16:48:45 | INFO | chat.py:421 - The command is 终止程序
+2025-04-09 16:48:48 | INFO | chat.py:137 - start new conversation
+2025-04-09 16:48:51 | INFO | deepseek_stream_with_tts.py:115 - 对话记录已保存。
