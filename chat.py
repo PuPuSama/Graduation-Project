@@ -301,7 +301,6 @@ def work():
             return None
         
     if allow_running:
-
         try:
             reply=prompt_and_deal.send(text)
 

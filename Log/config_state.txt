@@ -299,3 +299,94 @@
     }
 }
 
+{
+    "timestamp": "2025-04-10 21:46:13",
+    "changed_params": {
+        "Noticenotify": false
+    }
+}
+
+{
+    "timestamp": "2025-04-10 21:46:14",
+    "changed_params": {
+        "Noticenotify": true
+    }
+}
+
+{
+    "timestamp": "2025-04-10 21:48:41",
+    "changed_params": {
+        "Noticenotify": false
+    }
+}
+
+{
+    "timestamp": "2025-04-10 21:48:43",
+    "changed_params": {
+        "timenotify": false
+    }
+}
+
+{
+    "timestamp": "2025-04-10 21:48:51",
+    "changed_params": {
+        "Noticenotify": true
+    }
+}
+
+{
+    "timestamp": "2025-04-10 21:52:26",
+    "changed_params": {
+        "Noticenotify": false
+    }
+}
+
+{
+    "timestamp": "2025-04-10 21:52:26",
+    "changed_params": {
+        "Noticenotify": true
+    }
+}
+
+{
+    "timestamp": "2025-04-10 22:00:26",
+    "changed_params": {
+        "wakebyhw": true
+    }
+}
+
+{
+    "timestamp": "2025-04-10 22:00:39",
+    "changed_params": {
+        "wakebyhw": false
+    }
+}
+
+{
+    "timestamp": "2025-04-15 15:38:38",
+    "changed_params": {
+        "timenotify": false
+    }
+}
+
+{
+    "timestamp": "2025-04-15 15:38:40",
+    "changed_params": {
+        "timenotify": true
+    }
+}
+
+{
+    "timestamp": "2025-04-15 15:38:41",
+    "changed_params": {
+        "Noticenotify": false
+    }
+}
+
+{
+    "timestamp": "2025-04-15 15:38:43",
+    "changed_params": {
+        "Noticenotify": true
+    }
+}
+

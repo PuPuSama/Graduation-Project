@@ -38,10 +38,10 @@ def chat_request_stream():
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "deepseek-ai/DeepSeek-V3",
+        "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
         "messages": messages,
         "stream": True,  # 启用流式返回
-        "max_tokens": 512,
+        "max_tokens": 1024,
         "stop": ["null"],
         "temperature": 0.7,
         "top_p": 0.7,
@@ -81,7 +81,7 @@ def chat_request_stream():
             messages.append({"role": "assistant", "content": ai_response})
             print('\n')
             # 监测 token 数，清理早期对话
-            if len(messages) > 1 and total_tokens > 600:
+            if len(messages) > 1 and total_tokens > 1200:
                 removed = messages.pop(1)  # 移除第一条非系统消息
                 logger.warning(f"已移除历史记录: {removed}")
                 if len(messages) > 1:
