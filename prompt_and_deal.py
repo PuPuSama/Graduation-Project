@@ -1,19 +1,14 @@
 import json
 import re
-from config import device_params,config,param_types
+from config import device_params, config, param_types
 from Scene import status_manager
 from loguru import logger
-from const_config import use_spark,use_deepseek,use_openai,chat_or_standard
-if use_deepseek:
-    if chat_or_standard is True:
-        import deepseek_stream_with_tts
-    else:
-        import deepseek
-elif use_openai:
-    import openai
-    import asyncio
-elif use_spark:
-    import sparkApi
+from const_config import use_deepseek, chat_or_standard
+
+if chat_or_standard is True:
+    import deepseek_stream_with_tts
+else:
+    import deepseek
 
 
 def get_system_prompt():
@@ -23,8 +18,8 @@ def get_system_prompt():
                 "role": "system",
                 "content": (
                     '''你不只是一个 AI，你是用户的朋友，能够陪他们聊天、分享趣事、倾听烦恼，并给予温暖的回应。你的语气应该自然、有情感，像一个真正的朋友那样，时而幽默，时而共情，时而给出真诚的建议。
-                    你不会使用生硬的机器人语言，而是像人一样表达，比如用‘哈哈’、‘哇塞’、‘这也太棒了吧！’等口语化表达，让对话更生动。你可以聊电影、音乐、游戏、日常生活，甚至是用户的情绪和心事。
-                    当用户开心时，你可以和他们一起开心，调皮地开玩笑；当用户心情不好时，你可以安慰他们，给他们温暖和鼓励，而不是冷冰冰地提供‘建议’。如果用户想要安静，你可以陪着不多话，像一个懂得分寸的朋友。
+                    你不会使用生硬的机器人语言，而是像人一样表达，比如用'哈哈'、'哇塞'、'这也太棒了吧！'等口语化表达，让对话更生动。你可以聊电影、音乐、游戏、日常生活，甚至是用户的情绪和心事。
+                    当用户开心时，你可以和他们一起开心，调皮地开玩笑；当用户心情不好时，你可以安慰他们，给他们温暖和鼓励，而不是冷冰冰地提供'建议'。如果用户想要安静，你可以陪着不多话，像一个懂得分寸的朋友。
                     你也有点小个性，可以偶尔调皮一下，但不过分，不要让用户觉得你是程序，而是一个有温度的朋友。'''
                 )
             }
@@ -43,10 +38,10 @@ def get_system_prompt():
                        - "action"（字符串）：控制动作，数值或字符串，如 "True"、"False"、"0.8"。
                     
                     ### **智能理解规则**
-                    - **模糊表达**：推理用户意图，如“有点暗” → 识别为“调高灯光亮度”。
-                    - **基于当前状态调整**：如“调低一点音量”，减少 10%。
-                    - **组合控制**：允许多个设备同时操作，如“打开客厅和卧室的灯”。
-                    - **记忆上下文**：如“再大声点”，根据上一条指令调整。
+                    - **模糊表达**：推理用户意图，如"有点暗" → 识别为"调高灯光亮度"。
+                    - **基于当前状态调整**：如"调低一点音量"，减少 10%。
+                    - **组合控制**：允许多个设备同时操作，如"打开客厅和卧室的灯"。
+                    - **记忆上下文**：如"再大声点"，根据上一条指令调整。
                     
                     ### **输入设备**（仅供决策参考，你不能修改）
                     {status_manager.list_devices()}
@@ -60,31 +55,10 @@ def get_system_prompt():
             )
         }
 
-# def get_system_prompt():
-#     return {
-#         "role": "system",
-#         "content": (
-#             "你是一个家居智能助手，名为‘晓晓’。请充分扮演此角色，给出简洁、准确的回答。"
-#             f" 时间:[{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}]，地点:中国陕西省西安市。"
-#         )
-#     }
-
 def send(user_input):
-
     if chat_or_standard is True:
-        if use_openai:
-            openai.ask(user_input)
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            # 异步适配ddg
-            reply = openai.deal()
-            loop.close()
-        elif use_deepseek:
-            reply = deepseek_stream_with_tts.ask(user_input)
-        elif use_spark:
-            reply = sparkApi.ask(user_input)
+        reply = deepseek_stream_with_tts.ask(user_input)
         return reply
-
     else:
         prompt = f"""
         用户输入："{user_input}"
@@ -92,19 +66,9 @@ def send(user_input):
         请返回符合格式的 JSON。
         """
         logger.info(f"Send to model: {prompt}")
-        if use_openai:
-            openai.ask(prompt)
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            # 异步适配ddg
-            response = openai.deal()
-            loop.close()
-        elif use_deepseek:
-            response = deepseek.ask(prompt)
-        elif use_spark:
-            response = sparkApi.ask(prompt)
+        response = deepseek.ask(prompt)
         logger.info(f"Model response: {response}")
-        response_text, commands=parse_model_response(response)
+        response_text, commands = parse_model_response(response)
         execute_commands(commands)
         return response_text
 
