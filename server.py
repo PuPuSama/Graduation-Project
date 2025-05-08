@@ -14,7 +14,7 @@ from threading import Thread
 import chat
 from config import config
 from const_config import music_enable,schedule_enable,udp_enable,hass_demo_enable
-import if_time
+import if_time_and_weather
 import tts
 from play import play
 import Scene
@@ -214,7 +214,7 @@ if __name__ == '__main__':
         t4.start()
         logger.info('Udp service started successfully')
 
-    t5=Thread(target=if_time.admin)
+    t5=Thread(target=if_time_and_weather.admin)
     t5.start()
 
     if schedule_enable:

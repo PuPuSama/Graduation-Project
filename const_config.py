@@ -7,7 +7,7 @@ chat_or_standard=True #采用聊天模式还是标准模式（家庭助手），
 #切换模式后需删除 message.data文件（如有），否则会导致对话混乱
 
 ########语音服务(TTS and STT)##########
-use_online_recognize=True #是否采用线上语音识别（效果好，针对优化）
+use_online_recognize=True #系统现在仅支持线上语音识别服务，离线识别功能已移除
 azure_key='2jTGJMnQmakNysRaNfckH8lazl5OL7BVgSVIV37MEtGzuhpPjBmNJQQJ99BCAC3pKaRXJ3w3AAAYACOGscFz'   #使用线上语音识别需填写 Azrue key
 
 

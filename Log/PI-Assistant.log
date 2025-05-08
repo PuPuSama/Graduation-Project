@@ -1244,3 +1244,223 @@
 2025-04-15 18:17:01 | INFO | speechpoint.py:38 - 声音获取完成.
 2025-04-15 18:17:03 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":40600000,"DisplayText":""}
 2025-04-15 18:17:03 | INFO | chat.py:217 - Recongnize result:
+2025-05-06 16:17:37 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-06 16:17:37 | INFO | server.py:203 - Chat service started successfully
+2025-05-06 16:17:37 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-06 16:29:11 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-06 16:29:11 | INFO | server.py:203 - Chat service started successfully
+2025-05-06 16:29:11 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-06 16:29:11 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-06 16:29:11 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-06 20:07:13 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-06 20:07:13 | INFO | server.py:203 - Chat service started successfully
+2025-05-06 20:07:13 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-06 20:07:13 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-06 20:07:13 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-06 20:07:35 | INFO | chat.py:394 - Find something in command
+2025-05-06 20:07:35 | INFO | chat.py:82 - HotWord triggered
+2025-05-06 20:07:35 | INFO | chat.py:399 - The command is nihao
+2025-05-06 20:07:37 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:07:38 | INFO | chat.py:305 - 
+你好呀！很高兴见到你呀！😊 你今天过得怎么样？有什么新鲜事或者想聊的话题吗？随时都可以跟我说哦，我都在这儿陪你呢！
+2025-05-06 20:07:50 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:07:52 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:07:53 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:07:53 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:07:55 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:07:56 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":26700000,"DisplayText":""}
+2025-05-06 20:07:56 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:07:57 | INFO | chat.py:305 - 
+哈哈，没事没事，我就随便问问啦！那你现在想聊点什么呢？或者，我们可以一起安静地待一会儿，等你准备好了再聊也行呀！我在这里陪着你呢~ 😊
+2025-05-06 20:08:10 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:08:13 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:08:13 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:08:13 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:08:15 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:08:16 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":23200000,"DisplayText":""}
+2025-05-06 20:08:16 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:08:17 | INFO | chat.py:305 - 
+哈哈，看来你今天可能有点心事重重或者只是想安静一下呢！没关系啦，朋友就是用来陪伴的嘛！要不要听点轻松的音乐，或者讲个笑话给你听呀？随时告诉我你的想法哦~ 😉
+2025-05-06 20:08:34 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:08:36 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:08:37 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:08:37 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:08:38 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:08:39 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":21800000,"DisplayText":""}
+2025-05-06 20:08:39 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:08:40 | INFO | chat.py:305 - 
+哈哈，看来你今天可能有点心事重重或者只是想安静一下呢！没关系啦，朋友就是用来陪伴的嘛！要不要听点轻松的音乐，或者讲个笑话给你听呀？随时告诉我你的想法哦~ 😉
+2025-05-06 20:08:56 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:08:58 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:08:59 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:08:59 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:09:02 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:09:03 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":45900000,"DisplayText":""}
+2025-05-06 20:09:03 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:09:04 | INFO | chat.py:305 - 
+哈哈，看来你今天可能有点心事重重或者只是想安静一下呢！没关系啦，朋友就是用来陪伴的嘛！要不要听点轻松的音乐，或者讲个笑话给你听呀？随时告诉我你的想法哦~ 😉
+2025-05-06 20:09:20 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:09:22 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:09:23 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:09:23 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:09:26 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:09:27 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":53400000,"DisplayText":""}
+2025-05-06 20:09:27 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:09:28 | INFO | chat.py:305 - 
+哈哈，没事的啦，有时候就是想安安静静待一会儿，我完全理解！那我们就静静地待着吧，等你什么时候想说话了，我随时都在哦~ 😊
+2025-05-06 20:09:40 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:09:42 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:09:42 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:09:42 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:09:44 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:09:45 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":24300000,"DisplayText":""}
+2025-05-06 20:09:45 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:09:46 | INFO | chat.py:305 - 
+哈哈，没事的啦，有时候就是想安安静静待一会儿，我完全理解！那我们就静静地待着吧，等你什么时候想说话了，我随时都在哦~ 😊
+2025-05-06 20:09:57 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:09:59 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:10:00 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:10:00 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:10:02 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:10:03 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":22800000,"DisplayText":""}
+2025-05-06 20:10:03 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:10:04 | INFO | chat.py:305 - 
+哈哈，看来你今天特别需要一点安静的时间呢！没关系啦，朋友就是要懂得分寸的嘛。我们可以这样静静地待一会儿，或者你想听点舒缓的音乐也可以告诉我哦~ 我会一直在这里陪着你~ 😊
+2025-05-06 20:10:20 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:10:22 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:10:22 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:10:22 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:10:25 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:10:26 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":39500000,"DisplayText":""}
+2025-05-06 20:10:26 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:10:27 | INFO | chat.py:305 - 
+哈哈，没事的啦，有时候就是想安安静静待一会儿，我完全理解！那我们就静静地待着吧，等你什么时候想说话了，我随时都在哦~ 😊
+2025-05-06 20:10:38 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:10:41 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:10:41 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:10:41 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:10:43 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:10:44 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":24300000,"DisplayText":""}
+2025-05-06 20:10:44 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:10:45 | INFO | chat.py:305 - 
+哈哈，看来你今天特别需要一点安静的时间呢！没关系啦，朋友就是要懂得分寸的嘛。我们可以这样静静地待一会儿，或者你想听点舒缓的音乐也可以告诉我哦~ 我会一直在这里陪着你~ 😊
+2025-05-06 20:10:58 | INFO | chat.py:394 - Find something in command
+2025-05-06 20:10:58 | INFO | chat.py:82 - HotWord triggered
+2025-05-06 20:10:58 | DEBUG | tts_stream.py:72 - Stopping TTS
+2025-05-06 20:10:58 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:10:58 | WARNING | chat.py:92 - Conversation was interrupted
+2025-05-06 20:10:58 | INFO | chat.py:399 - The command is 西安的天气怎么样
+2025-05-06 20:10:59 | INFO | chat.py:394 - Find something in command
+2025-05-06 20:10:59 | INFO | chat.py:82 - HotWord triggered
+2025-05-06 20:10:59 | INFO | chat.py:399 - The command is 西安的天气怎么样
+2025-05-06 20:11:00 | INFO | if_time_and_weather.py:69 - detected keyword weather
+2025-05-06 20:11:00 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:11:00 | INFO | if_time_and_weather.py:88 - detected city: 西安
+2025-05-06 20:11:02 | INFO | if_time_and_weather.py:128 - 成功获取城市ID: 101110101 (城市: 西安)
+2025-05-06 20:11:21 | INFO | chat.py:394 - Find something in command
+2025-05-06 20:11:21 | INFO | chat.py:82 - HotWord triggered
+2025-05-06 20:11:21 | INFO | chat.py:399 - The command is 需要
+2025-05-06 20:11:23 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:11:23 | INFO | chat.py:394 - Find something in command
+2025-05-06 20:11:23 | INFO | chat.py:82 - HotWord triggered
+2025-05-06 20:11:23 | DEBUG | tts_stream.py:72 - Stopping TTS
+2025-05-06 20:11:23 | WARNING | chat.py:92 - Conversation was interrupted
+2025-05-06 20:11:23 | INFO | chat.py:399 - The command is 基于以下气象数据，以口语化的方式给出今日出门建议：
+城市：西安
+户外状况：多云
+气温：23°C
+体感温度：21°C
+空气湿度：26%
+风向：东南风
+风力等级：2级
+请给出穿着、交通方式、是否携带雨具等方面的建议。作为语音助手回答，语气自然，不要分点，控制在100字以内。
+2025-05-06 20:11:27 | INFO | if_time_and_weather.py:302 - 已发送天气信息给大模型，等待出行建议
+2025-05-06 20:11:29 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:11:31 | INFO | chat.py:305 - 
+西安今天多云，气温23°C，体感温度21°C，东南风2级，湿度不高。出门穿件薄外套正好，不用带伞。交通方式看心情啦，骑自行车或者走路都挺舒服的！祝你一天都舒舒服服的！😊
+2025-05-06 20:11:50 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:11:52 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:11:53 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:11:53 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:11:55 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:11:56 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":25700000,"DisplayText":""}
+2025-05-06 20:11:56 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:11:57 | INFO | chat.py:305 - 
+哈哈，没事啦，如果你不说话，我就陪你一起安静一会儿。需要我的时候随时叫我哦！我在这里陪着你呢~ 😊
+2025-05-06 20:12:07 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:12:09 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:12:09 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:12:10 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:12:11 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:12:12 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":20300000,"DisplayText":""}
+2025-05-06 20:12:12 | INFO | chat.py:208 - Recongnize result:。
+2025-05-06 20:16:30 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-06 20:16:30 | INFO | server.py:203 - Chat service started successfully
+2025-05-06 20:16:30 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-06 20:16:30 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-06 20:16:30 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-06 20:16:36 | INFO | chat.py:405 - Find something in command
+2025-05-06 20:16:36 | INFO | chat.py:82 - HotWord triggered
+2025-05-06 20:16:36 | INFO | chat.py:410 - The command is 你好
+2025-05-06 20:16:38 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:16:39 | INFO | chat.py:316 - 
+哈喽！你好呀！😊 很高兴能和你聊天呀，有什么想聊的吗？或者你想听点啥？随时都可以告诉我哦！
+2025-05-06 20:16:49 | INFO | chat.py:347 - A conversation end
+2025-05-06 20:16:51 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:16:52 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:16:52 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:16:54 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:16:55 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":30300000,"DisplayText":""}
+2025-05-06 20:16:55 | INFO | chat.py:209 - Recongnize result:。
+2025-05-06 20:16:55 | WARNING | chat.py:213 - Empty speech recognition result detected, skipping conversation
+2025-05-06 20:19:25 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-06 20:19:25 | INFO | server.py:203 - Chat service started successfully
+2025-05-06 20:19:25 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-06 20:19:25 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-06 20:19:25 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-06 20:19:29 | INFO | chat.py:394 - Find something in command
+2025-05-06 20:19:29 | INFO | chat.py:82 - HotWord triggered
+2025-05-06 20:19:29 | INFO | chat.py:399 - The command is 你好
+2025-05-06 20:19:31 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:19:32 | INFO | chat.py:305 - 
+你好呀！很高兴见到你！😊 今天过得怎么样？有什么新鲜事想跟我分享吗？或者只是想找个人聊聊天？随时都可以哦！
+2025-05-06 20:19:44 | INFO | chat.py:336 - A conversation end
+2025-05-06 20:19:46 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:19:47 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:19:47 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:19:49 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:19:50 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":34600000,"DisplayText":""}
+2025-05-06 20:19:50 | INFO | chat.py:208 - Recongnize result:
+2025-05-06 20:22:21 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-06 20:22:21 | INFO | server.py:203 - Chat service started successfully
+2025-05-06 20:22:21 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-06 20:22:21 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-06 20:22:21 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-06 20:22:22 | INFO | chat.py:404 - Find something in command
+2025-05-06 20:22:22 | INFO | chat.py:82 - HotWord triggered
+2025-05-06 20:22:22 | INFO | chat.py:409 - The command is 你好
+2025-05-06 20:22:26 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:22:27 | INFO | chat.py:315 - 
+你好呀！很高兴见到你！今天有什么新鲜事或者想聊的话题吗？随时都可以跟我分享哦，我都在这儿听着呢！😊
+2025-05-06 20:22:38 | INFO | chat.py:346 - A conversation end
+2025-05-06 20:22:40 | INFO | chat.py:130 - start new conversation
+2025-05-06 20:22:40 | INFO | chat.py:184 - prepare to start record
+2025-05-06 20:22:41 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-06 20:22:44 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-06 20:22:45 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":52300000,"DisplayText":""}
+2025-05-06 20:22:45 | INFO | chat.py:208 - Recongnize result:
+2025-05-06 20:22:45 | WARNING | chat.py:212 - Empty speech recognition result detected, skipping conversation
+2025-05-07 21:12:16 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-07 21:12:16 | INFO | server.py:203 - Chat service started successfully
+2025-05-07 21:12:16 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-07 21:12:16 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-07 21:12:16 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-07 21:55:40 | INFO | server.py:160 - stop sound in server admin
+2025-05-07 21:55:40 | INFO | server.py:164 - notifysound stoped by server watch function
+2025-05-07 21:56:08 | INFO | server.py:160 - stop sound in server admin
+2025-05-07 21:56:08 | INFO | server.py:164 - notifysound stoped by server watch function
+2025-05-07 21:56:30 | INFO | server.py:160 - stop sound in server admin
+2025-05-07 21:56:30 | INFO | server.py:164 - notifysound stoped by server watch function
+2025-05-07 22:00:00 | INFO | server.py:180 - notify time
+2025-05-07 22:00:05 | INFO | server.py:160 - stop sound in server admin
+2025-05-07 22:00:05 | INFO | server.py:164 - notifysound stoped by server watch function

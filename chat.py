@@ -1,7 +1,7 @@
 import sys
 from const_config import snowboy_enable,gpio_wake_enable,use_online_recognize,\
-    music_enable,schedule_enable,use_openai,dev_enable,wlan_enable,\
-    use_spark,use_deepseek,chat_or_standard,porcupine_enable
+    music_enable,schedule_enable,dev_enable,wlan_enable,\
+    use_deepseek,chat_or_standard,porcupine_enable
 
 if snowboy_enable:
     from const_config import snowboypath
@@ -17,8 +17,6 @@ if gpio_wake_enable:
 
 if use_online_recognize:
     import azure_reco
-else:
-    from voskReco import vosk_reco
 
 if music_enable:   
     import if_music
@@ -44,11 +42,6 @@ if use_deepseek:
         import deepseek_stream_with_tts
     else:
         import deepseek
-elif use_openai:
-    import openai
-    import asyncio
-elif use_spark:
-    import sparkApi
 
 import os
 
@@ -62,7 +55,7 @@ from config import config
 
 import if_exit
 
-import if_time
+import if_time_and_weather
 
 from play import play
 
@@ -210,10 +203,8 @@ def work():
 
     if allow_running and ( text_enable is False ):
         try:
-            if use_online_recognize:
-                text = azure_reco.recognize()
-            else:    
-                text = vosk_reco.recognize()+'。'
+            # 移除条件判断，直接调用在线语音识别
+            text = azure_reco.recognize()
             logger.info(f"Recongnize result:{text}")
         except Exception as e:
             logger.warning(e)
@@ -237,11 +228,7 @@ def work():
             return None
 
         if if_exit.ifexit(text):
-            if use_openai:
-                openai.save()
-            elif use_spark:
-                sparkApi.save()
-            elif use_deepseek:
+            if use_deepseek:
                 if chat_or_standard:
                     deepseek_stream_with_tts.save()
                 else:
@@ -286,7 +273,7 @@ def work():
             return None
         
     if allow_running:
-        if if_time.timedetect(text):
+        if if_time_and_weather.timedetect(text):
             if (chatplayer and chatsound and chatsound.is_playing(chatplayer)):
                 try:
                     logger.info('stoping chatsound(if_time)')
@@ -313,16 +300,10 @@ def work():
             running = False
             return None
         else:
-            # 保存对话记录,发送至网页端,deepseek为流式回复,在其文件中
-            if use_openai:
-                logger.info(reply['content'])
-                config.set(answer=reply['content'])
-            else:
-                logger.info(reply)
-                config.set(answer=reply)
-
-        if use_openai and reply['content'].find('结束对话') != -1:
-            next = False
+            # 保存对话记录,发送至网页端
+            # 移除 OpenAI 相关条件
+            logger.info(reply)
+            config.set(answer=reply)
 
         if config.get("mqtt_message") is True:
             mqtt_wlan.wlan_client.send_message(config.get("answer"))
@@ -338,10 +319,8 @@ def work():
         try:
             if os.path.exists('Sound/answer.wav'):
                 os.remove('Sound/answer.wav')
-            if use_openai:
-                ssml_wav(reply['content'],'Sound/answer.wav')
-            else:
-                ssml_wav(reply,'Sound/answer.wav')
+            # 移除 OpenAI 相关条件，直接使用 reply
+            ssml_wav(reply,'Sound/answer.wav')
             logger.info('tts complete!')
         except Exception as e:
             logger.warning(e)
@@ -442,15 +421,13 @@ def startchat():
     t2.setDaemon(True)
     t2.start()
     #os.system('/home/pi/linkbt.sh')
-    if use_openai:
-        openai.read()
-    elif use_deepseek:
-        if chat_or_standard:
-            deepseek_stream_with_tts.read()
-        else:
-            deepseek.read()
-    elif use_spark:
-        sparkApi.read()
+    
+    # 移除 OpenAI 和 Spark 相关的条件判断，直接初始化 DeepSeek
+    if chat_or_standard:
+        deepseek_stream_with_tts.read()
+    else:
+        deepseek.read()
+    
     if (snowboy_enable or porcupine_enable) is True and config.get("wakebyhw") is True:
         if snowboy_enable:
             t3 = Thread(target=hotwordBymic.start, args=(hwcallback,))
