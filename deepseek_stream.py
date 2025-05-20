@@ -42,7 +42,7 @@ def chat_request_stream():
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "Pro/deepseek-ai/DeepSeek-V3",
+        "model": "deepseek-ai/DeepSeek-V3",
         "messages": messages,
         "stream": True,
         "max_tokens": 512,

@@ -1,5 +1,3 @@
-
-
 import requests
 import os
 import pickle
@@ -35,7 +33,7 @@ def chat_request():
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "Pro/deepseek-ai/DeepSeek-V3",
+        "model": "deepseek-ai/DeepSeek-V3",
         "messages": messages,
         "stream": False,
         "max_tokens": 512,

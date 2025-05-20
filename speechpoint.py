@@ -22,7 +22,7 @@ def record_file():
 
     rate=16000
     r = sr.Recognizer()
-    with sr.Microphone(sample_rate=rate) as source:
+    with sr.Microphone() as source:  # 不指定采样率
 
         #r.adjust_for_ambient_noise(source)
         #os.system('aplay ding.wav')

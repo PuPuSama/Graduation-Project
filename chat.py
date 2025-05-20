@@ -1,8 +1,35 @@
-import sys
-from const_config import snowboy_enable,gpio_wake_enable,use_online_recognize,\
-    music_enable,schedule_enable,dev_enable,wlan_enable,\
-    use_deepseek,chat_or_standard,porcupine_enable
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
+"""
+聊天服务模块
+处理语音交互、对话流程和响应生成
+"""
+
+import os
+import sys
+import time
+import threading
+import arcade
+from loguru import logger
+from config import config
+from play import play
+from tts import ssml_wav
+
+# 根据配置有条件地导入模块
+from const_config import (
+    snowboy_enable, porcupine_enable, gpio_wake_enable, 
+    use_online_recognize, music_enable, schedule_enable, 
+    dev_enable, wlan_enable, use_deepseek, chat_or_standard
+)
+
+# 导入语音处理和对话模块
+import speechpoint
+import prompt_and_deal
+import if_exit
+import if_time_and_weather
+
+# 根据配置导入热词检测模块
 if snowboy_enable:
     from const_config import snowboypath
     sys.path.append(snowboypath)
@@ -12,6 +39,7 @@ elif porcupine_enable:
     sys.path.append(porcupinepath)
     from Porcupine import porcupine
 
+# 根据配置导入其他功能模块
 if gpio_wake_enable:
     import RPi.GPIO as GPIO
 
@@ -31,423 +59,511 @@ if dev_enable:
 if wlan_enable:
     import mqtt_wlan
 
-import speechpoint
-
-from tts import ssml_wav
-
-import prompt_and_deal
-
+# 根据配置导入对话模型
 if use_deepseek:
     if chat_or_standard:
         import deepseek_stream_with_tts
     else:
         import deepseek
 
-import os
 
-import arcade
-
-from threading import Thread
-
-import time
-
-from config import config
-
-import if_exit
-
-import if_time_and_weather
-
-from play import play
-
-from loguru import logger
-
-chatsound = None
-chatplayer = None
-next = False
-next_enable=True
-actived = 0
-allow_running = True
-flag = 1
-running = False
-text_enable = False
-text = ''
-t3 = None
-manual_enable=False
-
-times=0
-
-def hwcallback():
-    global running, actived, allow_running
-    # 根据程序运行状态设置不同的激活状态
-    logger.info('HotWord triggered')
-    if running and not allow_running:
-        actived = 3  # 多次唤醒造成的错误标志位
-        return False
-
-    if running:
-        actived = 2  # 运行时激活
-        # 运行时激活停止播放声音(流式)
-        if use_deepseek and chat_or_standard is True:
-            deepseek_stream_with_tts.tts_manager.stop_tts()
-        logger.warning('Conversation was interrupted')
-    else:
-        actived = 1  # 休眠激活
-
-
-def admin():
-    global actived, allow_running, actived, next, running, flag, chatsound, chatplayer ,times
+class ChatService:
+    """聊天服务类，封装对话流程和状态管理"""
     
-    while flag == 1 :
-
-        # 如果是actived为3,程序无法处理,直接退出
-        if actived == 3: 
-            logger.error('Error in chat, The program will exit soon')
-            play('Sound/exit.wav')
-            os._exit(0)
-
-        # 判断是否有声音正在播放(非流式)
-        is_sound_playing = chatsound and chatplayer and chatsound.is_playing(chatplayer)
-        # 判断声音是否播放完成(非流式)
-        is_sound_playing_complete = chatsound and chatplayer and chatsound.is_complete(chatplayer)
-
-        #释放chat占用的语音
-        if not is_sound_playing and not running :
-            config.set(chat_enable=False) 
+    def __init__(self):
+        """初始化聊天服务状态"""
+        # 音频播放相关
+        self.chat_sound = None
+        self.chat_player = None
+        self.sound_play_counter = 0
         
-        # 处理接续对话
-        if (not running and not config.get("notify_enable") and 
-            (actived == 1 or (next is True and is_sound_playing_complete) or 
-             (next is True and use_deepseek and chat_or_standard and deepseek_stream_with_tts.tts_manager.tts_task
-              and deepseek_stream_with_tts.tts_manager.tts_task.get()))):  #播放完成返回信息(流式)
-            
-            if use_deepseek and chat_or_standard is True: #为deepseek模型添加延时
-                time.sleep(2)
-            
-            t1 = Thread(target=work)
-            t1.setDaemon(True)
-            config.set(chat_enable=True)
-            t1.start()
-            logger.info('start new conversation')
-
-        # 程序运行状态修改
-        if actived == 2:        
-            allow_running = False
-            actived = 1
-
-        # 提供函数终止的功能
-        if actived == -1:
-            # interruped = True
-            flag = 0
-
-        # 处理正在播放的声音,主要为异常处理 (非流式)
-        if is_sound_playing:
-            if chatsound.is_complete(chatplayer):
-                try:
-                    chatsound.stop(chatplayer)
-                    times=0
-                except:
-                    logger.warning('stop sound wrong in chat')
-                else:
-                    logger.info('chatsound has been stoped by admin func in chat')
-            else:
-                times=times+1
-                if times>=170:
-                    try:
-                        chatsound.stop(chatplayer)
-                    except:
-                        logger.warning('stop sound wrong in chat(time)')
-                    else:
-                        logger.info('chatsound has been stoped by admin func in chat(time)')
-                    times = 0
-        time.sleep(0.5)
-
-
-def work():
-    global next, allow_running, running, flag, chatplayer, chatsound, actived, interruped, text, text_enable , next_enable ,manual_enable,times
-    running = True
-    next = True if next_enable is True else False
-
-    # 停止正在播放的声音(非流式)
-    if (chatplayer and chatsound and chatsound.is_playing(chatplayer)):
-        try:
-            logger.info('stoping chatsound')
-            chatsound.stop(chatplayer)
-            times=0
-        except:
-            logger.warning('stop chatsound wrong')
+        # 对话控制标志
+        self.next_enabled = True
+        self.next_dialog = False
+        self.running = False
+        self.active_state = 0  # 0=无活动, 1=休眠激活, 2=运行时激活, 3=错误状态
+        self.allow_running = True
+        self.service_active = True
+        
+        # 文本输入相关
+        self.text_input_enabled = False
+        self.input_text = ''
+        self.manual_input_enabled = False
+        
+        # 热词检测线程
+        self.hotword_thread = None
     
-    actived = 0
-    if allow_running and ((text_enable or manual_enable) is False):
+    def handle_hotword_trigger(self):
+        """处理热词唤醒事件"""
+        logger.info('热词触发')
+        
+        # 根据当前状态决定行为
+        if self.running and not self.allow_running:
+            # 多次唤醒造成的错误状态
+            self.active_state = 3
+            return False
+            
+        if self.running:
+            # 正在运行时被唤醒
+            self.active_state = 2
+            # 如果是流式模式，停止当前TTS
+            if use_deepseek and chat_or_standard:
+                deepseek_stream_with_tts.tts_manager.stop_tts()
+            logger.warning('对话被中断')
+        else:
+            # 正常唤醒
+            self.active_state = 1
+    
+    def monitor_service(self):
+        """监控聊天服务状态的主循环"""
+        while self.service_active:
+            # 处理错误状态
+            if self.active_state == 3:
+                logger.error('聊天服务错误，程序即将退出')
+                play('Sound/exit.wav')
+                os._exit(0)
+            
+            # 检查音频播放状态
+            is_playing = (self.chat_sound and self.chat_player and 
+                          self.chat_sound.is_playing(self.chat_player))
+            is_complete = (self.chat_sound and self.chat_player and 
+                           self.chat_sound.is_complete(self.chat_player))
+            
+            # 没有声音播放且不在对话过程中时释放语音资源
+            if not is_playing and not self.running:
+                config.set(chat_enable=False)
+            
+            # 处理下一轮对话
+            if (not self.running and not config.get("notify_enable") and 
+                (self.active_state == 1 or 
+                 (self.next_dialog and is_complete) or 
+                 (self.next_dialog and use_deepseek and chat_or_standard and 
+                  deepseek_stream_with_tts.tts_manager.tts_task and 
+                  deepseek_stream_with_tts.tts_manager.tts_task.get()))):
+                
+                # 流式模式下添加延时
+                if use_deepseek and chat_or_standard:
+                    time.sleep(2)
+                
+                # 启动对话线程
+                dialog_thread = threading.Thread(target=self.process_dialog)
+                dialog_thread.daemon = True
+                config.set(chat_enable=True)
+                dialog_thread.start()
+                logger.info('开始新对话')
+            
+            # 处理状态转换
+            if self.active_state == 2:
+                self.allow_running = False
+                self.active_state = 1
+            
+            # 处理服务关闭
+            if self.active_state == -1:
+                self.service_active = False
+            
+            # 处理长时间播放的声音
+            if is_playing:
+                if is_complete:
+                    try:
+                        self.chat_sound.stop(self.chat_player)
+                        self.sound_play_counter = 0
+                        logger.info('通过监控函数停止声音播放')
+                    except Exception:
+                        logger.warning('停止声音播放失败')
+                else:
+                    self.sound_play_counter += 1
+                    # 如果播放时间过长（约85秒），强制停止
+                    if self.sound_play_counter >= 170:
+                        try:
+                            self.chat_sound.stop(self.chat_player)
+                            logger.info('超时停止声音播放')
+                        except Exception:
+                            logger.warning('超时停止声音播放失败')
+                        self.sound_play_counter = 0
+            
+            # 循环间隔
+            time.sleep(0.5)
+    
+    def process_dialog(self):
+        """处理完整的对话流程"""
+        self.running = True
+        self.next_dialog = True if self.next_enabled else False
+        
+        # 停止当前正在播放的声音
+        self._stop_current_sound()
+        
+        # 重置激活状态
+        self.active_state = 0
+        
+        # 录音和语音识别
+        if not self._handle_voice_input():
+            return
+        
+        # 重置输入标志
+        self.manual_input_enabled = False
+        self.text_input_enabled = False
+        
+        # 处理特殊命令
+        if not self._handle_special_commands():
+            return
+        
+        # 生成对话响应
+        if not self._generate_response():
+            return
+        
+        # 处理TTS和音频播放
+        self._handle_audio_response()
+        
+        # 结束对话
+        logger.info('对话结束')
+        self.allow_running = True
+        self.running = False
+    
+    def _stop_current_sound(self):
+        """停止当前正在播放的声音"""
+        if (self.chat_player and self.chat_sound and 
+            self.chat_sound.is_playing(self.chat_player)):
+            try:
+                logger.info('停止当前声音播放')
+                self.chat_sound.stop(self.chat_player)
+                self.sound_play_counter = 0
+            except Exception:
+                logger.warning('停止声音播放失败')
+    
+    def _handle_voice_input(self):
+        """处理语音输入，返回是否成功"""
+        # 如果已经有文本输入或手动输入，跳过录音
+        if not self.allow_running or (self.text_input_enabled or self.manual_input_enabled):
+            return True
+            
         try:
+            # 录音提示音
             play('Sound/ding.wav')
-
-            logger.info('prepare to start record')
-
+            logger.info('准备开始录音')
+            
+            # 录制语音
             speechpoint.record_file()
-
-            # audio=speechpoint.record()
-
+            
+            # 录音结束提示音
             play('Sound/dong.wav')
-
+            
         except Exception as e:
-            logger.warning(e)
+            logger.warning(f"录音出错: {e}")
             play('Sound/ding.wav')
             play('Sound/quit.wav')
-            next = False
-            allow_running = True
-            running = False
-            return None
-
-    if allow_running:
-        manual_enable = False
-
-    if allow_running and ( text_enable is False ):
-        try:
-            # 移除条件判断，直接调用在线语音识别
-            text = azure_reco.recognize()
-            logger.info(f"Recongnize result:{text}")
-        except Exception as e:
-            logger.warning(e)
-            play('Sound/recoerror.wav')
-            next = False
-            allow_running = True
-            running = False
-            return None
-
-    if allow_running:
-        text_enable = False
-
-    if allow_running:
-        # 判断是否退出
-
-        if if_exit.ifend(text):
-            next = False
-            allow_running = True
-            running = False
+            self._reset_dialog_state(False)
+            return False
+        
+        # 语音识别
+        if self.allow_running and not self.text_input_enabled:
+            try:
+                self.input_text = azure_reco.recognize()
+                logger.info(f"识别结果: {self.input_text}")
+            except Exception as e:
+                logger.warning(f"语音识别失败: {e}")
+                play('Sound/recoerror.wav')
+                self._reset_dialog_state(False)
+                return False
+        
+        return True
+    
+    def _handle_special_commands(self):
+        """处理特殊命令，返回是否继续对话"""
+        if not self.allow_running:
+            return False
+            
+        # 检查是否结束对话
+        if if_exit.ifend(self.input_text):
+            self._reset_dialog_state(False)
             config.set(chat_enable=False)
-            return None
-
-        if if_exit.ifexit(text):
+            return False
+        
+        # 检查是否退出程序
+        if if_exit.ifexit(self.input_text):
+            # 保存对话历史
             if use_deepseek:
                 if chat_or_standard:
                     deepseek_stream_with_tts.save()
                 else:
                     deepseek.save()
-            flag = 0
-            next = False
-            allow_running = True
-            running = False
+            # 退出程序
+            self._reset_dialog_state(False)
             os._exit(0)
-            return None
+            return False
+        
+        # 检查日程相关命令
+        if self.allow_running and schedule_enable and schedule.if_schedule(self.input_text):
+            self._reset_dialog_state(False)
+            config.set(chat_enable=False)
+            return False
+        
+        # 检查音乐相关命令
+        if self.allow_running and music_enable and if_music.musicdetect(self.input_text):
+            self._stop_current_sound()
+            self._reset_dialog_state(False)
+            config.set(chat_enable=False)
+            return False
+        
+        # 检查设备控制命令
+        if self.allow_running and dev_enable and if_devControl.detect(self.input_text):
+            self._reset_dialog_state(False)
+            config.set(chat_enable=False)
+            return False
+        
+        # 检查时间和天气相关命令
+        if self.allow_running and if_time_and_weather.timedetect(self.input_text):
+            self._stop_current_sound()
+            self._reset_dialog_state(False)
+            config.set(chat_enable=False)
+            return False
+        
+        return True
     
-    if allow_running:
-
-        if schedule_enable and schedule.if_schedule(text):
-            next = False
-            allow_running = True
-            running = False
-            config.set(chat_enable=False)
-            return None
-
-    if allow_running:
-        if music_enable and if_music.musicdetect(text):
-            if (chatplayer and chatsound and chatsound.is_playing(chatplayer)):
-                try:
-                    logger.info('stoping chatsound(if_music)')
-                    chatsound.stop(chatplayer)
-                    times=0
-                except:
-                    logger.warning('stop chatsound wrong')
-            next = False
-            allow_running = True
-            running = False
-            config.set(chat_enable=False)
-            return None
-
-    if allow_running:
-        if dev_enable and if_devControl.detect(text):
-            next = False
-            allow_running = True
-            running = False
-            config.set(chat_enable=False)
-            return None
-        
-    if allow_running:
-        if if_time_and_weather.timedetect(text):
-            if (chatplayer and chatsound and chatsound.is_playing(chatplayer)):
-                try:
-                    logger.info('stoping chatsound(if_time)')
-                    chatsound.stop(chatplayer)
-                    times=0
-                except:
-                    logger.warning('stop chatsound wrong')
-            next = False
-            allow_running = True
-            running = False
-            config.set(chat_enable=False)
-            return None
-        
-    if allow_running:
+    def _generate_response(self):
+        """生成对话响应，返回是否成功"""
+        if not self.allow_running:
+            return False
+            
         try:
-            reply=prompt_and_deal.send(text)
-
+            # 获取对话回复
+            reply = prompt_and_deal.send(self.input_text)
+            logger.info(f"回复: {reply}")
+            config.set(answer=reply)
+            
+            # 处理MQTT消息
+            if config.get("mqtt_message") is True:
+                mqtt_wlan.wlan_client.send_message(config.get("answer"))
+                config.set(mqtt_message=False)
+                self._reset_dialog_state(False)
+                return False
+            
+            # 等待流式TTS完成
+            if use_deepseek and chat_or_standard and deepseek_stream_with_tts.tts_manager.tts_task:
+                deepseek_stream_with_tts.tts_manager.tts_task.get()
+            
+            return True
+            
         except Exception as e:
-
-            logger.error(f'GPT error:{e}')
+            logger.error(f'对话生成错误: {e}')
             play('Sound/ding.wav')
             play('Sound/gpterror.wav')
-            allow_running = True
-            running = False
-            return None
-        else:
-            # 保存对话记录,发送至网页端
-            # 移除 OpenAI 相关条件
-            logger.info(reply)
-            config.set(answer=reply)
-
-        if config.get("mqtt_message") is True:
-            mqtt_wlan.wlan_client.send_message(config.get("answer"))
-            config.set(mqtt_message=False)
-            next = False
-            allow_running = True
-            running = False
+            self.allow_running = True
+            self.running = False
+            return False
+    
+    def _handle_audio_response(self):
+        """处理TTS和音频播放"""
+        # 跳过流式模式下的处理
+        if not self.allow_running or (use_deepseek and chat_or_standard):
+            return
             
-        if use_deepseek and chat_or_standard and deepseek_stream_with_tts.tts_manager.tts_task:
-            deepseek_stream_with_tts.tts_manager.tts_task.get()
-
-    if allow_running and not (use_deepseek and chat_or_standard):
         try:
+            # 生成TTS音频
             if os.path.exists('Sound/answer.wav'):
                 os.remove('Sound/answer.wav')
-            # 移除 OpenAI 相关条件，直接使用 reply
-            ssml_wav(reply,'Sound/answer.wav')
-            logger.info('tts complete!')
+            
+            reply = config.get("answer")
+            ssml_wav(reply, 'Sound/answer.wav')
+            logger.info('TTS生成完成')
         except Exception as e:
-            logger.warning(e)
+            logger.warning(f"TTS生成失败: {e}")
             play('Sound/ttserror.wav')
-            allow_running = False
+            self.allow_running = False
+            return
+        
+        # 播放提示音和回复音频
         play('Sound/ding.wav')
-
-    if allow_running and not (use_deepseek and chat_or_standard):
-        chatsound = arcade.Sound('Sound/answer.wav')
-        chatplayer = chatsound.play()
+        self.chat_sound = arcade.Sound('Sound/answer.wav')
+        self.chat_player = self.chat_sound.play()
         time.sleep(0.5)
-
-    logger.info('A conversation end')
-    allow_running = True
-    running = False
-    return None
-
-
-#交互功能
-def inter():
-    global actived, text, text_enable, flag, t3, manual_enable, next_enable
-    while (1):
-        cmd = config.get("command")
-        if cmd == 'wake':
-            logger.info('find words wake')
-            actived = 1
-            config.set(command='')
-            continue
-        elif cmd == 'get_audio_complete':
-            logger.info('find words get_audio_complete')
-            manual_enable=True
-            next_enable=False
-            hwcallback()
-            config.set(command='')
-            continue
-        elif cmd == 'shutdown':
-            flag = 0
-            config.set(command='')
-            continue
-        elif cmd == 'stop' or (config.get("wakebyhw") is False and config.get("hw_started") is True):
+    
+    def _reset_dialog_state(self, next_enabled=True):
+        """重置对话状态"""
+        self.next_dialog = next_enabled
+        self.allow_running = True
+        self.running = False
+    
+    def process_command(self, command):
+        """处理外部命令"""
+        if command == 'wake':
+            logger.info('收到唤醒命令')
+            self.active_state = 1
+            return True
+            
+        elif command == 'get_audio_complete':
+            logger.info('收到手动录音完成命令')
+            self.manual_input_enabled = True
+            self.next_enabled = False
+            self.handle_hotword_trigger()
+            return True
+            
+        elif command == 'shutdown':
+            self.service_active = False
+            return True
+            
+        elif command == 'stop' or (config.get("wakebyhw") is False and config.get("hw_started") is True):
+            # 停止热词检测
             try:
                 if snowboy_enable:
                     hotwordBymic.terminate()
                 elif porcupine_enable:
                     porcupine.terminate()
-                config.set(wakebyhw=False, hw_started=False)  # 同时设置 hw_started 状态
-            except:
-                logger.warning('stop hotword_wake wrong')
-            else:
-                pass
-            t3 = None
-            next_enable = False
-            config.set(command='')
-            continue
-
-        # 在 "start" 命令中
-        elif (snowboy_enable or porcupine_enable) is True and (cmd == 'start' or (config.get("wakebyhw") is True and config.get("hw_started") is False)):
-            if t3 is None:
+                config.set(wakebyhw=False, hw_started=False)
+            except Exception:
+                logger.warning('停止热词检测失败')
+            
+            self.hotword_thread = None
+            self.next_enabled = False
+            return True
+            
+        elif (snowboy_enable or porcupine_enable) and (command == 'start' or 
+              (config.get("wakebyhw") is True and config.get("hw_started") is False)):
+            # 启动热词检测
+            if self.hotword_thread is None:
                 if snowboy_enable:
-                    t3 = Thread(target=hotwordBymic.start, args=(hwcallback,))
+                    self.hotword_thread = threading.Thread(
+                        target=hotwordBymic.start, 
+                        args=(self.handle_hotword_trigger,)
+                    )
                 elif porcupine_enable:
-                    t3 = Thread(target=porcupine.start, args=(hwcallback,))
-                t3.setDaemon(True)
-                t3.start()
-                config.set(wakebyhw = True,hw_started=True)  # 设置 hw_started 状态
-            next_enable = True
+                    self.hotword_thread = threading.Thread(
+                        target=porcupine.start, 
+                        args=(self.handle_hotword_trigger,)
+                    )
+                
+                self.hotword_thread.daemon = True
+                self.hotword_thread.start()
+                config.set(wakebyhw=True, hw_started=True)
+            
+            self.next_enabled = True
             play('Sound/hwstartsucc.wav')
-            config.set(command='')
-            continue
-        elif cmd != '':
-            logger.info('Find something in command')
-            text = config.get("command")
-            text_enable = True
-            hwcallback()
-            config.set(command='')
-            logger.info(f'The command is {text}')
-            continue
+            return True
+            
+        elif command:
+            logger.info(f'收到文本命令: {command}')
+            self.input_text = command
+            self.text_input_enabled = True
+            self.handle_hotword_trigger()
+            return True
+            
+        return False
+    
+    def start_command_processor(self):
+        """启动命令处理线程"""
+        def command_processor():
+            while self.service_active:
+                command = config.get("command")
+                if command:
+                    if self.process_command(command):
+                        config.set(command='')
+                time.sleep(0.5)
+        
+        processor_thread = threading.Thread(target=command_processor)
+        processor_thread.daemon = True
+        processor_thread.start()
+        return processor_thread
+    
+    def setup_gpio_wake(self):
+        """设置GPIO唤醒功能"""
+        if not gpio_wake_enable:
+            return []
+            
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)  # 按钮
+        GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # 外设
+        
+        # 按钮唤醒线程
+        def button_wake():
+            while True:
+                GPIO.wait_for_edge(4, GPIO.RISING)
+                self.handle_hotword_trigger()
+                logger.info('通过物理按钮唤醒')
+                time.sleep(5)
+        
+        # 外设唤醒线程
+        def device_wake():
+            while True:
+                GPIO.wait_for_edge(18, GPIO.RISING)
+                self.handle_hotword_trigger()
+                logger.info('通过外设唤醒')
+                time.sleep(5)
+        
+        # 创建并启动线程
+        button_thread = threading.Thread(target=button_wake)
+        button_thread.daemon = True
+        button_thread.start()
+        
+        device_thread = threading.Thread(target=device_wake)
+        device_thread.daemon = True
+        device_thread.start()
+        
+        return [button_thread, device_thread]
 
-        time.sleep(0.5)
+
+# 创建全局聊天服务实例
+chat_service = ChatService()
+
+# 与之前版本兼容的接口函数
+def hwcallback():
+    """热词唤醒回调函数"""
+    chat_service.handle_hotword_trigger()
+
+def work():
+    """处理对话流程"""
+    chat_service.process_dialog()
+
+def admin():
+    """监控服务主循环"""
+    chat_service.monitor_service()
+
+def inter():
+    """处理命令交互"""
+    chat_service.start_command_processor()
 
 def exwake_button():
-    while(1):
-        GPIO.wait_for_edge(4, GPIO.RISING)
-        hwcallback()
-        logger.info('Wake by physical button')
-        time.sleep(5)
+    """按钮唤醒函数（已在ChatService中实现）"""
+    pass
 
 def exwake_dev():
-    while(1):
-        GPIO.wait_for_edge(18, GPIO.RISING)
-        hwcallback()
-        logger.info('Wake by Peripherals')
-        time.sleep(5)
+    """设备唤醒函数（已在ChatService中实现）"""
+    pass
 
 def startchat():
-    global t3
-    t2 = Thread(target=inter)
-    t2.setDaemon(True)
-    t2.start()
-    #os.system('/home/pi/linkbt.sh')
+    """初始化并启动聊天服务"""
+    # 启动命令处理线程
+    command_thread = chat_service.start_command_processor()
     
-    # 移除 OpenAI 和 Spark 相关的条件判断，直接初始化 DeepSeek
-    if chat_or_standard:
-        deepseek_stream_with_tts.read()
-    else:
-        deepseek.read()
+    # 初始化对话模型
+    if use_deepseek:
+        if chat_or_standard:
+            deepseek_stream_with_tts.read()
+        else:
+            deepseek.read()
     
-    if (snowboy_enable or porcupine_enable) is True and config.get("wakebyhw") is True:
+    # 启动热词检测（如果启用）
+    if (snowboy_enable or porcupine_enable) and config.get("wakebyhw") is True:
         if snowboy_enable:
-            t3 = Thread(target=hotwordBymic.start, args=(hwcallback,))
+            hotword_thread = threading.Thread(
+                target=hotwordBymic.start, 
+                args=(hwcallback,)
+            )
         elif porcupine_enable:
-            t3 = Thread(target=porcupine.start, args=(hwcallback,))
-        t3.setDaemon(True)
-        t3.start()
-    if gpio_wake_enable:
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(4,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
-        GPIO.setup(18,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
-        t4= Thread(target=exwake_button)
-        t4.setDaemon(True)
-        t4.start()
-        t5= Thread(target=exwake_dev)
-        t5.setDaemon(True)
-        t5.start()
-
+            hotword_thread = threading.Thread(
+                target=porcupine.start, 
+                args=(hwcallback,)
+            )
+        hotword_thread.daemon = True
+        hotword_thread.start()
+        chat_service.hotword_thread = hotword_thread
+    
+    # 设置GPIO唤醒（如果启用）
+    gpio_threads = chat_service.setup_gpio_wake()
+    
+    # 播放欢迎音
     play('Sound/ding.wav')
     play('Sound/welcome.wav')
+    
+    # 启动监控服务
     admin()
 
 
