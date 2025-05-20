@@ -389,47 +389,139 @@ def get_search_song(words):
     global interrupted_music, search
     interrupted_music = True
     search = True
-    r = music_get(f'http://127.0.0.1:3300/search/quick?key={words}',headers=header)
-    if  r is False:
+    r = music_get(f'http://127.0.0.1:3300/search/quick?key={words}', headers=header)
+    if r is False:
         logger.error('cannot get (request) ,return')
-        return
-    data = json.loads(r.text)
-    for i in range(len(data['data']['song']['itemlist'])):
-        logger.info(i)
-        r=music_get(f"http://127.0.0.1:3300/song/urls?id={data['data']['song']['itemlist'][i]['mid']}",headers=header)
-        r.close()
-        if  r is False:
-            logger.error('cannot get (request) ,return')
-            return
-        if json.loads(r.text)['data']!={}:
-            return [data['data']['song']['itemlist'][i]['mid'],data['data']['song']['itemlist'][i]['name'],data['data']['song']['itemlist'][i]['singer']]
-        else:
-            logger.info('find next')
-    #interrupted_music=False
-    #search=False
-    #play(Musicnotfound.wav')
-    #return False
-    music.close()
-    return get_search_song_deep(words)
+        return False
+        
+    try:
+        data = json.loads(r.text)
+        # 记录API返回的完整响应以便诊断
+        logger.debug(f"API响应: {r.text[:200]}...")  # 记录前200个字符，避免日志过大
+        
+        # 检查数据结构是否符合预期
+        if 'data' not in data:
+            logger.error(f"API响应中没有'data'字段: {data.keys()}")
+            music.close()
+            return get_search_song_deep(words)
+            
+        if 'song' not in data['data']:
+            logger.error(f"API响应中没有'data.song'字段")
+            music.close()
+            return get_search_song_deep(words)
+            
+        if 'itemlist' not in data['data']['song'] or not data['data']['song']['itemlist']:
+            logger.error(f"API响应中没有歌曲列表或列表为空")
+            music.close()
+            return get_search_song_deep(words)
+        
+        # 如果数据结构正确，尝试查找可播放歌曲
+        for i in range(len(data['data']['song']['itemlist'])):
+            logger.info(f"检查歌曲 {i+1}/{len(data['data']['song']['itemlist'])}")
+            song_id = data['data']['song']['itemlist'][i]['mid']
+            r = music_get(f"http://127.0.0.1:3300/song/urls?id={song_id}", headers=header)
+            if r is False:
+                logger.error('cannot get song URL, trying next song')
+                continue
+                
+            try:
+                url_data = json.loads(r.text)
+                # 检查URL数据是否有效
+                if 'data' not in url_data:
+                    logger.warning(f"歌曲URL响应中没有'data'字段，尝试下一首")
+                    continue
+                    
+                if url_data['data'] == {}:
+                    logger.info('当前歌曲无法播放，查找下一首')
+                    continue
+                    
+                # 找到了可播放的歌曲
+                return [
+                    data['data']['song']['itemlist'][i]['mid'],
+                    data['data']['song']['itemlist'][i]['name'],
+                    data['data']['song']['itemlist'][i]['singer']
+                ]
+            except Exception as e:
+                logger.error(f"处理歌曲URL时出错: {e}")
+                continue
+            finally:
+                r.close()
+                
+        # 没有找到可播放的歌曲，尝试深度搜索
+        logger.info('quick search没有找到可播放歌曲，尝试深度搜索')
+        music.close()
+        return get_search_song_deep(words)
+        
+    except json.JSONDecodeError as e:
+        logger.error(f"解析API响应JSON时出错: {e}, 响应内容: {r.text[:100]}...")
+        music.close()
+        return False
+    except Exception as e:
+        logger.error(f"搜索歌曲时出错: {e}")
+        music.close()
+        return False
 
 def get_search_song_deep(words):
-    global interrupted_music,search
-    logger.info('start deep search')
-    r = music_get(f'http://127.0.0.1:3300/search?key={words}',headers=header)
-    r.close()
-    if  r is False:
+    global interrupted_music, search
+    logger.info('开始深度搜索')
+    r = music_get(f'http://127.0.0.1:3300/search?key={words}', headers=header)
+    if r is False:
         logger.error('cannot get (request) ,return')
-        return
-    data = json.loads(r.text)
-    logger.info(data)
-    for i in range(len(data['data']['list'])):
-        if data['data']['list'][i]['pay']['pay_play']==0:
-            return [data['data']['list'][i]['songmid'],data['data']['list'][i]['songname'],data['data']['list'][i]['singer'][0]['name']]
-    interrupted_music=False
-    search=False
-    play('Sound/Musicnotfound.wav')
-    # music.close()
-    return False
+        interrupted_music = False
+        search = False
+        return False
+        
+    try:
+        data = json.loads(r.text)
+        # 记录部分API响应以便诊断
+        logger.debug(f"深度搜索API响应: {r.text[:200]}...")
+        
+        # 验证返回的数据结构
+        if 'data' not in data:
+            logger.error(f"深度搜索API响应中没有'data'字段: {data.keys()}")
+            interrupted_music = False
+            search = False
+            return False
+            
+        if 'list' not in data['data'] or not data['data']['list']:
+            logger.error(f"深度搜索API响应中没有'list'字段或列表为空")
+            interrupted_music = False
+            search = False
+            play('Sound/Musicnotfound.wav')
+            return False
+        
+        # 查找可播放的歌曲
+        for i in range(len(data['data']['list'])):
+            try:
+                if 'pay' in data['data']['list'][i] and data['data']['list'][i]['pay']['pay_play'] == 0:
+                    return [
+                        data['data']['list'][i]['songmid'],
+                        data['data']['list'][i]['songname'],
+                        data['data']['list'][i]['singer'][0]['name']
+                    ]
+            except Exception as e:
+                logger.warning(f"检查歌曲 {i+1} 时出错: {e}")
+                continue
+                
+        # 没有找到可播放的歌曲
+        logger.info('没有找到可播放的歌曲')
+        interrupted_music = False
+        search = False
+        play('Sound/Musicnotfound.wav')
+        return False
+        
+    except json.JSONDecodeError as e:
+        logger.error(f"解析深度搜索API响应JSON时出错: {e}")
+        interrupted_music = False
+        search = False
+        return False
+    except Exception as e:
+        logger.error(f"深度搜索歌曲时出错: {e}")
+        interrupted_music = False
+        search = False
+        return False
+    finally:
+        r.close()
 
 def converter(a,b):
     global order
@@ -445,48 +537,97 @@ def converter(a,b):
         return False
 
 def play_search_song(words):
-    global musicsound,musicplayer,interrupted_music,search
-    back=get_search_song(words)
-    if back==False:
-        logger.error('wrong in play_search_song ,return ')
-        search=False
-        return
-    r=music_get(f'http://127.0.0.1:3300/song/url?id={back[0]}',headers=header)
-    if r is False :
-        logger.error('cannot get (request) ,return')
-        search=False
-        return
-    # r.close()
-    r=json.loads(r.text)
-    if r['result']==100:
-        #for i in r['data']:
-            #r=requests.get(url=r['data'][i])
-        r=music_get(url=r['data'],headers=header)
-        if r is False:
-            logger.error('cannot get (request) ,return')
-            search=False
-            return
-        with open('Sound/music_search.mp3','wb') as file:
-            file.write(r.content)
-            file.close()
-        r.close()
-    else: 
-        logger.error('request not 100,return from play_search_song')
-        search=False
-        return
-    converter('Sound/music_search.mp3','Sound/music_search.wav')
-    logger.info(f'来自{back[2]}的{back[1]}')
-    tts.ssml_save(f'来自{back[2]}的,{back[1]}','Sound/musicnotify.raw')
-    play('Sound/ding.wav')
-    play('Sound/musicnotify.raw')
-    time.sleep(2.5)
-    musicsound=arcade.Sound('Sound/music_search.wav',streaming=True)
-    musicplayer=musicsound.play(volume=config.get("music_volume"))
-    interrupted_music=False
-    search=False
+    global musicsound, musicplayer, interrupted_music, search
     
-    logger.info('start play search song')
-    music.close()
+    try:
+        back = get_search_song(words)
+        if back is False:
+            logger.error('搜索歌曲失败')
+            search = False
+            interrupted_music = False
+            play('Sound/Musicnotfound.wav')
+            return
+            
+        r = music_get(f'http://127.0.0.1:3300/song/url?id={back[0]}', headers=header)
+        if r is False:
+            logger.error('获取歌曲URL失败')
+            search = False
+            interrupted_music = False
+            play('Sound/Musicnotfound.wav')
+            return
+            
+        try:
+            r_data = json.loads(r.text)
+            
+            if 'result' not in r_data or r_data['result'] != 100:
+                logger.error(f'获取歌曲URL响应结果异常: {r_data.get("result")}')
+                search = False
+                interrupted_music = False
+                play('Sound/Musicnotfound.wav')
+                return
+                
+            if 'data' not in r_data or not r_data['data']:
+                logger.error('歌曲URL响应中没有data字段或为空')
+                search = False
+                interrupted_music = False
+                play('Sound/Musicnotfound.wav')
+                return
+                
+            # 获取歌曲内容
+            r = music_get(url=r_data['data'], headers=header)
+            if r is False:
+                logger.error('获取歌曲内容失败')
+                search = False
+                interrupted_music = False
+                play('Sound/Musicnotfound.wav')
+                return
+                
+            # 保存并转换歌曲
+            with open('Sound/music_search.mp3', 'wb') as file:
+                file.write(r.content)
+                
+            if not converter('Sound/music_search.mp3', 'Sound/music_search.wav'):
+                logger.error('转换歌曲格式失败')
+                search = False
+                interrupted_music = False
+                return
+                
+            # 播放歌曲
+            logger.info(f'来自{back[2]}的{back[1]}')
+            tts.ssml_save(f'来自{back[2]}的,{back[1]}', 'Sound/musicnotify.raw')
+            play('Sound/ding.wav')
+            play('Sound/musicnotify.raw')
+            time.sleep(2.5)
+            musicsound = arcade.Sound('Sound/music_search.wav', streaming=True)
+            musicplayer = musicsound.play(volume=config.get("music_volume"))
+            interrupted_music = False
+            search = False
+            
+            logger.info('开始播放搜索到的歌曲')
+            
+        except json.JSONDecodeError as e:
+            logger.error(f'解析歌曲URL响应时出错: {e}')
+            search = False
+            interrupted_music = False
+            play('Sound/Musicnotfound.wav')
+            return
+        except Exception as e:
+            logger.error(f'处理歌曲内容时出错: {e}')
+            search = False
+            interrupted_music = False
+            play('Sound/Musicnotfound.wav')
+            return
+        finally:
+            if r:
+                r.close()
+                
+    except Exception as e:
+        logger.error(f'播放搜索歌曲时出错: {e}')
+        search = False
+        interrupted_music = False
+        play('Sound/Musicnotfound.wav')
+    finally:
+        music.close()
 
 def play_advice_music(order):
     global musicsound,musicplayer,interrupted_music

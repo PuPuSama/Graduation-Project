@@ -18,9 +18,10 @@ from threading import Thread
 from concurrent.futures import ThreadPoolExecutor
 import arcade
 import logging
-from flask import request, Flask, jsonify, render_template
+from flask import request, Flask, jsonify, render_template, Response
 from loguru import logger
 from pathlib import Path
+import queue
 
 # 配置日志
 logger.remove()
@@ -35,6 +36,7 @@ import if_time_and_weather
 import tts
 from play import play
 import Scene
+from sensor_simulator import SensorSimulator
 
 # 根据配置导入可选模块
 optional_modules = {}
@@ -53,6 +55,9 @@ if hass_demo_enable:
 
 # 关闭Flask日志
 logging.getLogger('werkzeug').setLevel(logging.ERROR)
+
+# 添加全局响应队列（只在显示时使用，不影响原有的TTS流程）
+stream_response_queue = queue.Queue()
 
 class ServerManager:
     """PI-Assistant服务器管理类"""
@@ -82,6 +87,7 @@ class ServerManager:
         
         # 创建Flask应用
         self.app = Flask('PI-Assistant')
+        self.sensor_simulator = SensorSimulator()
         self._setup_routes()
     
     def _setup_routes(self):
@@ -98,6 +104,9 @@ class ServerManager:
         def update_config():
             try:
                 data = request.json
+                logger.info(f"收到配置更新请求: {data}")
+                
+                updated_keys = []
                 for key, value in data.items():
                     # 转换为合适的数据类型
                     if isinstance(value, str):
@@ -113,7 +122,10 @@ class ServerManager:
                             except ValueError:
                                 pass
                     config.set(**{key: value})
-                return jsonify(success=True)
+                    updated_keys.append(key)
+                
+                logger.info(f"已更新配置项: {updated_keys}")
+                return jsonify(success=True, updated_keys=updated_keys)
             except Exception as e:
                 logger.error(f"更新配置时出错: {e}")
                 return jsonify(success=False, error=str(e)), 500
@@ -230,7 +242,66 @@ class ServerManager:
         def handle_command():
             try:
                 words = request.args.get('words')
+                
+                # 设置命令到配置
                 config.set(command=words)
+                
+                # 清空现有队列
+                while not stream_response_queue.empty():
+                    stream_response_queue.get()
+                    
+                # 创建监听线程监听deepseek_stream_with_tts的response_queue
+                def monitor_deepseek_stream():
+                    try:
+                        # 导入必要模块
+                        from deepseek_stream_with_tts import deepseek_chat, response_queue, RESPONSE_END_MARKER
+                        
+                        # 创建一个本地队列用于转发
+                        forwarder_queue = queue.Queue()
+                        original_get = response_queue.get
+                        
+                        # 替换原始队列的get方法，实现窃听但不干扰原始流程
+                        def spying_get(*args, **kwargs):
+                            item = original_get(*args, **kwargs)
+                            if item != RESPONSE_END_MARKER:  # 不转发结束标记
+                                forwarder_queue.put(item)
+                            else:
+                                forwarder_queue.put("[END]")  # 使用自己的结束标记
+                            return item
+                        
+                        # 监听开始前先备份原始方法
+                        response_queue.get = spying_get
+                        
+                        # 启动转发线程
+                        def forward_responses():
+                            while True:
+                                try:
+                                    item = forwarder_queue.get(timeout=30)  # 30秒超时
+                                    stream_response_queue.put(item)
+                                    if item == "[END]":
+                                        break
+                                except queue.Empty:
+                                    break
+                        
+                        forwarder_thread = threading.Thread(target=forward_responses, daemon=True)
+                        forwarder_thread.start()
+                        
+                        # 等待一段时间后恢复原始方法
+                        time.sleep(60)  # 等待足够长的时间
+                        response_queue.get = original_get
+                        
+                    except Exception as e:
+                        logger.error(f"监听深度学习模型响应时出错: {e}")
+                        # 确保恢复原始方法
+                        try:
+                            if 'original_get' in locals() and 'response_queue' in locals():
+                                response_queue.get = original_get
+                        except:
+                            pass
+                
+                # 启动监听线程
+                threading.Thread(target=monitor_deepseek_stream, daemon=True).start()
+                
                 return 'ok'
             except Exception as e:
                 logger.error(f"处理命令时出错: {e}")
@@ -247,6 +318,61 @@ class ServerManager:
                     'notify_enable': config.get('notify_enable')
                 }
             })
+        
+        # 传感器数据
+        @self.app.route('/api/sensor_data')
+        def get_sensor_data():
+            try:
+                sensor_data = self.sensor_simulator.get_all_sensor_data()
+                return jsonify(sensor_data)
+            except Exception as e:
+                logger.error(f"获取传感器数据时出错: {e}")
+                return jsonify({"error": str(e)}), 500
+        
+        # 流式回答
+        @self.app.route('/api/stream_response')
+        def stream_response():
+            try:
+                def generate():
+                    # 发送SSE头部
+                    yield "data: {\"status\":\"connected\"}\n\n"
+                    
+                    while True:
+                        try:
+                            # 尝试从队列获取新内容，超时1秒
+                            chunk = stream_response_queue.get(timeout=1)
+                            
+                            # 如果收到结束标记
+                            if chunk == "[END]":
+                                # 发送结束标记
+                                yield f"data: {json.dumps({'status': 'completed'})}\n\n"
+                                # 清空队列
+                                while not stream_response_queue.empty():
+                                    stream_response_queue.get()
+                                break
+                            
+                            # 发送内容块
+                            yield f"data: {json.dumps({'chunk': chunk})}\n\n"
+                            
+                        except queue.Empty:
+                            # 发送保持连接的消息
+                            yield f"data: {json.dumps({'status': 'waiting'})}\n\n"
+                    
+                return Response(generate(), mimetype="text/event-stream")
+            except Exception as e:
+                logger.error(f"流式回答时出错: {e}")
+                return jsonify({"error": str(e)}), 500
+        
+        # 获取配置
+        @self.app.route('/api/get_config')
+        def get_config():
+            try:
+                # 获取允许编辑的配置项
+                editable_config = {k: config.params[k] for k in config.allow_params if k in config.params}
+                return jsonify(success=True, config=editable_config)
+            except Exception as e:
+                logger.error(f"获取配置时出错: {e}")
+                return jsonify(success=False, error=str(e)), 500
     
     def _monitor_notifications(self):
         """监控通知播放状态"""

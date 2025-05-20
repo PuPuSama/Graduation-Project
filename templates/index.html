@@ -1,515 +1,1025 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>语音助手配置</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能家居控制系统</title>
     <style>
-        /* 全局样式 */
         :root {
-            --apple-background: #f5f5f7;
-            --apple-surface: #ffffff;
-            --apple-primary: #0071e3;
-            --apple-primary-hover: #0077ed;
-            --apple-text: #1d1d1f;
-            --apple-text-secondary: #86868b;
-            --apple-border: #d2d2d7;
-            --apple-border-focus: #0071e3;
-            --apple-success: #34c759;
-            --apple-shadow: rgba(0, 0, 0, 0.1);
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --text-color: #333333;
+            --background-color: #f5f5f7;
+            --card-background: #ffffff;
+            --border-color: #e1e1e1;
         }
-
-        /* 基础样式 */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--apple-background);
-            padding: 0;
+        
+        * {
             margin: 0;
-            color: var(--apple-text);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        /* 容器样式 */
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: var(--apple-surface);
-            padding: 40px;
-            border-radius: 18px;
-            box-shadow: 0 4px 20px var(--apple-shadow);
-        }
-        
-        h1 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-top: 0;
-            margin-bottom: 30px;
-            color: var(--apple-text);
-            text-align: center;
-        }
-        
-        h2 {
-            font-size: 22px;
-            font-weight: 500;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: var(--apple-text);
-        }
-        
-        /* 表单元素样式 */
-        label {
-            font-weight: 500;
-            display: block;
-            margin-bottom: 8px;
-            color: var(--apple-text);
-        }
-        
-        /* 输入框和选择器 */
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 12px 16px;
-            margin: 8px 0 20px;
-            display: inline-block;
-            border: 1px solid var(--apple-border);
-            border-radius: 10px;
+            padding: 0;
             box-sizing: border-box;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background-color: var(--apple-surface);
-            color: var(--apple-text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         }
         
-        input[type="text"]:focus,
-        select:focus {
-            outline: none;
-            border-color: var(--apple-border-focus);
-            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
-        }
-        
-        /* 按钮样式 */
-        button {
-            background-color: var(--apple-primary);
-            color: white;
-            padding: 12px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        button:hover {
-            background-color: var(--apple-primary-hover);
-            transform: translateY(-1px);
-        }
-        
-        button:active {
-            transform: translateY(1px);
-        }
-        
-        /* 回复框样式 */
-        #answer {
-            display: block;
-            background-color: #f9f9fb;
-            padding: 16px;
-            border-radius: 10px;
-            border: 1px solid var(--apple-border);
-            min-height: 60px;
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: 10px;
-            overflow-wrap: break-word;
-            font-size: 16px;
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
             line-height: 1.6;
         }
         
-        /* 快捷命令样式 */
-        .quick-commands-section {
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--apple-border);
-            padding-bottom: 20px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
-        /* 布局容器 */
-        .flex-container {
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
             display: flex;
             align-items: center;
-            gap: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .card-header i {
+            font-size: 24px;
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .card-content {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .sensor-value {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .sensor-value .unit {
+            font-size: 1rem;
+            margin-left: 5px;
+            opacity: 0.7;
+        }
+        
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .status-normal {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #27ae60;
+        }
+        
+        .status-warning {
+            background-color: rgba(243, 156, 18, 0.2);
+            color: #f39c12;
+        }
+        
+        .status-danger {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+        }
+        
+        .settings-section {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .settings-section h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
             margin-bottom: 20px;
         }
         
-        /* 复选框样式 */
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .flex-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .flex-container .form-control {
+            flex-grow: 1;
         }
         
         .checkbox-container {
             display: flex;
             align-items: center;
-            padding: 8px 0;
+            margin-bottom: 10px;
         }
         
-        /* 自定义复选框样式 */
-        input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
-            border: 1px solid var(--apple-border);
-            border-radius: 6px;
+        .checkbox-container input[type="checkbox"] {
             margin-right: 10px;
-            position: relative;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .quick-commands-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .quick-commands-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 8px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .command-text {
             cursor: pointer;
-            vertical-align: middle;
-            transition: all 0.3s ease;
+            color: var(--primary-color);
+            transition: all 0.2s ease;
         }
         
-        input[type="checkbox"]:checked {
-            background-color: var(--apple-primary);
-            border-color: var(--apple-primary);
+        .command-text:hover {
+            text-decoration: underline;
         }
         
-        input[type="checkbox"]:checked:after {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 3px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
+        .answer-box {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-top: 15px;
+            min-height: 100px;
+            border: 1px solid var(--border-color);
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
         }
         
-        input[type="checkbox"]:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+        .command-input-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
         }
         
-        /* 分组样式 */
-        .settings-group {
-            background-color: #f9f9fb;
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 30px;
+        .command-input-container input {
+            flex-grow: 1;
         }
         
-        .settings-group h2 {
-            margin-top: 0;
-            font-size: 20px;
-            color: var(--apple-text);
+        .typing-indicator {
+            display: inline-block;
+            margin-left: 5px;
         }
         
-        /* 响应式设计 */
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin-right: 2px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: typing 1s infinite ease-in-out;
+        }
+        
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-4px);
+                opacity: 1;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .container {
-                margin: 20px;
-                padding: 25px;
-                border-radius: 14px;
-            }
-            
-            .flex-container {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .checkbox-group {
+            .dashboard {
                 grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 26px;
-            }
-            
-            input[type="text"],
-            select,
-            button {
-                font-size: 15px;
-                padding: 10px 14px;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>智能家居控制系统</h1>
+            <p>实时监控与控制</p>
+        </div>
+        
+        <!-- 传感器数据区域 -->
+        <div class="settings-section">
+            <h2>传感器监控</h2>
+            <div class="dashboard">
+                <div class="card" id="temperature-card">
+                    <div class="card-header">
+                        <i class="fas fa-thermometer-half"></i>
+                        <h2>温度</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="sensor-value">
+                            <span id="temperature-value">--</span>
+                            <span class="unit">°C</span>
+                        </div>
+                    </div>
+                    <div class="status status-normal" id="temperature-status">正常</div>
+                </div>
+                
+                <div class="card" id="humidity-card">
+                    <div class="card-header">
+                        <i class="fas fa-tint"></i>
+                        <h2>湿度</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="sensor-value">
+                            <span id="humidity-value">--</span>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                    <div class="status status-normal" id="humidity-status">正常</div>
+                </div>
+                
+                <div class="card" id="flame-card">
+                    <div class="card-header">
+                        <i class="fas fa-fire"></i>
+                        <h2>火焰传感器</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="sensor-value">
+                            <span id="flame-value">未检测</span>
+                        </div>
+                    </div>
+                    <div class="status status-normal" id="flame-status">正常</div>
+                </div>
+                
+                <div class="card" id="smoke-card">
+                    <div class="card-header">
+                        <i class="fas fa-smog"></i>
+                        <h2>烟雾传感器</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="sensor-value">
+                            <span id="smoke-value">0</span>
+                            <span class="unit">%</span>
+                        </div>
+                    </div>
+                    <div class="status status-normal" id="smoke-status">正常</div>
+                </div>
+                
+                <div class="card" id="buzzer-card">
+                    <div class="card-header">
+                        <i class="fas fa-bell"></i>
+                        <h2>蜂鸣器</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="sensor-value">
+                            <span id="buzzer-value">未激活</span>
+                        </div>
+                    </div>
+                    <div class="status status-normal" id="buzzer-status">正常</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 命令输入区域 -->
+        <div class="settings-section">
+            <h2>命令输入</h2>
+            <div class="command-input-container">
+                <input type="text" id="command-input" class="form-control" placeholder="输入命令" autocomplete="off">
+                <button class="btn btn-primary" id="send-command-btn">发送</button>
+            </div>
+        </div>
+        
+        <!-- 语音通知区域 -->
+        <div class="settings-section">
+            <h2>语音通知</h2>
+            <div class="command-input-container">
+                <input type="text" id="notification-input" class="form-control" placeholder="输入通知内容" autocomplete="off">
+                <button class="btn btn-primary" id="send-notification-btn">发送通知</button>
+            </div>
+            <div id="notification-status" style="margin-top: 10px; display: none;" class="status status-normal"></div>
+        </div>
+        
+        <!-- 系统回复区域 -->
+        <div class="settings-section">
+            <h2>系统回复</h2>
+            <div class="answer-box" id="answer-display">
+                等待您的命令...
+                <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 快速命令区域 -->
+        <div class="settings-section">
+            <h2>快速命令</h2>
+            <div class="flex-container">
+                <input type="text" id="new-command" class="form-control" placeholder="输入快速命令">
+                <button class="btn btn-primary" id="add-command-btn">添加</button>
+            </div>
+            <ul class="quick-commands-list" id="quick-commands-list">
+                <!-- 快速命令将通过JavaScript动态添加 -->
+            </ul>
+        </div>
+        
+        <!-- 系统设置区域 -->
+        <div class="settings-section">
+            <h2>系统设置</h2>
+            
+            <!-- 设置选项 -->
+            <div class="form-group">
+                <label for="music-volume">音乐音量</label>
+                <input type="range" id="music-volume" class="form-control" min="0" max="1" step="0.05" value="0.5">
+                <span id="music-volume-value">50%</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="general-volume">系统音量</label>
+                <input type="range" id="general-volume" class="form-control" min="0" max="1" step="0.05" value="0.5">
+                <span id="general-volume-value">50%</span>
+            </div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="wakebyhw">
+                <label for="wakebyhw">启用硬件唤醒</label>
+            </div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="noticenotify" checked>
+                <label for="noticenotify">启用通知提醒</label>
+            </div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="timenotify" checked>
+                <label for="timenotify">启用时间提醒</label>
+            </div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="musicplay">
+                <label for="musicplay">启用音乐播放</label>
+            </div>
+            
+            <!-- 传感器数据更新设置 -->
+            <div class="form-group">
+                <label for="update-interval">传感器数据更新间隔(秒)</label>
+                <input type="number" id="update-interval" class="form-control" value="2" min="1" max="60">
+            </div>
+            
+            <button class="btn btn-primary" id="save-settings-btn">保存设置</button>
+        </div>
+    </div>
+
     <script>
-        function updateConfig(key, value) {
-            fetch('/update_config', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        [key]: value
-                    })
+        // 全局变量
+        let updateInterval = 2000; // 默认更新间隔为2秒
+        let updateTimer = null;
+        let systemConfig = {};
+        let quickCommands = [];
+        let eventSource = null;
+        let isTyping = false;
+        let currentResponse = "";
+        
+        // DOM加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM加载完成，初始化配置');
+            
+            // 初始化传感器更新
+            document.getElementById('update-interval').value = updateInterval / 1000;
+            
+            // 加载配置和快速命令
+            loadSystemConfig();
+            loadQuickCommands();
+            
+            // 启动传感器数据更新
+            startUpdateTimer();
+            
+            // 启动流式回答连接
+            connectStreamResponse();
+            
+            // 绑定事件处理
+            setupEventListeners();
+            
+            // 直接为保存按钮绑定事件，以防之前的绑定没有生效
+            const saveButton = document.getElementById('save-settings-btn');
+            if (saveButton) {
+                console.log('正在绑定保存设置按钮事件');
+                saveButton.onclick = function() {
+                    console.log('保存设置按钮被点击');
+                    saveSystemConfig();
+                };
+            } else {
+                console.error('找不到保存设置按钮');
+            }
+        });
+        
+        // 设置事件监听器
+        function setupEventListeners() {
+            // 命令输入和发送
+            document.getElementById('command-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendCommand();
+                }
+            });
+            
+            document.getElementById('send-command-btn').addEventListener('click', sendCommand);
+            
+            // 通知输入和发送
+            document.getElementById('notification-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendNotification();
+                }
+            });
+            
+            document.getElementById('send-notification-btn').addEventListener('click', sendNotification);
+            
+            // 传感器更新间隔设置
+            document.getElementById('update-interval').addEventListener('change', function() {
+                const newInterval = parseInt(this.value);
+                if (newInterval >= 1 && newInterval <= 60) {
+                    updateInterval = newInterval * 1000;
+                    restartUpdateTimer();
+                } else {
+                    alert('请输入1-60之间的数值');
+                    this.value = updateInterval / 1000;
+                }
+            });
+            
+            // 添加快速命令
+            document.getElementById('add-command-btn').addEventListener('click', addQuickCommand);
+            
+            // 音量滑块显示百分比
+            document.getElementById('music-volume').addEventListener('input', function() {
+                document.getElementById('music-volume-value').textContent = Math.round(this.value * 100) + '%';
+            });
+            
+            document.getElementById('general-volume').addEventListener('input', function() {
+                document.getElementById('general-volume-value').textContent = Math.round(this.value * 100) + '%';
+            });
+        }
+        
+        // 连接流式回答
+        function connectStreamResponse() {
+            if(typeof(EventSource) !== "undefined") {
+                // 关闭之前的连接
+                if(eventSource) {
+                    eventSource.close();
+                }
+                
+                // 创建新连接
+                eventSource = new EventSource('/api/stream_response');
+                
+                // 连接建立事件
+                eventSource.onopen = function() {
+                    console.log("SSE连接已建立");
+                };
+                
+                // 接收消息事件
+                eventSource.onmessage = function(event) {
+                    const data = JSON.parse(event.data);
+                    
+                    // 处理内容块
+                    if(data.chunk !== undefined) {
+                        // 添加新内容到当前响应
+                        currentResponse += data.chunk;
+                        
+                        // 更新显示
+                        document.getElementById('answer-display').innerHTML = 
+                            currentResponse +
+                            '<div class="typing-indicator" id="typing-indicator">' +
+                            '<span></span><span></span><span></span></div>';
+                    }
+                    
+                    // 处理完成状态
+                    if(data.status === 'completed') {
+                        isTyping = false;
+                        document.getElementById('answer-display').innerHTML = currentResponse;
+                    }
+                };
+                
+                // 错误处理
+                eventSource.onerror = function(e) {
+                    console.error("SSE连接错误:", e);
+                    isTyping = false;
+                    // 尝试重连
+                    setTimeout(function() {
+                        connectStreamResponse();
+                    }, 5000);
+                };
+            } else {
+                console.error("浏览器不支持 Server-Sent Events");
+                // 降级为轮询
+                setInterval(checkForNewAnswer, 1000);
+            }
+        }
+        
+        // 发送命令
+        function sendCommand() {
+            const commandInput = document.getElementById('command-input');
+            const command = commandInput.value.trim();
+            
+            if(!command) {
+                return;
+            }
+            
+            // 显示正在处理的消息
+            document.getElementById('answer-display').innerHTML = 
+                '正在处理您的命令...' +
+                '<div class="typing-indicator" id="typing-indicator">' +
+                '<span></span><span></span><span></span></div>';
+            
+            // 清空当前响应
+            currentResponse = "";
+            
+            // 发送命令到服务器
+            fetch('/command?words=' + encodeURIComponent(command))
+                .then(response => {
+                    // 清空输入框
+                    commandInput.value = '';
+                    commandInput.focus();
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    // 添加视觉反馈
-                    const element = document.getElementById(key);
-                    element.classList.add('updated');
-                    setTimeout(() => {
-                        element.classList.remove('updated');
-                    }, 500);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
+                .catch(error => {
+                    console.error('发送命令出错:', error);
+                    document.getElementById('answer-display').textContent = 
+                        "发送命令时出错，请重试。";
                 });
         }
         
-        // 函数：从服务器获取最新的配置并更新页面
-        function fetchLatestAnswer() {
+        // 检查是否有新回答（降级方案，当SSE不可用时）
+        function checkForNewAnswer() {
             fetch('/get_answer')
                 .then(response => response.json())
                 .then(data => {
-                    // 更新页面上的 'answer' 值
-                    if (document.getElementById('answer') && data.answer !== null) {
-                        document.getElementById('answer').textContent = data.answer;
-                        // 添加一个动画效果
-                        const answerElement = document.getElementById('answer');
-                        answerElement.classList.add('highlight');
-                        setTimeout(() => {
-                            answerElement.classList.remove('highlight');
-                        }, 800);
+                    if (data.answer) {
+                        document.getElementById('answer-display').textContent = data.answer;
                     }
                 })
-                .catch((error) => {
-                    console.error('Error:', error);
+                .catch(error => {
+                    console.error('获取回答出错:', error);
                 });
         }
-
-        // 每3秒钟获取一次最新的 'answer'
-        setInterval(fetchLatestAnswer, 3000);
-
-        // 加载现有的快捷命令
+        
+        // 加载系统配置
+        function loadSystemConfig() {
+            fetch('/api/get_config')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('成功加载配置:', data.config);
+                        systemConfig = data.config;
+                        updateConfigUI();
+                    } else {
+                        console.error('加载配置失败:', data.error);
+                        alert('加载配置失败: ' + (data.error || '未知错误'));
+                    }
+                })
+                .catch(error => {
+                    console.error('获取配置出错:', error);
+                });
+        }
+        
+        // 更新配置UI
+        function updateConfigUI() {
+            // 添加调试日志
+            console.log('正在更新UI，当前配置:', systemConfig);
+            
+            // 更新音量滑块
+            if (systemConfig.music_volume !== undefined) {
+                const musicVolume = document.getElementById('music-volume');
+                if (musicVolume) {
+                    musicVolume.value = systemConfig.music_volume;
+                    document.getElementById('music-volume-value').textContent = Math.round(systemConfig.music_volume * 100) + '%';
+                    console.log('已设置音乐音量:', systemConfig.music_volume);
+                } else {
+                    console.error('找不到音乐音量滑块元素');
+                }
+            }
+            
+            if (systemConfig.general_volume !== undefined) {
+                const generalVolume = document.getElementById('general-volume');
+                if (generalVolume) {
+                    generalVolume.value = systemConfig.general_volume;
+                    document.getElementById('general-volume-value').textContent = Math.round(systemConfig.general_volume * 100) + '%';
+                    console.log('已设置系统音量:', systemConfig.general_volume);
+                } else {
+                    console.error('找不到系统音量滑块元素');
+                }
+            }
+            
+            // 更新复选框
+            if (systemConfig.wakebyhw !== undefined) {
+                const wakebyhw = document.getElementById('wakebyhw');
+                if (wakebyhw) {
+                    wakebyhw.checked = systemConfig.wakebyhw;
+                    console.log('已设置硬件唤醒:', systemConfig.wakebyhw);
+                }
+            }
+            
+            if (systemConfig.Noticenotify !== undefined) {
+                const noticenotify = document.getElementById('noticenotify');
+                if (noticenotify) {
+                    noticenotify.checked = systemConfig.Noticenotify;
+                    console.log('已设置通知提醒:', systemConfig.Noticenotify);
+                }
+            }
+            
+            if (systemConfig.timenotify !== undefined) {
+                const timenotify = document.getElementById('timenotify');
+                if (timenotify) {
+                    timenotify.checked = systemConfig.timenotify;
+                    console.log('已设置时间提醒:', systemConfig.timenotify);
+                }
+            }
+            
+            if (systemConfig.MusicPlay !== undefined) {
+                const musicplay = document.getElementById('musicplay');
+                if (musicplay) {
+                    musicplay.checked = systemConfig.MusicPlay;
+                    console.log('已设置音乐播放:', systemConfig.MusicPlay);
+                }
+            }
+        }
+        
+        // 保存系统配置
+        function saveSystemConfig() {
+            const newConfig = {
+                music_volume: parseFloat(document.getElementById('music-volume').value),
+                general_volume: parseFloat(document.getElementById('general-volume').value),
+                wakebyhw: document.getElementById('wakebyhw').checked,
+                Noticenotify: document.getElementById('noticenotify').checked,
+                timenotify: document.getElementById('timenotify').checked,
+                MusicPlay: document.getElementById('musicplay').checked
+            };
+            
+            console.log('正在保存配置:', newConfig);
+            
+            fetch('/update_config', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newConfig)
+            })
+            .then(response => {
+                console.log('配置更新响应状态:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('配置更新响应数据:', data);
+                if (data.success) {
+                    alert('设置已保存');
+                    systemConfig = {...systemConfig, ...newConfig};
+                } else {
+                    alert('保存设置失败: ' + (data.error || '未知错误'));
+                }
+            })
+            .catch(error => {
+                console.error('保存设置出错:', error);
+                alert('保存设置时发生错误: ' + error.message);
+            });
+        }
+        
+        // 加载快速命令
         function loadQuickCommands() {
             fetch('/get_quick_commands')
                 .then(response => response.json())
-                .then(commands => {
-                    const select = document.getElementById('quick_commands_select');
-                    select.innerHTML = '<option value="">选择快捷命令</option>'; // 添加一个默认选项
-                    commands.forEach((command) => {
-                        const option = document.createElement('option');
-                        option.value = command;
-                        option.textContent = command;
-                        select.appendChild(option);
-                    });
+                .then(data => {
+                    quickCommands = data;
+                    updateQuickCommandsList();
+                })
+                .catch(error => {
+                    console.error('获取快速命令失败:', error);
                 });
         }
-
-        function setCommand(command) {
-            const commandInput = document.getElementById('command');
-            commandInput.value = command; // 设置命令
-            commandInput.dispatchEvent(new Event('change')); // 手动触发 onchange 事件
+        
+        // 更新快速命令列表
+        function updateQuickCommandsList() {
+            const list = document.getElementById('quick-commands-list');
+            list.innerHTML = '';
             
-            // 提交命令
-            updateConfig('command', command);
-            
-            // 视觉反馈
-            const button = document.getElementById('send-command');
-            const originalText = button.textContent;
-            button.textContent = '已发送';
-            button.classList.add('sent');
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.classList.remove('sent');
-            }, 1500);
+            quickCommands.forEach((command, index) => {
+                const li = document.createElement('li');
+                
+                const commandText = document.createElement('span');
+                commandText.textContent = command;
+                commandText.className = 'command-text';
+                commandText.addEventListener('click', function() {
+                    // 当点击快速命令时，发送该命令
+                    document.getElementById('command-input').value = command;
+                    sendCommand();
+                });
+                li.appendChild(commandText);
+                
+                const btnDelete = document.createElement('button');
+                btnDelete.className = 'btn btn-danger';
+                btnDelete.textContent = '删除';
+                btnDelete.dataset.index = index;
+                btnDelete.addEventListener('click', function(e) {
+                    e.stopPropagation(); // 防止触发li的点击事件
+                    removeQuickCommand(parseInt(this.dataset.index));
+                });
+                li.appendChild(btnDelete);
+                
+                list.appendChild(li);
+            });
         }
-
-        // 添加新的快捷命令
-        function addNewCommand() {
-            const commandInput = document.getElementById('new_command');
-            const newCommand = commandInput.value;
-            if (!newCommand.trim()) return;
+        
+        // 添加快速命令
+        function addQuickCommand() {
+            const newCommand = document.getElementById('new-command').value.trim();
+            if (!newCommand) {
+                alert('请输入命令内容');
+                return;
+            }
             
             fetch('/add_quick_command', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({
-                        command: newCommand
-                    })
+                body: JSON.stringify({ command: newCommand })
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        loadQuickCommands(); // 重新加载快捷命令
-                        commandInput.value = ''; // 清空文本框内容
-                        
-                        // 视觉反馈
-                        const button = document.getElementById('add-command');
-                        const originalText = button.textContent;
-                        button.textContent = '已添加';
-                        button.classList.add('success');
-                        setTimeout(() => {
-                            button.textContent = originalText;
-                            button.classList.remove('success');
-                        }, 1500);
-                    }
-                });
+                    document.getElementById('new-command').value = '';
+                    loadQuickCommands(); // 重新加载命令列表
+                } else {
+                    alert('添加失败，可能是命令已存在');
+                }
+            })
+            .catch(error => {
+                console.error('添加快速命令出错:', error);
+                alert('添加命令时发生错误');
+            });
         }
-
-        // 页面加载时加载快捷命令
-        document.addEventListener('DOMContentLoaded', function() {
-            loadQuickCommands();
-            
-            // 添加回车键提交快捷命令
-            document.getElementById('new_command').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    addNewCommand();
+        
+        // 删除快速命令
+        function removeQuickCommand(index) {
+            fetch('/remove_quick_command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ index: index })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadQuickCommands(); // 重新加载命令列表
+                } else {
+                    alert('删除失败');
                 }
+            })
+            .catch(error => {
+                console.error('删除快速命令出错:', error);
+                alert('删除命令时发生错误');
             });
-            
-            // 添加回车键提交命令
-            document.getElementById('command').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    updateConfig('command', this.value);
-                    // 视觉反馈
-                    const button = document.getElementById('send-command');
-                    const originalText = button.textContent;
-                    button.textContent = '已发送';
-                    button.classList.add('sent');
-                    setTimeout(() => {
-                        button.textContent = originalText;
-                        button.classList.remove('sent');
-                    }, 1500);
-                }
-            });
-        });
-
-        // 添加发送通知的函数
+        }
+        
+        // 发送语音通知
         function sendNotification() {
-            const text = document.getElementById('notification_text').value;
-            if (!text) return;
+            const notificationInput = document.getElementById('notification-input');
+            const notification = notificationInput.value.trim();
+            const statusElement = document.getElementById('notification-status');
             
-            fetch(`/words?words=${encodeURIComponent(text)}`)
+            if(!notification) {
+                return;
+            }
+            
+            // 显示发送中状态
+            statusElement.textContent = '正在发送通知...';
+            statusElement.className = 'status status-warning';
+            statusElement.style.display = 'block';
+            
+            // 发送通知到服务器
+            fetch('/words?words=' + encodeURIComponent(notification))
                 .then(response => {
-                    if (response.ok) {
+                    if(response.ok) {
                         // 清空输入框
-                        document.getElementById('notification_text').value = '';
-                        // 提供视觉反馈
-                        const button = event.target;
-                        const originalText = button.textContent;
-                        button.textContent = '已播报';
+                        notificationInput.value = '';
+                        notificationInput.focus();
+                        
+                        // 显示成功状态
+                        statusElement.textContent = '通知已发送';
+                        statusElement.className = 'status status-normal';
+                        
+                        // 3秒后隐藏状态
                         setTimeout(() => {
-                            button.textContent = originalText;
-                        }, 2000);
+                            statusElement.style.display = 'none';
+                        }, 3000);
+                    } else {
+                        // 显示错误状态
+                        statusElement.textContent = '发送通知失败';
+                        statusElement.className = 'status status-danger';
                     }
                 })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // 回车发送通知
-        document.addEventListener('DOMContentLoaded', function() {
-            const notificationInput = document.getElementById('notification_text');
-            if (notificationInput) {
-                notificationInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        sendNotification();
-                    }
+                .catch(error => {
+                    console.error('发送通知出错:', error);
+                    statusElement.textContent = '发送通知时发生错误';
+                    statusElement.className = 'status status-danger';
                 });
+        }
+        
+        // 启动传感器数据更新定时器
+        function startUpdateTimer() {
+            updateSensorData(); // 立即更新一次
+            updateTimer = setInterval(updateSensorData, updateInterval);
+        }
+        
+        // 重启定时器
+        function restartUpdateTimer() {
+            if (updateTimer) {
+                clearInterval(updateTimer);
             }
-        });
-    </script>
-</head>
-
-<body>
-    <div class="container">
-        <h1>语音助手控制中心</h1>
+            startUpdateTimer();
+        }
         
-        <!-- 快捷命令部分 -->
-        <div class="settings-group quick-commands-section">
-            <h2>快捷命令</h2>
-            <div class="flex-container">
-                <select id="quick_commands_select" onchange="setCommand(this.value)" class="select-input">
-                    <option value="">选择快捷命令</option>
-                    <!-- 快捷命令选项将在这里动态加载 -->
-                </select>
-                <button onclick="setCommand(document.getElementById('quick_commands_select').value)" id="send-command">发送</button>
-            </div>
-            <div class="flex-container">
-                <input type="text" id="new_command" name="new_command" placeholder="添加新的快捷指令" class="text-input">
-                <button onclick="addNewCommand()" id="add-command">添加</button>
-            </div>
-        </div>
+        // 更新传感器数据
+        function updateSensorData() {
+            fetch('/api/sensor_data')
+                .then(response => response.json())
+                .then(data => {
+                    updateUI(data);
+                })
+                .catch(error => {
+                    console.error('获取传感器数据出错:', error);
+                });
+        }
         
-        <!-- 命令输入部分 -->
-        <div class="settings-group">
-            <h2>命令输入</h2>
-            <input type="text" id="command" name="command" placeholder="输入命令..." 
-                   onchange="updateConfig(this.name, this.value)">
-            <button onclick="updateConfig('command', document.getElementById('command').value)" id="send-command">发送</button>
-        </div>
-        
-        <!-- 回复显示部分 -->
-        <div class="settings-group">
-            <h2>助手回复</h2>
-            <div id="answer">{{ config.get('answer', '等待助手回复...') }}</div>
-        </div>
-        
-        <!-- 基本设置部分 -->
-        <div class="settings-group">
-            <h2>基本设置</h2>
-            <div class="checkbox-group">
-                {% for key, value in config.items() %} 
-                {% if (value is sameas true or value is sameas false) and key in ['wakebyhw', 'Noticenotify', 'timenotify'] %}
-                <div class="checkbox-container">
-                    <input type="checkbox" id="{{ key }}" name="{{ key }}" 
-                           {% if value %} checked {% endif %} 
-                           onchange="updateConfig(this.name, this.checked)">
-                    <label for="{{ key }}">{{ key }}</label>
-                </div>
-                {% endif %} 
-                {% endfor %}
-            </div>
-        </div>
-        
-        <!-- 高级设置部分 -->
-        <div class="settings-group">
-            <h2>高级设置</h2>
-            <!-- 非布尔值配置项 -->
-            {% for key, value in config.items() %} 
-            {% if key != 'answer' and key != 'command' and value is not sameas true and value is not sameas false %}
-            <div>
-                <label for="{{ key }}">{{ key }}:</label>
-                <input type="text" id="{{ key }}" name="{{ key }}" value="{{ value }}" 
-                       onchange="updateConfig(this.name, this.value)">
-            </div>
-            {% endif %} 
-            {% endfor %}
+        // 更新传感器数据界面
+        function updateUI(data) {
+            // 更新温度
+            document.getElementById('temperature-value').textContent = data.temperature;
+            const tempStatus = document.getElementById('temperature-status');
+            if (data.temperature > 35) {
+                tempStatus.className = 'status status-danger';
+                tempStatus.textContent = '温度过高';
+            } else if (data.temperature < 15) {
+                tempStatus.className = 'status status-warning';
+                tempStatus.textContent = '温度过低';
+            } else {
+                tempStatus.className = 'status status-normal';
+                tempStatus.textContent = '正常';
+            }
             
-            <!-- 其他布尔值配置项 -->
-            <h2>其他开关</h2>
-            <div class="checkbox-group">
-                {% for key, value in config.items() %} 
-                {% if (value is sameas true or value is sameas false) and key not in ['wakebyhw', 'Noticenotify', 'timenotify'] %}
-                <div class="checkbox-container">
-                    <input type="checkbox" id="{{ key }}" name="{{ key }}" 
-                           {% if value %} checked {% endif %} 
-                           onchange="updateConfig(this.name, this.checked)">
-                    <label for="{{ key }}">{{ key }}</label>
-                </div>
-                {% endif %} 
-                {% endfor %}
-            </div>
-        </div>
-        
-        <!-- 通知播报部分 -->
-        <div class="settings-group">
-            <h2>通知播报</h2>
-            <div class="flex-container">
-                <input type="text" id="notification_text" placeholder="输入要播报的通知内容">
-                <button onclick="sendNotification()">播报通知</button>
-            </div>
-        </div>
-    </div>
+            // 更新湿度
+            document.getElementById('humidity-value').textContent = data.humidity;
+            const humidStatus = document.getElementById('humidity-status');
+            if (data.humidity > 80) {
+                humidStatus.className = 'status status-warning';
+                humidStatus.textContent = '湿度过高';
+            } else if (data.humidity < 20) {
+                humidStatus.className = 'status status-warning';
+                humidStatus.textContent = '湿度过低';
+            } else {
+                humidStatus.className = 'status status-normal';
+                humidStatus.textContent = '正常';
+            }
+            
+            // 更新火焰传感器
+            document.getElementById('flame-value').textContent = data.flame_detected ? '检测到火焰' : '未检测';
+            const flameStatus = document.getElementById('flame-status');
+            if (data.flame_detected) {
+                flameStatus.className = 'status status-danger';
+                flameStatus.textContent = '警告';
+            } else {
+                flameStatus.className = 'status status-normal';
+                flameStatus.textContent = '正常';
+            }
+            
+            // 更新烟雾传感器
+            document.getElementById('smoke-value').textContent = data.smoke_level;
+            const smokeStatus = document.getElementById('smoke-status');
+            if (data.smoke_level > 50) {
+                smokeStatus.className = 'status status-danger';
+                smokeStatus.textContent = '烟雾浓度高';
+            } else if (data.smoke_level > 10) {
+                smokeStatus.className = 'status status-warning';
+                smokeStatus.textContent = '有烟雾';
+            } else {
+                smokeStatus.className = 'status status-normal';
+                smokeStatus.textContent = '正常';
+            }
+            
+            // 更新蜂鸣器状态
+            document.getElementById('buzzer-value').textContent = data.buzzer_active ? '已激活' : '未激活';
+            const buzzerStatus = document.getElementById('buzzer-status');
+            if (data.buzzer_active) {
+                buzzerStatus.className = 'status status-warning';
+                buzzerStatus.textContent = '已激活';
+            } else {
+                buzzerStatus.className = 'status status-normal';
+                buzzerStatus.textContent = '正常';
+            }
+        }
+    </script>
 </body>
-
 </html>
