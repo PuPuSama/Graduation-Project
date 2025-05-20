@@ -38,7 +38,7 @@ def chat_request_stream():
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "THUDM/GLM-4-32B-0414",
+        "model": "deepseek-ai/DeepSeek-V3",
         "messages": messages,
         "stream": True,  # 启用流式返回
         "max_tokens": 1024,

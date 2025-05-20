@@ -1464,3 +1464,37 @@
 2025-05-07 22:00:00 | INFO | server.py:180 - notify time
 2025-05-07 22:00:05 | INFO | server.py:160 - stop sound in server admin
 2025-05-07 22:00:05 | INFO | server.py:164 - notifysound stoped by server watch function
+2025-05-20 08:58:38 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-20 08:58:38 | INFO | server.py:203 - Chat service started successfully
+2025-05-20 08:58:38 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-20 08:58:38 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 08:58:38 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-20 08:58:55 | INFO | chat.py:394 - Find something in command
+2025-05-20 08:58:55 | INFO | chat.py:82 - HotWord triggered
+2025-05-20 08:58:55 | INFO | chat.py:399 - The command is 瑶瑶你好啊
+2025-05-20 08:58:55 | INFO | chat.py:394 - Find something in command
+2025-05-20 08:58:55 | INFO | chat.py:82 - HotWord triggered
+2025-05-20 08:58:55 | INFO | chat.py:399 - The command is 瑶瑶你好啊
+2025-05-20 08:58:57 | INFO | chat.py:130 - start new conversation
+2025-05-20 08:58:59 | INFO | chat.py:305 - 
+嗨呀，瑶瑶你好呀！很高兴能在这里遇见你！今天过得怎么样呀？有什么新鲜事想跟我分享吗？😊
+2025-05-20 08:59:11 | INFO | chat.py:336 - A conversation end
+2025-05-20 08:59:13 | INFO | chat.py:130 - start new conversation
+2025-05-20 08:59:13 | INFO | chat.py:184 - prepare to start record
+2025-05-20 08:59:15 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 08:59:29 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 08:59:35 | DEBUG | azure_reco.py:22 - 200{"RecognitionStatus":"Success","Offset":0,"Duration":298900000,"DisplayText":""}
+2025-05-20 08:59:35 | INFO | chat.py:208 - Recongnize result:
+2025-05-20 08:59:52 | INFO | server.py:160 - stop sound in server admin
+2025-05-20 08:59:52 | INFO | server.py:164 - notifysound stoped by server watch function
+2025-05-20 09:00:01 | INFO | server.py:180 - notify time
+2025-05-20 09:00:06 | INFO | server.py:160 - stop sound in server admin
+2025-05-20 09:00:06 | INFO | server.py:164 - notifysound stoped by server watch function
+2025-05-20 09:00:18 | INFO | chat.py:348 - find words wake
+2025-05-20 09:00:21 | INFO | chat.py:130 - start new conversation
+2025-05-20 09:00:21 | INFO | chat.py:184 - prepare to start record
+2025-05-20 09:00:21 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 09:00:27 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 09:00:28 | DEBUG | azure_reco.py:22 - 429
+2025-05-20 09:00:28 | WARNING | azure_reco.py:31 - json load wrong, return none
+2025-05-20 09:00:28 | INFO | chat.py:208 - Recongnize result:
