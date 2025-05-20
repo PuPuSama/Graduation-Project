@@ -1498,3 +1498,95 @@
 2025-05-20 09:00:28 | DEBUG | azure_reco.py:22 - 429
 2025-05-20 09:00:28 | WARNING | azure_reco.py:31 - json load wrong, return none
 2025-05-20 09:00:28 | INFO | chat.py:208 - Recongnize result:
+2025-05-20 10:05:00 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-20 10:05:00 | INFO | server.py:203 - Chat service started successfully
+2025-05-20 10:05:00 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-20 10:05:00 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 10:05:00 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-20 10:05:23 | INFO | chat.py:348 - find words wake
+2025-05-20 10:05:23 | INFO | chat.py:348 - find words wake
+2025-05-20 10:05:25 | INFO | chat.py:130 - start new conversation
+2025-05-20 10:05:26 | INFO | chat.py:184 - prepare to start record
+2025-05-20 10:05:26 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 10:05:31 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 10:05:32 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 10:05:33 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 33800000, 'DisplayText': ''}
+2025-05-20 10:05:33 | INFO | azure_reco.py:81 - 识别结果: ''
+2025-05-20 10:05:33 | INFO | chat.py:208 - Recongnize result:
+2025-05-20 10:12:29 | INFO | server.py:147 - Shutting down...
+
+2025-05-20 10:12:53 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-20 10:12:53 | INFO | server.py:203 - Chat service started successfully
+2025-05-20 10:12:53 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-20 10:12:53 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 10:12:53 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-20 10:13:21 | INFO | chat.py:389 - 收到唤醒命令
+2025-05-20 10:13:23 | INFO | chat.py:153 - 开始新对话
+2025-05-20 10:13:24 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 10:13:24 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 10:13:30 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 10:13:31 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 10:13:32 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 46500000, 'DisplayText': ''}
+2025-05-20 10:13:32 | INFO | azure_reco.py:81 - 识别结果: ''
+2025-05-20 10:13:32 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 10:19:21 | INFO | tts_stream.py:83 - 流式TTS启动
+2025-05-20 10:19:21 | INFO | server.py:203 - Chat service started successfully
+2025-05-20 10:19:21 | INFO | deepseek_stream_with_tts.py:128 - 未找到保存的对话记录，初始化新对话。
+2025-05-20 10:19:21 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 10:19:21 | INFO | server.py:231 - Startup completed , PI-Assistant is running
+2025-05-20 10:19:29 | INFO | chat.py:443 - 收到文本命令: 你好
+2025-05-20 10:19:29 | INFO | chat.py:98 - 热词触发
+2025-05-20 10:19:32 | INFO | chat.py:153 - 开始新对话
+2025-05-20 10:19:36 | INFO | chat.py:330 - 回复: 嘿！今天过得怎么样呀？😊 我刚看到窗外有只超可爱的麻雀在蹦跶，突然心情就特别好～你呢？最近有什么开心的事想分享吗？
+2025-05-20 10:19:49 | INFO | chat.py:218 - 对话结束
+2025-05-20 10:19:51 | INFO | chat.py:153 - 开始新对话
+2025-05-20 10:19:51 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 10:19:52 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 10:20:00 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 10:20:01 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 10:20:02 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 39400000, 'DisplayText': ''}
+2025-05-20 10:20:02 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 10:49:00 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 10:49:01 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 10:49:01 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 10:49:01 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 10:49:01 | INFO | server.py:342 - 聊天服务启动成功
+2025-05-20 10:49:01 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 10:49:01 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 10:49:01 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 10:49:01 | INFO | server.py:353 - 天气时间服务启动成功
+2025-05-20 10:49:01 | INFO | server.py:380 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 10:49:11 | INFO | chat.py:443 - 收到文本命令: 你好
+2025-05-20 10:49:11 | INFO | chat.py:98 - 热词触发
+2025-05-20 10:49:13 | INFO | chat.py:153 - 开始新对话
+2025-05-20 10:49:17 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 10:49:17 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 10:49:17 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 10:49:17 | INFO | chat.py:330 - 回复: 嘿~今天过得怎么样呀？😊 我刚刚在"想"今天要不要给自己泡杯热可可，虽然我喝不到啦哈哈~有什么开心或者烦恼的事情想聊聊吗？
+2025-05-20 10:49:27 | INFO | chat.py:218 - 对话结束
+2025-05-20 10:49:29 | INFO | chat.py:153 - 开始新对话
+2025-05-20 10:49:30 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 10:49:30 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 10:49:35 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 10:49:36 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 10:49:37 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 34700000, 'DisplayText': ''}
+2025-05-20 10:49:37 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 10:49:43 | INFO | server.py:325 - 正在关闭服务...
+2025-05-20 10:49:43 | INFO | server.py:396 - 正在关闭服务器...
+2025-05-20 10:49:43 | INFO | server.py:413 - 等待chat线程结束...
+2025-05-20 10:49:44 | INFO | server.py:413 - 等待monitor线程结束...
+2025-05-20 10:49:44 | INFO | server.py:413 - 等待weather_time线程结束...
+2025-05-20 10:49:45 | INFO | server.py:417 - 服务器已关闭
+2025-05-20 10:50:16 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 10:50:16 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 10:50:16 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 10:50:16 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 10:50:16 | INFO | server.py:342 - 聊天服务启动成功
+2025-05-20 10:50:16 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 10:50:16 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 10:50:16 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 10:50:16 | INFO | server.py:353 - 天气时间服务启动成功
+2025-05-20 10:50:16 | INFO | server.py:380 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 10:50:24 | INFO | server.py:257 - 通知播放停止：自动完成
+2025-05-20 10:50:34 | INFO | server.py:257 - 通知播放停止：自动完成
+2025-05-20 10:50:48 | INFO | server.py:257 - 通知播放停止：自动完成
