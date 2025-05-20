@@ -3,6 +3,7 @@ import requests
 import json
 import arcade
 import time
+import re
 from pydub import AudioSegment
 import tts
 # import dealCookie
@@ -22,71 +23,248 @@ music=requests.session()
 advice = []
 order=0
 
+# 音乐命令配置
+MUSIC_COMMANDS = {
+    # 播放/继续播放音乐
+    'play': {
+        'patterns': [
+            r'^播放音乐[。]?$',
+            r'^播放歌曲[。]?$',
+            r'^放[一首]*音乐[。]?$',
+            r'^来[一首]*音乐[。]?$',
+            r'^来[一首]*歌[。]?$',
+            r'^放[一首]*歌[。]?$',
+            r'^播放推荐音乐[。]?$',
+            r'^播放日推[。]?$',
+            r'继续播放'
+        ],
+        'action': 'play_music'
+    },
+    
+    # 搜索并播放指定音乐
+    'search': {
+        'patterns': [
+            r'^播放音乐(.+)[。]?$',
+            r'^搜索音乐(.+)[。]?$',
+            r'^搜索歌曲(.+)[。]?$',
+            r'^播放歌曲(.+)[。]?$',
+            r'^播放(.+)的歌[。]?$',
+            r'^来一首(.+)的歌[。]?$',
+            r'^搜索(.+)的歌[。]?$',
+            r'^放一首(.+)的歌[。]?$',
+        ],
+        'action': 'search_music'
+    },
+    
+    # 播放下一首
+    'next': {
+        'patterns': [
+            r'^下一首[。]?$',
+            r'^下一首音乐[。]?$',
+            r'播放.*下[一]*首',
+            r'切换.*下[一]*首'
+        ],
+        'action': 'next_music'
+    },
+    
+    # 停止播放
+    'stop': {
+        'patterns': [
+            r'停止.*音乐',
+            r'暂停.*音乐',
+            r'关闭.*音乐',
+            r'停止.*播放',
+            r'暂停.*播放',
+            r'关闭.*播放',
+            r'停止.*歌曲',
+            r'暂停.*歌曲',
+            r'关闭.*歌曲',
+            r'^静音[。]?$',
+            r'音乐关了'
+        ],
+        'action': 'stop_music'
+    },
+    
+    # 调整音量
+    'volume_adjust': {
+        'patterns': [
+            r'调整.*声音.*(\d+)',
+            r'调整.*音量.*(\d+)'
+        ],
+        'action': 'adjust_volume'
+    },
+    
+    # 增大音量
+    'volume_up': {
+        'patterns': [
+            r'声音.*大一点',
+            r'声音.*调大',
+            r'声音.*增加',
+            r'声音.*提高',
+            r'音量.*大一点',
+            r'音量.*调大',
+            r'音量.*增加',
+            r'音量.*提高'
+        ],
+        'action': 'volume_up'
+    },
+    
+    # 减小音量
+    'volume_down': {
+        'patterns': [
+            r'声音.*小一点',
+            r'声音.*调小',
+            r'声音.*减小',
+            r'声音.*降低',
+            r'音量.*小一点',
+            r'音量.*调小',
+            r'音量.*减小',
+            r'音量.*降低'
+        ],
+        'action': 'volume_down'
+    }
+}
 
+def match_command(text):
+    """
+    匹配用户输入与预定义的命令模式
+    返回匹配的命令类型和提取的参数
+    """
+    for cmd_type, cmd_config in MUSIC_COMMANDS.items():
+        for pattern in cmd_config['patterns']:
+            match = re.search(pattern, text)
+            if match:
+                # 如果有捕获组，提取参数
+                params = match.groups() if match.groups() else None
+                return cmd_config['action'], params
+    
+    # 没有匹配任何命令
+    return None, None
+
+def process_search_text(text):
+    """处理搜索关键词，清理和格式化"""
+    if not text:
+        return ""
+        
+    # 移除句尾的句号
+    if text[-1] == '。':
+        text = text[:-1]
+    
+    # 移除开头的逗号
+    if text and text[0] == '，':
+        text = text[1:]
+    
+    # 处理"歌手的歌曲"格式
+    if '歌手' in text:
+        text = " ".join(text.split('的', 1))
+    
+    return text.strip()
+
+def play_music_action():
+    """播放音乐动作"""
+    play('Sound/musicprepare.wav')
+    music_en()
+    logger.info('开始播放音乐')
+    return True
+
+def search_music_action(params):
+    """搜索并播放指定音乐"""
+    global interrupted_music, search, words, startagain
+    
+    try:
+        # 提取搜索关键词
+        search_text = params[0] if params else ""
+        words = process_search_text(search_text)
+        
+        if not words:
+            logger.warning('搜索关键词为空')
+            return True
+            
+        logger.info(f'搜索音乐：{words}')
+        interrupted_music = True
+        search = True
+        startagain = True
+        music_en()
+        return True
+    except Exception as e:
+        logger.error(f'处理搜索关键词时出错: {e}')
+        return True
+
+def next_music_action():
+    """播放下一首音乐"""
+    global interrupted_music, startagain
+    interrupted_music = True
+    startagain = True
+    logger.info('切换到下一首音乐')
+    return True
+
+def stop_music_action():
+    """停止播放音乐"""
+    music_off()
+    logger.info('停止播放音乐')
+    return True
+
+def adjust_volume_action(params):
+    """根据指定值调整音量"""
+    try:
+        if params and params[0]:
+            volume_value = float(params[0]) / 100
+            # 确保音量在有效范围内
+            volume_value = max(0.0, min(1.0, volume_value))
+            config.set(music_volume=volume_value)
+            logger.info(f'音量已调整为: {volume_value * 100}%')
+        return True
+    except Exception as e:
+        logger.error(f'调整音量时出错: {e}')
+        return True
+
+def volume_up_action():
+    """增大音量"""
+    current_volume = config.get("music_volume")
+    new_volume = min(1.0, current_volume + 0.1)  # 确保不超过1.0
+    config.set(music_volume=new_volume)
+    logger.info(f'音量已增大至: {new_volume:.1f}')
+    return True
+
+def volume_down_action():
+    """减小音量"""
+    current_volume = config.get("music_volume")
+    new_volume = max(0.0, current_volume - 0.1)  # 确保不低于0.0
+    config.set(music_volume=new_volume)
+    logger.info(f'音量已减小至: {new_volume:.1f}')
+    return True
 
 def musicdetect(text):
-        
-    global interrupted_music,words,search,startagain
+    """
+    检测并处理音乐相关的语音命令
+    """
+    global interrupted_music, words, search, startagain
     
-    if text=='播放音乐。' or text=='播放歌曲。' or text=='放一首音乐。' or text=='来一首音乐。'or text=='来首音乐。' or text.find('来一首歌')!=-1 or text.find('放首歌')!=-1 or text.find('来首歌')!=-1 or text=='播放推荐音乐。' or text=='播放日推。'or text.find('继续播放')!=-1 :
-        play('Sound/musicprepare.wav')
-        music_en()
-        logger.info('up the music')
-        startagain=True
-        return True
-   
-    elif text.find("播放音乐")==0 or text.find('搜索音乐')!=-1 or text.find('搜索歌曲')!=-1 or text.find('播放歌曲')!=-1:
-        try:
-            words=text[4:]
-            if words[-1]=='。':
-                words=words[:-1]
-            if words[0]=='，':
-                words=words[1:]
-            if words.find('歌手')!=-1:
-                words = " ".join(words.split('的',1))
-            # if words.find('的')!=-1:
-            #     words=" ".join(words.split('的'))
-        except:
-            logger.warning('words split wrong')
-            return True
-        logger.info(f'搜索：{words}')
-        interrupted_music=True
-        search=True
-        startagain=True
-        music_en()
-        return True
-
-    elif text=='下一首。' or text =='下一首音乐。'or ((text.find('播放')!=-1 or text.find('切换')!=-1) and (text.find('下首')!=-1 or text.find('下一首')!=-1)):
-        interrupted_music=True
-        logger.info('Next Music')
-        startagain=True
-        return True
-
-    elif (text.find('停止')!=-1 or text.find('暂停')!=-1 or text.find('关闭')!=-1) and (text.find('音乐')!=-1 or text.find('播放')!=-1 or text.find('歌曲')!=-1)or text=='静音。'or text.find('音乐关了')!=-1:
-        music_off()
-        logger.info('off the music')
-        return True
-
-    elif text.find('调整')!=-1 and (text.find('声音')!=-1 or text.find('音量')!=-1):
-        try:
-            if text[-1] == '。':
-                config.set(music_volume=float(text[-4:-2])/100)
-            logger.info(f'music_volume:{config.get("music_volume")}')
-        except:
-            logger.warning('words split wrong in set volume')
-            return True
-        return True 
-    elif text.find('声音')!=-1 or text.find('音量')!=-1 :
-        if text.find('大一点')!=-1 or text.find('调大')!=-1 or text.find('增加')!=-1 or text.find('提高')!=-1 :
-            config.set(music_volume=config.get("music_volume")+0.1)
-            logger.info(f'Volume:{config.get("music_volume")}')
-            return True
-        elif text.find('小一点')!=-1 or text.find('调小')!=-1 or text.find('减小')!=-1 or text.find('降低')!=-1 :
-            config.set(music_volume=config.get("music_volume")-0.1)
-            logger.info(f'Volume:{config.get("music_volume")}')
-            return True
+    # 匹配命令
+    action, params = match_command(text)
+    
+    # 如果没有匹配到命令，返回False
+    if not action:
+        return False
+    
+    # 根据不同动作执行相应的处理函数
+    if action == 'play_music':
+        return play_music_action()
+    elif action == 'search_music':
+        return search_music_action(params)
+    elif action == 'next_music':
+        return next_music_action()
+    elif action == 'stop_music':
+        return stop_music_action()
+    elif action == 'adjust_volume':
+        return adjust_volume_action(params)
+    elif action == 'volume_up':
+        return volume_up_action()
+    elif action == 'volume_down':
+        return volume_down_action()
+    
+    # 默认返回False，表示没有处理任何命令
     return False
-
 
 def music_get(url, headers):
     for _ in range(2):

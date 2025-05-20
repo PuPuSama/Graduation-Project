@@ -26,9 +26,10 @@ porcupine_keyword_name="happiness_en_raspberry-pi_v3_0_0.ppn" #唤醒词文件�
 proxy= {'http':'http://127.0.0.1:10810',
         'https':'http://127.0.0.1:10810'} #openai以及duckduckgo的代理
 gpio_wake_enable=False  #按键唤醒，如果相应引脚接有外设的情况下开启
-music_enable=False  #是否开启音乐功能(需要qq音乐的cookie,并启动QQMusicAPI服务)
-qqmusicpath='/home/pi/xiaoxiao/QQMusicApi' #MusicApi位置(如果开启音乐模块)
-qqid=''  #填写登录QQ音乐的QQ号(如果开启音乐模块,必填)
+music_enable=True  #是否开启音乐功能(需要qq音乐的cookie,并启动QQMusicAPI服务)
+qqmusicpath=None  # QQMusicApi路径将自动检测，无需手动设置
+qqmusicport=3300  # QQ音乐API服务端口
+qqid='877770086'  #填写登录QQ音乐的QQ号(如果开启音乐模块,必填)
 dev_enable=False  #是否开启外设控制功能(需要安装mosquito服务器，配置对应外设)
 wlan_enable=False  #是否开启广域网控制
 schedule_enable=False #是否开启日程提醒功能(需要配置mysql)
