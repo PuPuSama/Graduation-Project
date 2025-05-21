@@ -26,11 +26,6 @@ porcupine_keyword_name="happiness_en_raspberry-pi_v3_0_0.ppn" #唤醒词文件�
 proxy= {'http':'http://127.0.0.1:10810',
         'https':'http://127.0.0.1:10810'} #openai以及duckduckgo的代理
 gpio_wake_enable=False  #按键唤醒，如果相应引脚接有外设的情况下开启
-dev_enable=False  #是否开启外设控制功能(需要安装mosquito服务器，配置对应外设)
-wlan_enable=False  #是否开启广域网控制
-schedule_enable=False #是否开启日程提醒功能(需要配置mysql)
-udp_enable=False #是否开启无线模块外设唤醒(没有无线模块就不用打开)
-hass_demo_enable=False #用于演示HomeAssistant的交互，需要配置HomeAssistant。
-UdpbroadcastAdd='192.168.31.255' #UDP广播地址，用于使用无线模块外设唤醒助手
+
 
 

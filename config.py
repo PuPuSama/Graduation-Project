@@ -12,49 +12,34 @@ parmas = {
     # 参量
     "command": "",
     "answer": "晓晓已上线，有什么可以帮您的吗？",
-    "music_volume": 0.25,
     "general_volume": 0.5,
     "wakebyhw": False,
     "hw_started": False,
     "Noticenotify": True,
     "timenotify": True,
-    "MusicPlay": False,
     # ... 可以添加更多的参数
 }
-# 外设控制参数
-device_params = {
-    "dev_demo": False,
-    "HA_light_demo": False, # HASS外设
-}
+# 外设控制参数（已移除）
+device_params = {}
 
-param_types = {
-    # "command": "string",
-    # "music_volume": "float",
-    "dev_demo": "bool",
-    "HA_light_demo": "bool"
-}
+# 参数类型定义（已移除）
+param_types = {}
 
 # 这里列出需要追踪的参数
 tracked_params = [
-    "music_volume",
     "general_volume",
     "wakebyhw",
     "Noticenotify",
     "timenotify",
-    "MusicPlay",
-    "dev_demo",
-    "HA_light_demo",
 ]
 # WebUI可修改的参数
 allow_params = [
     "answer",
     "command",
-    "music_volume",
     "general_volume",
     "wakebyhw",
     "Noticenotify",
     "timenotify",
-    "MusicPlay",
 ]
 
 
@@ -85,11 +70,6 @@ class ConfigManager:
                     changed_params[key] = value
                 # 更新参数值
                 self.params[key] = value
-            elif key in self.device_params:
-                # 追踪外设参数变更
-                if key in self.tracked_params and self.device_params[key] != value:
-                    changed_params[key] = value
-                self.device_params[key] = value
             else:
                 logger.warning(f"Unknown config key: {key}")
         if changed_params:
@@ -99,7 +79,7 @@ class ConfigManager:
 
     def get(self, key):
         """获取参数的值"""
-        return self.params.get(key) if key in self.params else self.device_params.get(key, None)
+        return self.params.get(key, None)
 
 
 # 创建单例

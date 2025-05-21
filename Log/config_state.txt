@@ -642,3 +642,38 @@
     }
 }
 
+{
+    "timestamp": "2025-05-21 20:09:26",
+    "changed_params": {
+        "wakebyhw": true
+    }
+}
+
+{
+    "timestamp": "2025-05-21 20:09:26",
+    "changed_params": {
+        "Noticenotify": false
+    }
+}
+
+{
+    "timestamp": "2025-05-21 20:09:26",
+    "changed_params": {
+        "timenotify": false
+    }
+}
+
+{
+    "timestamp": "2025-05-21 20:09:40",
+    "changed_params": {
+        "Noticenotify": true
+    }
+}
+
+{
+    "timestamp": "2025-05-21 20:09:42",
+    "changed_params": {
+        "timenotify": true
+    }
+}
+
