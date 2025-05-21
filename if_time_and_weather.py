@@ -6,6 +6,8 @@ import re
 from config import config
 from play import play
 from loguru import logger
+# 导入聊天服务模块
+import chat
 
 flag = 0
 city = "北京"  # 默认城市
@@ -49,6 +51,13 @@ def timedetect(text):
         '外面天气', '今天气温', '天气好吗'
     ]
     
+    # 温湿度查询关键词列表
+    sensor_keywords = [
+        '温度', '湿度', '温湿度', '室温', '现在温度', '当前温度', 
+        '房间温度', '环境温度', '室内温度', '有多热', '有多冷',
+        '多少度', '屋里温度', '室内湿度', '湿度是多少', '湿度怎么样'
+    ]
+    
     # 检查时间查询意图
     for keyword in time_keywords:
         if keyword in clean_text:
@@ -70,6 +79,13 @@ def timedetect(text):
             flag = 3
             # 尝试提取城市名
             extract_city(clean_text)
+            return True
+            
+    # 检查温湿度查询意图
+    for keyword in sensor_keywords:
+        if keyword in clean_text:
+            logger.info('detected keyword sensor')
+            flag = 4  # 新的标志值，与已有的1,2,3区分开
             return True
             
     return False
@@ -190,6 +206,10 @@ def notifytime():
     play('Sound/ding.wav')
     play('Sound/timenotify.raw')
     config.set(notify_enable=False)
+    
+    # 触发聊天服务的激活状态
+    chat.chat_service.handle_hotword_trigger()
+    logger.info("时间通知结束，已触发对话激活")
 
 def notifydate():
     tts.ssml_save(f"今天的日期:{time.strftime('%m月%d号', time.localtime())}",'Sound/timenotify.raw')
@@ -197,6 +217,10 @@ def notifydate():
     play('Sound/ding.wav')
     play('Sound/timenotify.raw')
     config.set(notify_enable=False)
+    
+    # 触发聊天服务的激活状态
+    chat.chat_service.handle_hotword_trigger()
+    logger.info("日期通知结束，已触发对话激活")
 
 def notifyweather():
     """通知当前天气情况并询问是否需要出行建议"""
@@ -232,12 +256,20 @@ def notifyweather():
         
         # 设置标志，表示等待用户回应
         waiting_for_advice_response = True
+        
+        # 触发聊天服务的激活状态
+        chat.chat_service.handle_hotword_trigger()
+        logger.info("天气通知结束，已触发对话激活，等待用户回应")
     else:
         tts.ssml_save(f"抱歉，无法获取{city}的天气信息", 'Sound/weathernotify.raw')
         config.set(notify_enable=True)
         play('Sound/ding.wav')
         play('Sound/weathernotify.raw')
         config.set(notify_enable=False)
+        
+        # 触发聊天服务的激活状态
+        chat.chat_service.handle_hotword_trigger()
+        logger.info("天气通知结束，已触发对话激活")
 
 def admin():
     global flag
@@ -250,6 +282,9 @@ def admin():
             flag = 0
         if flag == 3:
             notifyweather()
+            flag = 0
+        if flag == 4:  # 添加对温湿度查询标志的处理
+            notifysensor()
             flag = 0
         time.sleep(1)
 
@@ -310,3 +345,62 @@ def handle_advice_response(text):
         return True
         
     return False
+
+def notifysensor():
+    """通知当前温湿度情况"""
+    sensor_data = get_sensor_data()
+    if sensor_data:
+        # 构建温湿度播报文本
+        sensor_text = f"当前室内温度{sensor_data['temperature']}度，"
+        sensor_text += f"湿度{sensor_data['humidity']}%"
+        
+        # 添加简单的温度状态描述
+        if float(sensor_data['temperature']) > 30:
+            sensor_text += "，温度较高，注意防暑"
+        elif float(sensor_data['temperature']) < 15:
+            sensor_text += "，温度较低，注意保暖"
+        else:
+            sensor_text += "，温度适宜"
+        
+        # 湿度状态
+        if float(sensor_data['humidity']) > 70:
+            sensor_text += "，湿度较高"
+        elif float(sensor_data['humidity']) < 30:
+            sensor_text += "，湿度较低，注意保湿"
+        
+        # 保存并播放语音
+        tts.ssml_save(sensor_text, 'Sound/sensornotify.raw')
+        config.set(notify_enable=True)
+        play('Sound/ding.wav')
+        play('Sound/sensornotify.raw')
+        config.set(notify_enable=False)
+        
+        # 触发聊天服务的激活状态
+        chat.chat_service.handle_hotword_trigger()
+        logger.info("温湿度通知结束，已触发对话激活")
+    else:
+        tts.ssml_save("抱歉，无法获取当前的温湿度数据", 'Sound/sensornotify.raw')
+        config.set(notify_enable=True)
+        play('Sound/ding.wav')
+        play('Sound/sensornotify.raw')
+        config.set(notify_enable=False)
+        
+        # 触发聊天服务的激活状态
+        chat.chat_service.handle_hotword_trigger()
+        logger.info("温湿度通知结束，已触发对话激活")
+
+def get_sensor_data():
+    """获取当前温湿度数据"""
+    try:
+        # 使用requests库调用API获取传感器数据
+        response = requests.get('http://localhost:5000/api/sensor_data')
+        if response.status_code == 200:
+            sensor_data = response.json()
+            logger.info(f"获取到传感器数据: 温度={sensor_data['temperature']}°C, 湿度={sensor_data['humidity']}%")
+            return sensor_data
+        else:
+            logger.error(f"获取传感器数据失败: HTTP {response.status_code}")
+            return None
+    except Exception as e:
+        logger.error(f"获取传感器数据时出错: {e}")
+        return None

@@ -436,12 +436,6 @@
             
             <!-- 设置选项 -->
             <div class="form-group">
-                <label for="music-volume">音乐音量</label>
-                <input type="range" id="music-volume" class="form-control" min="0" max="1" step="0.05" value="0.5">
-                <span id="music-volume-value">50%</span>
-            </div>
-            
-            <div class="form-group">
                 <label for="general-volume">系统音量</label>
                 <input type="range" id="general-volume" class="form-control" min="0" max="1" step="0.05" value="0.5">
                 <span id="general-volume-value">50%</span>
@@ -460,11 +454,6 @@
             <div class="checkbox-container">
                 <input type="checkbox" id="timenotify" checked>
                 <label for="timenotify">启用时间提醒</label>
-            </div>
-            
-            <div class="checkbox-container">
-                <input type="checkbox" id="musicplay">
-                <label for="musicplay">启用音乐播放</label>
             </div>
             
             <!-- 传感器数据更新设置 -->
@@ -555,13 +544,9 @@
             // 添加快速命令
             document.getElementById('add-command-btn').addEventListener('click', addQuickCommand);
             
-            // 音量滑块显示百分比
-            document.getElementById('music-volume').addEventListener('input', function() {
-                document.getElementById('music-volume-value').textContent = Math.round(this.value * 100) + '%';
-            });
-            
+            // 设置滑块事件
             document.getElementById('general-volume').addEventListener('input', function() {
-                document.getElementById('general-volume-value').textContent = Math.round(this.value * 100) + '%';
+                document.getElementById('general-volume-value').textContent = `${Math.round(this.value * 100)}%`;
             });
         }
         
@@ -668,121 +653,64 @@
         
         // 加载系统配置
         function loadSystemConfig() {
+            console.log('正在加载系统配置');
             fetch('/api/get_config')
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        console.log('成功加载配置:', data.config);
+                        console.log('成功加载系统配置:', data.config);
                         systemConfig = data.config;
-                        updateConfigUI();
+                        
+                        // 设置表单值
+                        document.getElementById('general-volume').value = systemConfig.general_volume || 0.5;
+                        document.getElementById('general-volume-value').textContent = `${Math.round((systemConfig.general_volume || 0.5) * 100)}%`;
+                        
+                        // 设置复选框
+                        document.getElementById('wakebyhw').checked = systemConfig.wakebyhw || false;
+                        document.getElementById('noticenotify').checked = systemConfig.Noticenotify !== false;
+                        document.getElementById('timenotify').checked = systemConfig.timenotify !== false;
                     } else {
-                        console.error('加载配置失败:', data.error);
-                        alert('加载配置失败: ' + (data.error || '未知错误'));
+                        console.error('加载系统配置失败:', data.error);
                     }
                 })
                 .catch(error => {
-                    console.error('获取配置出错:', error);
+                    console.error('获取系统配置时出错:', error);
                 });
-        }
-        
-        // 更新配置UI
-        function updateConfigUI() {
-            // 添加调试日志
-            console.log('正在更新UI，当前配置:', systemConfig);
-            
-            // 更新音量滑块
-            if (systemConfig.music_volume !== undefined) {
-                const musicVolume = document.getElementById('music-volume');
-                if (musicVolume) {
-                    musicVolume.value = systemConfig.music_volume;
-                    document.getElementById('music-volume-value').textContent = Math.round(systemConfig.music_volume * 100) + '%';
-                    console.log('已设置音乐音量:', systemConfig.music_volume);
-                } else {
-                    console.error('找不到音乐音量滑块元素');
-                }
-            }
-            
-            if (systemConfig.general_volume !== undefined) {
-                const generalVolume = document.getElementById('general-volume');
-                if (generalVolume) {
-                    generalVolume.value = systemConfig.general_volume;
-                    document.getElementById('general-volume-value').textContent = Math.round(systemConfig.general_volume * 100) + '%';
-                    console.log('已设置系统音量:', systemConfig.general_volume);
-                } else {
-                    console.error('找不到系统音量滑块元素');
-                }
-            }
-            
-            // 更新复选框
-            if (systemConfig.wakebyhw !== undefined) {
-                const wakebyhw = document.getElementById('wakebyhw');
-                if (wakebyhw) {
-                    wakebyhw.checked = systemConfig.wakebyhw;
-                    console.log('已设置硬件唤醒:', systemConfig.wakebyhw);
-                }
-            }
-            
-            if (systemConfig.Noticenotify !== undefined) {
-                const noticenotify = document.getElementById('noticenotify');
-                if (noticenotify) {
-                    noticenotify.checked = systemConfig.Noticenotify;
-                    console.log('已设置通知提醒:', systemConfig.Noticenotify);
-                }
-            }
-            
-            if (systemConfig.timenotify !== undefined) {
-                const timenotify = document.getElementById('timenotify');
-                if (timenotify) {
-                    timenotify.checked = systemConfig.timenotify;
-                    console.log('已设置时间提醒:', systemConfig.timenotify);
-                }
-            }
-            
-            if (systemConfig.MusicPlay !== undefined) {
-                const musicplay = document.getElementById('musicplay');
-                if (musicplay) {
-                    musicplay.checked = systemConfig.MusicPlay;
-                    console.log('已设置音乐播放:', systemConfig.MusicPlay);
-                }
-            }
         }
         
         // 保存系统配置
         function saveSystemConfig() {
-            const newConfig = {
-                music_volume: parseFloat(document.getElementById('music-volume').value),
+            console.log('正在保存系统配置');
+            
+            // 收集当前表单设置
+            const config = {
                 general_volume: parseFloat(document.getElementById('general-volume').value),
                 wakebyhw: document.getElementById('wakebyhw').checked,
                 Noticenotify: document.getElementById('noticenotify').checked,
                 timenotify: document.getElementById('timenotify').checked,
-                MusicPlay: document.getElementById('musicplay').checked
             };
             
-            console.log('正在保存配置:', newConfig);
+            console.log('准备发送的配置:', config);
             
+            // 发送到服务器
             fetch('/update_config', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(newConfig)
+                body: JSON.stringify(config)
             })
-            .then(response => {
-                console.log('配置更新响应状态:', response.status);
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                console.log('配置更新响应数据:', data);
                 if (data.success) {
-                    alert('设置已保存');
-                    systemConfig = {...systemConfig, ...newConfig};
+                    console.log('系统配置保存成功:', data.updated_keys);
+                    // 可以添加保存成功提示
                 } else {
-                    alert('保存设置失败: ' + (data.error || '未知错误'));
+                    console.error('系统配置保存失败:', data.error);
                 }
             })
             .catch(error => {
-                console.error('保存设置出错:', error);
-                alert('保存设置时发生错误: ' + error.message);
+                console.error('保存系统配置时出错:', error);
             });
         }
         

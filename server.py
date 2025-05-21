@@ -30,7 +30,7 @@ logger.add('Log/PI-Assistant.log', colorize=False, format="<green>{time:YYYY-MM-
 
 # 导入项目模块
 from config import config
-from const_config import music_enable, schedule_enable, udp_enable, hass_demo_enable, qqid, qqmusicpath, qqmusicport
+from const_config import schedule_enable, udp_enable, hass_demo_enable  # 移除 music_enable, qqid, qqmusicpath, qqmusicport
 import chat
 import if_time_and_weather
 import tts
@@ -40,9 +40,10 @@ from sensor_simulator import SensorSimulator
 
 # 根据配置导入可选模块
 optional_modules = {}
-if music_enable:
-    import if_music
-    optional_modules['music'] = if_music
+# 删除音乐模块导入
+# if music_enable:
+#     import if_music
+#     optional_modules['music'] = if_music
 if schedule_enable:
     import schedule
     optional_modules['schedule'] = schedule
@@ -75,15 +76,10 @@ class ServerManager:
         self.last_time = None
         
         # 快速命令
-        self.quick_commands = ["wake", "终止程序", "下一首。"]
+        self.quick_commands = ["wake", "终止程序"]
         
         # 答案缓存
         self.last_answer = None
-        
-        # 音乐API相关
-        self.qqmusic_api_path = None
-        self.qqmusic_api_process = None
-        self.qqmusic_api_port = getattr(sys.modules.get('const_config'), 'qqmusicport', 3300)
         
         # 创建Flask应用
         self.app = Flask('PI-Assistant')
@@ -463,169 +459,6 @@ class ServerManager:
         signal.signal(signal.SIGINT, handle_shutdown)
         signal.signal(signal.SIGTERM, handle_shutdown)
     
-    def _find_qqmusic_api_path(self):
-        """自动查找QQMusicApi目录路径"""
-        # 首先检查配置文件中的路径
-        if qqmusicpath and os.path.exists(qqmusicpath):
-            logger.info(f"使用配置文件中的QQMusicApi路径: {qqmusicpath}")
-            return qqmusicpath
-            
-        # 查找可能的路径
-        possible_paths = [
-            # 当前目录下
-            os.path.join(os.getcwd(), 'QQMusicApi'),
-            # 当前目录上级
-            os.path.join(os.path.dirname(os.getcwd()), 'QQMusicApi'),
-            # 相对路径
-            './QQMusicApi',
-            '../QQMusicApi'
-        ]
-        
-        # 检查每个可能的路径
-        for path in possible_paths:
-            if os.path.exists(path) and os.path.isdir(path):
-                # 验证是否是QQMusicApi目录 (检查package.json是否存在且包含qq-music-api)
-                package_json = os.path.join(path, 'package.json')
-                if os.path.exists(package_json):
-                    try:
-                        with open(package_json, 'r') as f:
-                            content = f.read()
-                            if 'qq-music-api' in content:
-                                logger.info(f"自动找到QQMusicApi路径: {path}")
-                                return path
-                    except Exception as e:
-                        logger.warning(f"读取package.json时出错: {e}")
-                        continue
-        
-        logger.error("未找到有效的QQMusicApi目录!")
-        return None
-    
-    def _update_qqmusic_config(self):
-        """更新QQMusicApi配置文件，设置正确的QQ号和端口"""
-        if not self.qqmusic_api_path:
-            logger.error("QQMusicApi路径未设置，无法更新配置")
-            return False
-            
-        config_file = os.path.join(self.qqmusic_api_path, 'bin', 'config.js')
-        if not os.path.exists(config_file):
-            logger.error(f"找不到QQMusicApi配置文件: {config_file}")
-            return False
-            
-        try:
-            # 读取现有配置
-            with open(config_file, 'r', encoding='utf-8') as f:
-                content = f.read()
-                
-            # 检查是否需要更新QQ号
-            if qqid and len(qqid) > 0:
-                # 替换QQ号
-                import re
-                pattern_qq = r'qq:\s*[\'"](\d+)[\'"]'
-                if re.search(pattern_qq, content):
-                    content = re.sub(pattern_qq, f"qq: '{qqid}'", content)
-                else:
-                    logger.warning("未找到配置文件中的QQ配置项，无法更新QQ号")
-                
-                # 替换端口号
-                pattern_port = r'port:\s*(\d+)'
-                if re.search(pattern_port, content):
-                    content = re.sub(pattern_port, f"port: {self.qqmusic_api_port}", content)
-                else:
-                    logger.warning("未找到配置文件中的端口配置项，无法更新端口")
-                
-                # 写回配置文件
-                with open(config_file, 'w', encoding='utf-8') as f:
-                    f.write(content)
-                    
-                logger.info(f"已更新QQMusicApi配置: QQ={qqid}, 端口={self.qqmusic_api_port}")
-                return True
-            else:
-                logger.warning("未设置QQ号，跳过QQMusicApi配置更新")
-                return False
-                
-        except Exception as e:
-            logger.error(f"更新QQMusicApi配置时出错: {e}")
-            return False
-    
-    def _start_qqmusic_api(self):
-        """启动QQ音乐API服务"""
-        if not music_enable:
-            logger.info("音乐功能未启用，跳过启动QQ音乐API")
-            return False
-            
-        # 查找QQMusicApi路径
-        self.qqmusic_api_path = self._find_qqmusic_api_path()
-        if not self.qqmusic_api_path:
-            logger.error("无法找到QQMusicApi路径，无法启动QQ音乐API")
-            return False
-        
-        # 检查是否已经启动
-        try:
-            response = requests.get(f'http://127.0.0.1:{self.qqmusic_api_port}/user/getCookie', timeout=3)
-            if response.status_code == 200:
-                logger.info("QQ音乐API服务已经在运行")
-                return True
-        except:
-            logger.info("QQ音乐API服务未运行，正在启动...")
-        
-        # 更新配置文件
-        self._update_qqmusic_config()
-        
-        # 构建启动命令
-        cwd = os.getcwd()  # 保存当前工作目录
-        try:
-            # 切换到QQMusicApi目录
-            os.chdir(self.qqmusic_api_path)
-            
-            # 使用subprocess启动npm
-            # Windows系统使用不同的命令
-            if os.name == 'nt':
-                cmd = ['npm', 'start']
-                # 不显示窗口
-                startupinfo = subprocess.STARTUPINFO()
-                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-                self.qqmusic_api_process = subprocess.Popen(
-                    cmd, 
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    startupinfo=startupinfo
-                )
-            else:
-                cmd = ['npm', 'start']
-                self.qqmusic_api_process = subprocess.Popen(
-                    cmd, 
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE
-                )
-                
-            # 切回原来的工作目录
-            os.chdir(cwd)
-            
-            # 等待服务启动
-            retry_count = 0
-            max_retries = 15  # 增加重试次数
-            while retry_count < max_retries:
-                try:
-                    response = requests.get(f'http://127.0.0.1:{self.qqmusic_api_port}/user/getCookie', timeout=3)
-                    if response.status_code == 200:
-                        logger.info("QQ音乐API服务启动成功!")
-                        return True
-                except:
-                    pass
-                    
-                time.sleep(1)
-                retry_count += 1
-                if retry_count % 5 == 0:
-                    logger.info(f"等待QQ音乐API服务启动... ({retry_count}/{max_retries})")
-                
-            logger.error(f"QQ音乐API服务启动失败，尝试了 {max_retries} 次")
-            return False
-            
-        except Exception as e:
-            os.chdir(cwd)  # 确保切回原工作目录
-            logger.error(f"启动QQ音乐API时出错: {e}")
-            return False
-    
     def start_services(self):
         """启动所有服务线程"""
         self.running = True
@@ -649,21 +482,6 @@ class ServerManager:
         self.threads['weather_time'].daemon = True
         self.threads['weather_time'].start()
         logger.info('天气时间服务启动成功')
-        
-        # 根据配置启动可选服务
-        if music_enable:
-            # 先启动QQ音乐API
-            api_started = self._start_qqmusic_api()
-            if api_started:
-                logger.info('QQ音乐API服务启动成功')
-            else:
-                logger.warning('QQ音乐API服务启动失败，音乐功能可能无法正常使用')
-                
-            # 启动音乐服务线程
-            self.threads['music'] = Thread(target=if_music.watch)
-            self.threads['music'].daemon = True
-            self.threads['music'].start()
-            logger.info('音乐服务启动成功')
         
         if udp_enable:
             self.threads['udp'] = Thread(target=udpserver.udp_server)
@@ -708,19 +526,6 @@ class ServerManager:
                 self.notify_sound.stop(self.notify_player)
             except:
                 pass
-        
-        # 关闭QQ音乐API进程
-        if self.qqmusic_api_process:
-            logger.info("正在关闭QQ音乐API服务...")
-            try:
-                if os.name == 'nt':  # Windows
-                    subprocess.call(['taskkill', '/F', '/T', '/PID', str(self.qqmusic_api_process.pid)])
-                else:  # Linux/Mac
-                    os.killpg(os.getpgid(self.qqmusic_api_process.pid), signal.SIGTERM)
-                self.qqmusic_api_process = None
-                logger.info("QQ音乐API服务已关闭")
-            except Exception as e:
-                logger.error(f"关闭QQ音乐API服务时出错: {e}")
         
         # 关闭线程池
         if hasattr(self, 'executor'):

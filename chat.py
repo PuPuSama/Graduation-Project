@@ -19,7 +19,7 @@ from tts import ssml_wav
 # 根据配置有条件地导入模块
 from const_config import (
     snowboy_enable, porcupine_enable, gpio_wake_enable, 
-    use_online_recognize, music_enable, schedule_enable, 
+    use_online_recognize, schedule_enable, 
     dev_enable, wlan_enable, use_deepseek, chat_or_standard
 )
 
@@ -45,9 +45,6 @@ if gpio_wake_enable:
 
 if use_online_recognize:
     import azure_reco
-
-if music_enable:   
-    import if_music
 
 if schedule_enable:
     import schedule
@@ -293,13 +290,6 @@ class ChatService:
         
         # 检查日程相关命令
         if self.allow_running and schedule_enable and schedule.if_schedule(self.input_text):
-            self._reset_dialog_state(False)
-            config.set(chat_enable=False)
-            return False
-        
-        # 检查音乐相关命令
-        if self.allow_running and music_enable and if_music.musicdetect(self.input_text):
-            self._stop_current_sound()
             self._reset_dialog_state(False)
             config.set(chat_enable=False)
             return False

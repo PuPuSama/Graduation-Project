@@ -1590,3 +1590,1433 @@
 2025-05-20 10:50:24 | INFO | server.py:257 - 通知播放停止：自动完成
 2025-05-20 10:50:34 | INFO | server.py:257 - 通知播放停止：自动完成
 2025-05-20 10:50:48 | INFO | server.py:257 - 通知播放停止：自动完成
+2025-05-20 18:17:13 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:17:13 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:17:13 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:17:13 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:17:13 | INFO | server.py:342 - 聊天服务启动成功
+2025-05-20 18:17:13 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:17:13 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:17:13 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:17:13 | INFO | server.py:353 - 天气时间服务启动成功
+2025-05-20 18:17:13 | INFO | server.py:380 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:29:26 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:29:26 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:29:26 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:29:26 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:29:26 | INFO | server.py:342 - 聊天服务启动成功
+2025-05-20 18:29:26 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:29:26 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:29:26 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:29:26 | INFO | server.py:353 - 天气时间服务启动成功
+2025-05-20 18:29:26 | INFO | server.py:380 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:29:36 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 18:29:52 | INFO | chat.py:443 - 收到文本命令: 点歌 光辉岁月
+2025-05-20 18:29:52 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:29:53 | INFO | chat.py:443 - 收到文本命令: 点歌 光辉岁月
+2025-05-20 18:29:53 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:29:55 | INFO | chat.py:153 - 开始新对话
+2025-05-20 18:30:04 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 18:30:04 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 18:30:04 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 18:30:04 | INFO | chat.py:330 - 回复: 哇！《光辉岁月》！Beyond的经典啊～每次前奏一响就起鸡皮疙瘩！🎸
+
+（突然切换电台DJ语气）咳咳～这里是你的专属点歌台，正在为您播放：1990年收录在《命运派对》专辑中，黄家驹为南非总统曼德拉创作的...（突然破功）啊啊啊不行了！忍不住要跟着唱了！
+
+"钟声响起归家的讯号——"🎤 你也是突然怀念家驹了吗？还是今天有什么特别的心情呀？要不要一起聊聊为什么想听这首？😊
+
+（悄悄说）我每次听到"风雨中抱紧自由"那句都会眼眶发热...你呢？
+2025-05-20 18:30:40 | INFO | chat.py:218 - 对话结束
+2025-05-20 18:30:43 | INFO | chat.py:153 - 开始新对话
+2025-05-20 18:30:43 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 18:30:43 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 18:30:45 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 18:30:45 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 18:30:46 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 22900000, 'DisplayText': ''}
+2025-05-20 18:30:46 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 18:41:33 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:41:33 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:41:33 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:41:33 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:41:33 | INFO | server.py:428 - 聊天服务启动成功
+2025-05-20 18:41:33 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:41:33 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:41:33 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:41:33 | INFO | server.py:439 - 天气时间服务启动成功
+2025-05-20 18:41:33 | INFO | server.py:466 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:41:42 | INFO | config.py:98 - Changed_params:{'MusicPlay': False}
+2025-05-20 18:41:45 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 18:43:18 | INFO | config.py:98 - Changed_params:{'MusicPlay': False}
+2025-05-20 18:43:19 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 18:43:19 | INFO | config.py:98 - Changed_params:{'MusicPlay': False}
+2025-05-20 18:43:27 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:43:27 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:43:27 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:43:27 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:43:29 | INFO | server.py:359 - 正在启动QQ音乐API服务，路径: c:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 18:43:29 | ERROR | server.py:399 - 启动QQ音乐API服务时出错: [WinError 2] 系统找不到指定的文件。
+2025-05-20 18:43:29 | WARNING | server.py:422 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-20 18:43:29 | INFO | server.py:428 - 聊天服务启动成功
+2025-05-20 18:43:29 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:43:29 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:43:29 | INFO | server.py:439 - 天气时间服务启动成功
+2025-05-20 18:43:29 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:43:29 | INFO | server.py:446 - 音乐服务启动成功
+2025-05-20 18:43:29 | INFO | server.py:466 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:43:47 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 18:43:48 | INFO | if_music.py:385 - adivce is equal to order ,start get list
+2025-05-20 18:43:50 | ERROR | if_music.py:101 - QQ音乐API服务未运行，无法获取音乐数据
+2025-05-20 18:43:54 | ERROR | if_music.py:166 - cookie_get wrong ,check if service on ,return
+2025-05-20 18:43:54 | INFO | if_music.py:141 - start set cookie
+2025-05-20 18:48:03 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:48:03 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:48:03 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:48:03 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:48:05 | ERROR | server.py:366 - 未找到npm命令，请确保已安装Node.js并添加到PATH环境变量中
+2025-05-20 18:48:05 | INFO | server.py:367 - 您可以从 https://nodejs.org/ 下载并安装Node.js，安装后重启程序
+2025-05-20 18:48:05 | WARNING | server.py:505 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-20 18:48:05 | INFO | server.py:511 - 聊天服务启动成功
+2025-05-20 18:48:05 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:48:05 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:48:05 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:48:05 | INFO | server.py:522 - 天气时间服务启动成功
+2025-05-20 18:48:05 | INFO | server.py:529 - 音乐服务启动成功
+2025-05-20 18:48:05 | INFO | server.py:549 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:51:38 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:51:38 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:51:38 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:51:38 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:51:41 | ERROR | server.py:366 - 未找到npm命令，请确保已安装Node.js并添加到PATH环境变量中
+2025-05-20 18:51:41 | INFO | server.py:367 - 您可以从 https://nodejs.org/ 下载并安装Node.js，安装后重启程序
+2025-05-20 18:51:41 | WARNING | server.py:505 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-20 18:51:41 | INFO | server.py:511 - 聊天服务启动成功
+2025-05-20 18:51:41 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:51:41 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:51:41 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:51:41 | INFO | server.py:522 - 天气时间服务启动成功
+2025-05-20 18:51:41 | INFO | server.py:529 - 音乐服务启动成功
+2025-05-20 18:51:41 | INFO | server.py:549 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:52:34 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:52:34 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:52:34 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:52:34 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:52:36 | INFO | server.py:377 - 找到npm命令: C:\Program Files\nodejs\npm.CMD
+2025-05-20 18:52:36 | INFO | server.py:378 - 找到node命令: C:\Program Files\nodejs\node.EXE
+2025-05-20 18:52:36 | INFO | server.py:384 - 正在启动QQ音乐API服务，路径: c:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 18:52:36 | INFO | server.py:407 - QQ音乐API服务启动命令已执行，进程ID: 31624
+2025-05-20 18:52:47 | ERROR | server.py:444 - API启动失败，api.log最后几行内容:
+[0mGET /radio?id=101 [32m200 [0m322.835 ms - 8927[0m
+[0mGET /song/urls?id=003UaBZ10T3UQB [32m200 [0m81.068 ms - 254[0m
+
+> qq-music-api@1.1.2 start
+> node ./bin/www
+
+Listening on 
+ http://localhost:3300 
+ http://127.0.0.1:3300
+配置QQ号/wxuin 为：1837699517
+[0mGET /health [33m404 [0m176.096 ms - 152[0m
+[0mGET /health [33m404 [0m6.297 ms - 152[0m
+[0mGET /health [33m404 [0m4.831 ms - 152[0m
+[0mGET /health [33m404 [0m3.425 ms - 152[0m
+[0mGET /health [33m404 [0m4.011 ms - 152[0m
+[0mGET /health [33m404 [0m3.750 ms - 152[0m
+[0mGET /health [33m404 [0m3.468 ms - 152[0m
+[0mGET /health [33m404 [0m3.370 ms - 152[0m
+[0mGET /health [33m404 [0m6.681 ms - 152[0m
+[0mGET /health [33m404 [0m4.286 ms - 152[0m
+
+2025-05-20 18:52:48 | INFO | server.py:457 - npm版本: 10.9.2
+2025-05-20 18:52:48 | INFO | server.py:468 - Node.js版本: v22.15.1
+2025-05-20 18:52:48 | ERROR | server.py:474 - 启动QQ音乐API服务失败，请检查以下几点：
+2025-05-20 18:52:48 | ERROR | server.py:475 - 1. 确保已安装Node.js并添加到PATH环境变量
+2025-05-20 18:52:48 | ERROR | server.py:476 - 2. 确保QQMusicApi目录下已运行过'npm install'安装依赖
+2025-05-20 18:52:48 | ERROR | server.py:477 - 3. 检查QQMusicApi目录下的api.log文件获取详细错误信息
+2025-05-20 18:52:48 | ERROR | server.py:478 - 4. 可以尝试手动在命令行中进入QQMusicApi目录，运行'npm start'测试
+2025-05-20 18:52:48 | WARNING | server.py:505 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-20 18:52:48 | INFO | server.py:511 - 聊天服务启动成功
+2025-05-20 18:52:48 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:52:48 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:52:48 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:52:48 | INFO | server.py:522 - 天气时间服务启动成功
+2025-05-20 18:52:48 | INFO | server.py:529 - 音乐服务启动成功
+2025-05-20 18:52:48 | INFO | server.py:549 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:53:08 | INFO | chat.py:443 - 收到文本命令: 下一首。
+2025-05-20 18:53:08 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:53:09 | INFO | chat.py:443 - 收到文本命令: 下一首。
+2025-05-20 18:53:09 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:53:11 | INFO | if_music.py:61 - Next Music
+2025-05-20 18:53:11 | INFO | chat.py:153 - 开始新对话
+2025-05-20 18:53:12 | INFO | chat.py:443 - 收到文本命令: 下一首。
+2025-05-20 18:53:12 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:53:13 | INFO | chat.py:443 - 收到文本命令: 下一首。
+2025-05-20 18:53:13 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:53:15 | INFO | if_music.py:61 - Next Music
+2025-05-20 18:53:15 | INFO | chat.py:153 - 开始新对话
+2025-05-20 18:53:26 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 18:53:27 | INFO | if_music.py:418 - Prepare for next music
+2025-05-20 18:53:27 | INFO | if_music.py:385 - adivce is equal to order ,start get list
+2025-05-20 18:53:27 | ERROR | if_music.py:101 - QQ音乐API服务未运行，无法获取音乐数据
+2025-05-20 18:53:30 | ERROR | if_music.py:166 - cookie_get wrong ,check if service on ,return
+2025-05-20 18:53:30 | INFO | if_music.py:141 - start set cookie
+2025-05-20 18:53:30 | ERROR | if_music.py:101 - QQ音乐API服务未运行，无法获取音乐数据
+2025-05-20 18:53:34 | ERROR | if_music.py:166 - cookie_get wrong ,check if service on ,return
+2025-05-20 18:53:34 | ERROR | if_music.py:202 - cookie wrong , stop from get_adv_list
+2025-05-20 18:53:34 | INFO | if_music.py:385 - adivce is equal to order ,start get list
+2025-05-20 18:53:34 | ERROR | if_music.py:101 - QQ音乐API服务未运行，无法获取音乐数据
+2025-05-20 18:53:38 | ERROR | if_music.py:166 - cookie_get wrong ,check if service on ,return
+2025-05-20 18:53:38 | INFO | if_music.py:141 - start set cookie
+2025-05-20 18:53:38 | ERROR | if_music.py:101 - QQ音乐API服务未运行，无法获取音乐数据
+2025-05-20 18:53:41 | ERROR | if_music.py:166 - cookie_get wrong ,check if service on ,return
+2025-05-20 18:53:41 | ERROR | if_music.py:202 - cookie wrong , stop from get_adv_list
+2025-05-20 18:53:41 | INFO | if_music.py:385 - adivce is equal to order ,start get list
+2025-05-20 18:53:41 | ERROR | if_music.py:101 - QQ音乐API服务未运行，无法获取音乐数据
+2025-05-20 18:53:45 | ERROR | if_music.py:166 - cookie_get wrong ,check if service on ,return
+2025-05-20 18:53:45 | INFO | if_music.py:141 - start set cookie
+2025-05-20 18:53:45 | ERROR | if_music.py:101 - QQ音乐API服务未运行，无法获取音乐数据
+2025-05-20 18:53:49 | ERROR | if_music.py:166 - cookie_get wrong ,check if service on ,return
+2025-05-20 18:53:49 | ERROR | if_music.py:202 - cookie wrong , stop from get_adv_list
+2025-05-20 18:53:49 | INFO | if_music.py:385 - adivce is equal to order ,start get list
+2025-05-20 18:53:49 | ERROR | if_music.py:101 - QQ音乐API服务未运行，无法获取音乐数据
+2025-05-20 18:53:50 | INFO | server.py:332 - 正在关闭服务...
+2025-05-20 18:53:50 | INFO | server.py:565 - 正在关闭服务器...
+2025-05-20 18:53:50 | INFO | server.py:582 - QQ音乐API服务已关闭
+2025-05-20 18:53:50 | INFO | server.py:593 - 等待chat线程结束...
+2025-05-20 18:53:51 | INFO | server.py:593 - 等待monitor线程结束...
+2025-05-20 18:53:51 | INFO | server.py:593 - 等待weather_time线程结束...
+2025-05-20 18:53:52 | INFO | server.py:593 - 等待music线程结束...
+2025-05-20 18:53:52 | INFO | server.py:597 - 服务器已关闭
+2025-05-20 18:56:44 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:56:44 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:56:44 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:56:44 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:56:44 | INFO | server.py:460 - 聊天服务启动成功
+2025-05-20 18:56:44 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:56:44 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:56:44 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:56:44 | INFO | server.py:471 - 天气时间服务启动成功
+2025-05-20 18:56:44 | INFO | server.py:506 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:56:49 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 18:57:16 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 18:57:16 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 18:57:16 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 18:57:16 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 18:57:17 | INFO | server.py:460 - 聊天服务启动成功
+2025-05-20 18:57:17 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 18:57:17 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 18:57:17 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 18:57:17 | INFO | server.py:471 - 天气时间服务启动成功
+2025-05-20 18:57:17 | INFO | server.py:366 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 18:57:17 | INFO | server.py:391 - QQ音乐API服务已经在运行
+2025-05-20 18:57:17 | INFO | server.py:478 - QQ音乐API服务启动成功
+2025-05-20 18:57:17 | INFO | server.py:486 - 音乐服务启动成功
+2025-05-20 18:57:17 | INFO | server.py:506 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 18:57:45 | INFO | chat.py:443 - 收到文本命令: 来首音乐
+2025-05-20 18:57:45 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:57:47 | INFO | chat.py:443 - 收到文本命令: 来首音乐
+2025-05-20 18:57:47 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:57:47 | INFO | chat.py:153 - 开始新对话
+2025-05-20 18:57:56 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 18:57:56 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 18:57:56 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 18:57:56 | INFO | chat.py:330 - 回复: 哈哈，来啦！🎵 你最近是想要哪种风格的呀？  
+
+- 想听点**轻松治愈**的？推荐你《Lemon》——米津玄师，旋律一响心情就会变好呢～  
+- 或者来点**热血上头**的？《Unstoppable》—Sia，听完感觉自己能一拳打穿墙壁！（开玩笑啦）  
+- 要是想**emo一下**… 我悄悄安利《水星记》🌌，但听完记得找我聊天哦，不准一个人偷偷难过！  
+
+或者… 你最近有单曲循环的歌吗？我也想听听你的宝藏！✨
+2025-05-20 18:58:15 | INFO | chat.py:443 - 收到文本命令: 播放音乐
+2025-05-20 18:58:15 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:58:15 | DEBUG | tts_stream.py:102 - 正在停止TTS播放
+2025-05-20 18:58:15 | DEBUG | tts_stream.py:114 - TTS播放已停止
+2025-05-20 18:58:15 | INFO | chat.py:218 - 对话结束
+2025-05-20 18:58:15 | WARNING | chat.py:112 - 对话被中断
+2025-05-20 18:58:17 | WARNING | if_music.py:50 - words split wrong
+2025-05-20 18:58:17 | INFO | chat.py:153 - 开始新对话
+2025-05-20 18:58:45 | INFO | chat.py:443 - 收到文本命令: 播放音乐
+2025-05-20 18:58:45 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:58:48 | WARNING | if_music.py:50 - words split wrong
+2025-05-20 18:58:48 | INFO | chat.py:153 - 开始新对话
+2025-05-20 18:58:59 | INFO | chat.py:443 - 收到文本命令: 你好
+2025-05-20 18:58:59 | INFO | chat.py:98 - 热词触发
+2025-05-20 18:59:02 | INFO | chat.py:153 - 开始新对话
+2025-05-20 18:59:13 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 18:59:13 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 18:59:13 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 18:59:13 | INFO | chat.py:330 - 回复: 嘿嘿，今天怎么有空来找我玩啦～ 🌟（开心转圈）  
+
+是有什么新鲜事想分享，还是单纯想摸鱼聊聊天呀？  
+——比如：“刚被同事投喂了超甜的车厘子，幸福到冒泡！”🍒  
+——或者：“地铁上遇到一只穿花衬衫的修狗，治愈一整天！”🐶  
+
+（悄悄说：你发个表情包我也能接住戏的！🤪）
+2025-05-20 18:59:19 | INFO | server.py:332 - 正在关闭服务...
+2025-05-20 18:59:19 | INFO | server.py:522 - 正在关闭服务器...
+2025-05-20 18:59:19 | INFO | server.py:552 - 等待chat线程结束...
+2025-05-20 18:59:19 | INFO | server.py:552 - 等待monitor线程结束...
+2025-05-20 18:59:20 | INFO | server.py:552 - 等待weather_time线程结束...
+2025-05-20 18:59:21 | INFO | server.py:552 - 等待music线程结束...
+2025-05-20 18:59:21 | INFO | server.py:556 - 服务器已关闭
+2025-05-20 19:07:31 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 19:07:31 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 19:07:31 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 19:07:31 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 19:07:31 | INFO | server.py:514 - 聊天服务启动成功
+2025-05-20 19:07:31 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 19:07:31 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 19:07:31 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 19:07:31 | INFO | server.py:525 - 天气时间服务启动成功
+2025-05-20 19:07:31 | INFO | server.py:560 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 19:07:37 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 19:08:02 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 19:08:02 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 19:08:02 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 19:08:02 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 19:08:02 | INFO | server.py:514 - 聊天服务启动成功
+2025-05-20 19:08:02 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 19:08:02 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 19:08:02 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 19:08:02 | INFO | server.py:525 - 天气时间服务启动成功
+2025-05-20 19:08:02 | INFO | server.py:368 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 19:08:02 | INFO | server.py:440 - QQ音乐API服务已经在运行
+2025-05-20 19:08:02 | INFO | server.py:532 - QQ音乐API服务启动成功
+2025-05-20 19:08:02 | INFO | server.py:540 - 音乐服务启动成功
+2025-05-20 19:08:02 | INFO | server.py:560 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 19:08:09 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 19:08:09 | INFO | if_music.py:372 - adivce is equal to order ,start get list
+2025-05-20 19:08:09 | INFO | if_music.py:163 - cookie is normal
+2025-05-20 19:08:09 | INFO | if_music.py:202 - {'songname': '嗨！人间', 'singer': '周深', 'songmid': '000981Sn1Locxq'}
+2025-05-20 19:08:09 | INFO | if_music.py:374 - 0
+2025-05-20 19:08:11 | INFO | if_music.py:347 - 来自周深的嗨！人间
+2025-05-20 19:08:18 | INFO | if_music.py:354 - start play advice song
+2025-05-20 19:08:18 | INFO | if_music.py:426 - Music service : start play
+2025-05-20 19:08:37 | INFO | chat.py:443 - 收到文本命令: 切歌 
+2025-05-20 19:08:37 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:08:40 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:08:40 | INFO | if_music.py:433 - Music service : turn down the volume
+2025-05-20 19:08:43 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 19:08:43 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 19:08:43 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 19:08:43 | INFO | chat.py:330 - 回复: 哈哈，这就给你切！想听点啥风格的？最近我循环了好多宝藏歌，要不要试试看？
+2025-05-20 19:08:50 | INFO | chat.py:218 - 对话结束
+2025-05-20 19:08:51 | INFO | if_music.py:436 - Music service : change the volume
+2025-05-20 19:08:53 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:08:53 | INFO | if_music.py:433 - Music service : turn down the volume
+2025-05-20 19:08:53 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 19:08:53 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 19:08:56 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 19:08:57 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 19:08:58 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 58500000, 'DisplayText': ''}
+2025-05-20 19:08:58 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 19:09:01 | INFO | if_music.py:436 - Music service : change the volume
+2025-05-20 19:09:38 | INFO | chat.py:443 - 收到文本命令: 暂停
+2025-05-20 19:09:38 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:09:40 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:09:40 | INFO | if_music.py:433 - Music service : turn down the volume
+2025-05-20 19:09:43 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 19:09:43 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 19:09:43 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 19:09:43 | INFO | chat.py:330 - 回复: 好嘞，音乐暂停~ 要是想继续随时喊我呀。对了你刚在忙啥呢？
+2025-05-20 19:09:48 | INFO | chat.py:218 - 对话结束
+2025-05-20 19:09:49 | INFO | if_music.py:436 - Music service : change the volume
+2025-05-20 19:09:51 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:09:51 | INFO | if_music.py:433 - Music service : turn down the volume
+2025-05-20 19:09:51 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 19:09:51 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 19:09:54 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 19:09:55 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 19:09:56 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 54000000, 'DisplayText': ''}
+2025-05-20 19:09:56 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 19:09:59 | INFO | if_music.py:436 - Music service : change the volume
+2025-05-20 19:10:31 | INFO | chat.py:443 - 收到文本命令: 暂停音乐
+2025-05-20 19:10:31 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:10:33 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:10:33 | INFO | config.py:98 - Changed_params:{'MusicPlay': False}
+2025-05-20 19:10:33 | INFO | if_music.py:67 - off the music
+2025-05-20 19:10:33 | INFO | if_music.py:362 - music stopping
+2025-05-20 19:13:20 | INFO | chat.py:443 - 收到文本命令: 播放音乐光辉岁月
+2025-05-20 19:13:20 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:13:22 | INFO | if_music.py:52 - 搜索：光辉岁月
+2025-05-20 19:13:22 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:13:22 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 19:13:23 | INFO | if_music.py:220 - 0
+2025-05-20 19:13:23 | INFO | if_music.py:229 - find next
+2025-05-20 19:13:23 | INFO | if_music.py:220 - 1
+2025-05-20 19:13:23 | INFO | if_music.py:229 - find next
+2025-05-20 19:13:23 | INFO | if_music.py:220 - 2
+2025-05-20 19:13:24 | INFO | if_music.py:300 - 来自黄家驹的光辉岁月
+2025-05-20 19:13:32 | INFO | if_music.py:310 - start play search song
+2025-05-20 19:15:10 | INFO | chat.py:443 - 收到文本命令: 你在干什么
+2025-05-20 19:15:10 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:15:12 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:15:13 | INFO | if_music.py:433 - Music service : turn down the volume
+2025-05-20 19:15:16 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 19:15:16 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 19:15:16 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 19:15:16 | INFO | chat.py:330 - 回复: 我呀，正偷偷数着云朵等你回来聊天呢～ 其实在后台整理超多好玩的话题，就等着你一声令下开聊！最近发现个超有趣的东西想跟你分享...
+2025-05-20 19:15:28 | INFO | chat.py:218 - 对话结束
+2025-05-20 19:15:28 | INFO | if_music.py:436 - Music service : change the volume
+2025-05-20 19:15:30 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:15:30 | INFO | if_music.py:433 - Music service : turn down the volume
+2025-05-20 19:15:30 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 19:15:30 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 19:15:34 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 19:15:35 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 19:15:36 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 73800000, 'DisplayText': ''}
+2025-05-20 19:15:36 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 19:15:39 | INFO | if_music.py:436 - Music service : change the volume
+2025-05-20 19:18:21 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 19:18:21 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 19:18:21 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 19:18:21 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 19:18:21 | INFO | server.py:514 - 聊天服务启动成功
+2025-05-20 19:18:21 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 19:18:21 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 19:18:21 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 19:18:21 | INFO | server.py:525 - 天气时间服务启动成功
+2025-05-20 19:18:21 | INFO | server.py:368 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 19:18:21 | INFO | server.py:440 - QQ音乐API服务已经在运行
+2025-05-20 19:18:21 | INFO | server.py:532 - QQ音乐API服务启动成功
+2025-05-20 19:18:21 | INFO | server.py:540 - 音乐服务启动成功
+2025-05-20 19:18:21 | INFO | server.py:560 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 19:18:46 | INFO | chat.py:443 - 收到文本命令: 来首歌吧
+2025-05-20 19:18:46 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:18:49 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:18:52 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 19:18:52 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 19:18:52 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 19:18:52 | INFO | chat.py:330 - 回复: 哈哈 最近我超爱听周杰伦的《晴天》！前奏一响整个人都温柔了～你要不要一起哼两句？或者你有想听的歌我也可以给你唱两句，虽然可能跑调哈哈！
+2025-05-20 19:19:02 | INFO | chat.py:218 - 对话结束
+2025-05-20 19:19:02 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 19:19:02 | INFO | if_music.py:550 - adivce is equal to order ,start get list
+2025-05-20 19:19:02 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 19:19:03 | INFO | if_music.py:380 - {'songname': '如你随行', 'singer': '周深', 'songmid': '001LFBqT1AK1w0'}
+2025-05-20 19:19:03 | INFO | if_music.py:380 - {'songname': '水星记', 'singer': '郭顶', 'songmid': '004FEdUS35wjYb'}
+2025-05-20 19:19:03 | INFO | if_music.py:552 - 0
+2025-05-20 19:19:04 | INFO | if_music.py:525 - 来自周深的如你随行
+2025-05-20 19:19:04 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:19:05 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 19:19:05 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 19:19:07 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 19:19:07 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 19:19:08 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 35300000, 'DisplayText': ''}
+2025-05-20 19:19:08 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 19:19:11 | INFO | if_music.py:532 - start play advice song
+2025-05-20 19:19:11 | INFO | if_music.py:604 - Music service : start play
+2025-05-20 19:19:20 | INFO | chat.py:443 - 收到文本命令: 来首晴天吧
+2025-05-20 19:19:20 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:19:22 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:19:22 | INFO | if_music.py:611 - Music service : turn down the volume
+2025-05-20 19:19:27 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 19:19:27 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 19:19:27 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 19:19:27 | INFO | chat.py:330 - 回复: 好呀！那我来啦～（清清嗓子）故事的小黄花～从出生那年就飘着～ 咳咳跑调了别嫌弃！这首歌真的百听不厌对吧，每次听到"好不容易又能再多爱一天"那里都会莫名感动。你最喜欢哪句歌词呀？
+2025-05-20 19:19:41 | INFO | chat.py:218 - 对话结束
+2025-05-20 19:19:41 | INFO | if_music.py:614 - Music service : change the volume
+2025-05-20 19:19:43 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:19:43 | INFO | if_music.py:611 - Music service : turn down the volume
+2025-05-20 19:19:44 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 19:19:44 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 19:19:50 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 19:19:50 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 19:19:52 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 56800000, 'Duration': 63400000, 'DisplayText': ''}
+2025-05-20 19:19:52 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 19:19:55 | INFO | if_music.py:614 - Music service : change the volume
+2025-05-20 19:21:01 | INFO | chat.py:443 - 收到文本命令: 播放日推
+2025-05-20 19:21:01 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:21:03 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:21:03 | INFO | if_music.py:611 - Music service : turn down the volume
+2025-05-20 19:21:06 | INFO | if_music.py:167 - 开始播放音乐
+2025-05-20 19:21:06 | INFO | if_music.py:614 - Music service : change the volume
+2025-05-20 19:21:33 | INFO | chat.py:443 - 收到文本命令: 播放歌曲晴天
+2025-05-20 19:21:33 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:21:33 | INFO | chat.py:443 - 收到文本命令: 播放歌曲晴天
+2025-05-20 19:21:33 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:21:35 | INFO | if_music.py:183 - 搜索音乐：晴天
+2025-05-20 19:21:35 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:21:35 | INFO | if_music.py:540 - music stopping
+2025-05-20 19:21:36 | INFO | if_music.py:398 - 0
+2025-05-20 19:21:36 | INFO | if_music.py:407 - find next
+2025-05-20 19:21:36 | INFO | if_music.py:398 - 1
+2025-05-20 19:21:36 | INFO | if_music.py:407 - find next
+2025-05-20 19:21:36 | INFO | if_music.py:398 - 2
+2025-05-20 19:21:36 | INFO | if_music.py:407 - find next
+2025-05-20 19:21:36 | INFO | if_music.py:398 - 3
+2025-05-20 19:21:36 | INFO | if_music.py:407 - find next
+2025-05-20 19:21:36 | INFO | if_music.py:417 - start deep search
+2025-05-20 19:21:37 | INFO | if_music.py:424 - {'result': 100, 'data': {'list': [{'singer': [{'id': 4558, 'mid': '0025NhlN2yWrP4', 'name': '周杰伦', 'pmid': '', 'title': '周杰伦', 'type': 0, 'uin': 0}], 'name': '晴天', 'songid': 97773, 'songmid': '0039MnYb0qxYhV', 'songname': '晴天', 'albumid': 8220, 'albummid': '000MkMni19ClKG', 'albumname': '叶惠美', 'interval': 269, 'strMediaMid': '002202B43Cq4V4', 'size128': 4317292, 'size320': 10792516, 'sizeape': 0, 'sizeflac': 31430142, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 5940429, 'mid': '004JAR984JaAkH', 'name': '张雨桐', 'pmid': '', 'title': '张雨桐', 'type': 1, 'uin': 1124641607}], 'name': '晴天', 'songid': 292512450, 'songmid': '002xdlAl2VPcfM', 'songname': '晴天', 'albumid': 14193263, 'albummid': '003ZBDb54M1mOF', 'albumname': '张雨桐', 'interval': 154, 'strMediaMid': '002xdlAl2VPcfM', 'size128': 2470186, 'size320': 6175437, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 4558, 'mid': '0025NhlN2yWrP4', 'name': '周杰伦', 'pmid': '', 'title': '周杰伦', 'type': 0, 'uin': 0}], 'name': '晴天 (Live)', 'songid': 244115385, 'songmid': '004Fs2FP1EvZYc', 'songname': '晴天 (Live)', 'albumid': 9040723, 'albummid': '004fXSyj3bWTMN', 'albumname': '周杰伦地表最强世界巡回演唱会', 'interval': 249, 'strMediaMid': '002DMfDx1macLz', 'size128': 3997575, 'size320': 9993618, 'sizeape': 0, 'sizeflac': 54393782, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 161444, 'mid': '003bQEFA3KrvLI', 'name': '刘瑞琦', 'pmid': '', 'title': '刘瑞琦', 'type': 1, 'uin': 0}], 'name': '晴天', 'songid': 101847263, 'songmid': '000pgbEQ1C4Hsv', 'songname': '晴天', 'albumid': 933770, 'albummid': '0036XVtV4VvtcX', 'albumname': '再次寻找周杰伦', 'interval': 286, 'strMediaMid': '001lkR2X1ZQg8b', 'size128': 4577271, 'size320': 11442877, 'sizeape': 0, 'sizeflac': 26812971, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 6570151, 'mid': '000hfY8V125HGu', 'name': '婷婷Music', 'pmid': '', 'title': '婷婷Music', 'type': 1, 'uin': 0}], 'name': '晴天', 'songid': 278473075, 'songmid': '002Pm6zX2CccVz', 'songname': '晴天', 'albumid': 14725185, 'albummid': '004CpUAS2VAB60', 'albumname': '当真', 'interval': 77, 'strMediaMid': '002Pm6zX2CccVz', 'size128': 1238193, 'size320': 3095185, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 44981, 'mid': '00030gjT0fIBPI', 'name': '关诗敏', 'pmid': '', 'title': '关诗敏', 'type': 1, 'uin': 0}], 'name': '晴天 (Live)', 'songid': 104362804, 'songmid': '003qRPeW4Pzxrh', 'songname': '晴天 (Live)', 'albumid': 1154627, 'albummid': '004avfVT4cer39', 'albumname': '中国好声音第四季 第12期', 'interval': 232, 'strMediaMid': '000q3Zq223bbHO', 'size128': 3719212, 'size320': 9297714, 'sizeape': 0, 'sizeflac': 47676172, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 10443324, 'mid': '001yBxA3009LSW', 'name': '阿福Fuzzi', 'pmid': '', 'title': '阿福Fuzzi', 'type': 1, 'uin': 0}], 'name': '晴天', 'songid': 356195381, 'songmid': '000lNC0Y42Sove', 'songname': '晴天', 'albumid': 24921455, 'albummid': '003lQFAo2bNeBP', 'albumname': '阿福Fuzzi的奇妙音乐之旅', 'interval': 136, 'strMediaMid': '000qqSxs3vsaOD', 'size128': 2192000, 'size320': 5479667, 'sizeape': 0, 'sizeflac': 25246478, 'pay': {'pay_down': 0, 'pay_month': 1, 'pay_play': 0, 'pay_status': 0, 'price_album': 0, 'price_track': 0, 'time_free': 1}}, {'singer': [{'id': 4286, 'mid': '001BLpXF2DyJe2', 'name': '林俊杰', 'pmid': '', 'title': '林俊杰', 'type': 0, 'uin': 0}, {'id': 4558, 'mid': '0025NhlN2yWrP4', 'name': '周杰伦', 'pmid': '', 'title': '周杰伦', 'type': 0, 'uin': 0}], 'name': '晴天 (Live)', 'songid': 206063225, 'songmid': '001naPHz2ER9qv', 'songname': '晴天 (Live)', 'albumid': 0, 'albummid': '', 'albumname': '', 'interval': 239, 'strMediaMid': '0040fkfE2ByaNQ', 'size128': 3828276, 'size320': 0, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 17808, 'mid': '000EHFp61cVTcP', 'name': 'Joy Williams', 'pmid': '', 'title': 'Joy Williams', 'type': 1, 'uin': 0}], 'name': 'Sunny Day', 'songid': 5001541, 'songmid': '002GEIH12WbEcB', 'songname': 'Sunny Day', 'albumid': 435890, 'albummid': '001G2kl31ivkpb', 'albumname': 'Songs from This - EP', 'interval': 158, 'strMediaMid': '000NFYz60pNoiT', 'size128': 2541867, 'size320': 6354282, 'sizeape': 0, 'sizeflac': 19663367, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 3572586, 'mid': '001peQDR364ZsJ', 'name': '空匪', 'pmid': '', 'title': '空匪', 'type': 0, 'uin': 0}], 'name': '晴天', 'songid': 248309210, 'songmid': '004Io7OR4UeT8S', 'songname': '晴天', 'albumid': 9797084, 'albummid': '002ILnpg4D46no', 'albumname': '晴天', 'interval': 202, 'strMediaMid': '004Io7OR4UeT8S', 'size128': 3233102, 'size320': 8082473, 'sizeape': 0, 'sizeflac': 21231619, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 0, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 4558, 'mid': '0025NhlN2yWrP4', 'name': '周杰伦', 'pmid': '', 'title': '周杰伦', 'type': 0, 'uin': 0}], 'name': '晴天', 'songid': 124802606, 'songmid': '004OmEt53sLWcn', 'songname': '晴天', 'albumid': 0, 'albummid': '', 'albumname': '', 'interval': 268, 'strMediaMid': '001kZ9Z74FI3HR', 'size128': 4294285, 'size320': 0, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 3954, 'mid': '001z2JmX09LLgL', 'name': '汪苏泷', 'pmid': '', 'title': '汪苏泷', 'type': 0, 'uin': 0}], 'name': '像晴天像雨天', 'songid': 560651613, 'songmid': '003sZs4P2hFUVQ', 'songname': '像晴天像雨天', 'albumid': 63065889, 'albummid': '001V8PDy1om05K', 'albumname': '电视剧《难哄》影视原声带·只喜欢你Love Moments', 'interval': 236, 'strMediaMid': '003sZs4P2hFUVQ', 'size128': 3786942, 'size320': 9467007, 'sizeape': 0, 'sizeflac': 52094953, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 7631792, 'mid': '002hLUw333ynOa', 'name': '梅菜扣肉肉', 'pmid': '', 'title': '梅菜扣肉肉', 'type': 1, 'uin': 0}], 'name': '晴天 (女声独唱版)', 'songid': 332999022, 'songmid': '001LcPEv1TEenh', 'songname': '晴天 (女声独唱版)', 'albumid': 23491221, 'albummid': '000rusYr0tlsP1', 'albumname': '晴天 (独唱版)', 'interval': 268, 'strMediaMid': '001LcPEv1TEenh', 'size128': 4294730, 'size320': 10735884, 'sizeape': 0, 'sizeflac': 34271159, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 2090069, 'mid': '002xniyG2Zeszn', 'name': '欧阳耀莹', 'pmid': '', 'title': '欧阳耀莹', 'type': 1, 'uin': 76200765}], 'name': '晴天 (COVER版)', 'songid': 233902111, 'songmid': '00485d7X0kw19K', 'songname': '晴天 (COVER版)', 'albumid': 7090123, 'albummid': '000rsxPu44d3VZ', 'albumname': '欧阳耀莹 Cover合辑', 'interval': 147, 'strMediaMid': '00485d7X0kw19K', 'size128': 2360035, 'size320': 0, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 1335577, 'mid': '001Zwx2S26rz8k', 'name': 'INDIIA', 'pmid': '', 'title': 'INDIIA', 'type': 0, 'uin': 0}], 'name': 'Sunny Day', 'songid': 200133082, 'songmid': '001WZabU1eFCXX', 'songname': 'Sunny Day', 'albumid': 1781807, 'albummid': '004XyskZ3WHUAr', 'albumname': 'Sunny Day', 'interval': 222, 'strMediaMid': '004W1ZAe497IqQ', 'size128': 3557056, 'size320': 8892305, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 9987000, 'mid': '0006LI4l1MTc5b', 'name': '吉拉朵', 'pmid': '', 'title': '吉拉朵', 'type': 1, 'uin': 0}], 'name': '晴天 (温柔女声版)', 'songid': 383746995, 'songmid': '001v32VM1ORqn5', 'songname': '晴天 (温柔女声版)', 'albumid': 32437277, 'albummid': '0001EZQ308fHVO', 'albumname': '晴天', 'interval': 130, 'strMediaMid': '001uJdw80uj8v8', 'size128': 2092075, 'size320': 5229904, 'sizeape': 0, 'sizeflac': 27989218, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 6516647, 'mid': '003qu3153amDDi', 'name': '小柔Channel', 'pmid': '', 'title': '小柔Channel', 'type': 1, 'uin': 0}], 'name': '晴天', 'songid': 351479626, 'songmid': '0043Z3CS1Ws0yX', 'songname': '晴天', 'albumid': 24779702, 'albummid': '003KKSxW17fpQk', 'albumname': '小柔日翻周杰伦计划', 'interval': 286, 'strMediaMid': '001re5Jj3XuVfv', 'size128': 4578109, 'size320': 11444969, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 0, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 1400123, 'mid': '002pfVN53lKI7x', 'name': '告五人', 'pmid': '', 'title': '告五人', 'type': 2, 'uin': 0}, {'id': 171574, 'mid': '002ZYerG2oC1qP', 'name': '藤冈靛', 'pmid': '', 'title': '藤冈靛', 'type': 0, 'uin': 0}], 'name': '晴れの日 (晴天)', 'songid': 424960612, 'songmid': '002jysVT2p5bHG', 'songname': '晴れの日 (晴天)', 'albumid': 40293043, 'albummid': '0035KSzN2alOld', 'albumname': '晴れの日 (晴天)', 'interval': 299, 'strMediaMid': '002jysVT2p5bHG', 'size128': 4794209, 'size320': 11985197, 'sizeape': 0, 'sizeflac': 63732521, 'pay': {'pay_down': 1, 'pay_month': 1, 'pay_play': 1, 'pay_status': 0, 'price_album': 0, 'price_track': 200, 'time_free': 0}}, {'singer': [{'id': 3538338, 'mid': '002OCMPm31YqPU', 'name': 'Shawn\xa0Ying', 'pmid': '', 'title': 'Shawn\xa0Ying', 'type': 0, 'uin': 0}], 'name': '晴天 - 钢琴独奏版', 'songid': 237956690, 'songmid': '000vudIm1jIHfo', 'songname': '晴天 - 钢琴独奏版', 'albumid': 7914255, 'albummid': '004foQp41IONRk', 'albumname': 'The Piano Sings', 'interval': 238, 'strMediaMid': '003XpFrz06LEVn', 'size128': 3825408, 'size320': 9563152, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 0, 'pay_month': 0, 'pay_play': 0, 'pay_status': 0, 'price_album': 0, 'price_track': 0, 'time_free': 0}}, {'singer': [{'id': 2134458, 'mid': '004a0D2W12O3qq', 'name': 'Zkaaai', 'pmid': '', 'title': 'Zkaaai', 'type': 1, 'uin': 0}], 'name': '晴天', 'songid': 127595283, 'songmid': '002N68Cm1XOdbP', 'songname': '晴天', 'albumid': 0, 'albummid': '', 'albumname': '', 'interval': 25, 'strMediaMid': '001yVFVX47UiXC', 'size128': 403530, 'size320': 0, 'sizeape': 0, 'sizeflac': 0, 'pay': {'pay_down': 0, 'pay_month': 0, 'pay_play': 0, 'pay_status': 0, 'price_album': 0, 'price_track': 0, 'time_free': 0}}], 'pageNo': 1, 'pageSize': 20, 'total': 1002, 'key': '晴天', 't': 0, 'type': 'song'}}
+2025-05-20 19:21:38 | INFO | if_music.py:478 - 来自阿福Fuzzi的晴天
+2025-05-20 19:21:45 | INFO | if_music.py:488 - start play search song
+2025-05-20 19:23:20 | INFO | chat.py:443 - 收到文本命令: 暂停
+2025-05-20 19:23:20 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:23:20 | INFO | chat.py:443 - 收到文本命令: 暂停
+2025-05-20 19:23:20 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:23:22 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:23:23 | INFO | if_music.py:611 - Music service : turn down the volume
+2025-05-20 19:23:25 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 19:23:25 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 19:23:25 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 19:23:25 | INFO | chat.py:330 - 回复: 好嘞～那就安静地陪你待会儿。需要的时候随时喊我，我一直在这儿呢。
+2025-05-20 19:23:30 | INFO | chat.py:218 - 对话结束
+2025-05-20 19:23:30 | INFO | if_music.py:614 - Music service : change the volume
+2025-05-20 19:23:31 | INFO | chat.py:443 - 收到文本命令: 暂停音乐
+2025-05-20 19:23:31 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:23:32 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:23:32 | INFO | config.py:98 - Changed_params:{'MusicPlay': False}
+2025-05-20 19:23:32 | INFO | if_music.py:204 - 停止播放音乐
+2025-05-20 19:23:32 | INFO | if_music.py:540 - music stopping
+2025-05-20 19:23:53 | INFO | chat.py:443 - 收到文本命令: 播放音乐 唯一
+2025-05-20 19:23:53 | INFO | chat.py:98 - 热词触发
+2025-05-20 19:23:56 | INFO | if_music.py:183 - 搜索音乐：唯一
+2025-05-20 19:23:56 | INFO | chat.py:153 - 开始新对话
+2025-05-20 19:23:56 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 19:23:56 | INFO | if_music.py:398 - 0
+2025-05-20 19:23:57 | INFO | if_music.py:407 - find next
+2025-05-20 19:23:57 | INFO | if_music.py:398 - 1
+2025-05-20 19:23:57 | INFO | if_music.py:407 - find next
+2025-05-20 19:23:57 | INFO | if_music.py:398 - 2
+2025-05-20 19:23:57 | INFO | if_music.py:407 - find next
+2025-05-20 19:23:57 | INFO | if_music.py:398 - 3
+2025-05-20 19:23:58 | INFO | if_music.py:478 - 来自十六的月的唯一
+2025-05-20 19:24:05 | INFO | if_music.py:488 - start play search song
+2025-05-20 19:45:06 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 19:45:06 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 19:45:06 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 19:45:06 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 19:45:06 | INFO | server.py:514 - 聊天服务启动成功
+2025-05-20 19:45:06 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 19:45:06 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 19:45:06 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 19:45:06 | INFO | server.py:525 - 天气时间服务启动成功
+2025-05-20 19:45:06 | INFO | server.py:368 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 19:45:06 | INFO | server.py:440 - QQ音乐API服务已经在运行
+2025-05-20 19:45:06 | INFO | server.py:532 - QQ音乐API服务启动成功
+2025-05-20 19:45:06 | INFO | server.py:540 - 音乐服务启动成功
+2025-05-20 19:45:06 | INFO | server.py:560 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 19:45:15 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 19:45:15 | INFO | if_music.py:550 - adivce is equal to order ,start get list
+2025-05-20 19:45:15 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 19:45:16 | INFO | if_music.py:550 - adivce is equal to order ,start get list
+2025-05-20 19:45:16 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 19:45:16 | INFO | if_music.py:550 - adivce is equal to order ,start get list
+2025-05-20 19:45:16 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 19:45:16 | INFO | if_music.py:380 - {'songname': '好风起', 'singer': '周深', 'songmid': '003QZBL52OKq3G'}
+2025-05-20 19:45:16 | INFO | if_music.py:552 - 0
+2025-05-20 19:45:17 | INFO | if_music.py:525 - 来自周深的好风起
+2025-05-20 19:45:24 | INFO | if_music.py:532 - start play advice song
+2025-05-20 19:45:24 | INFO | if_music.py:604 - Music service : start play
+2025-05-20 19:45:34 | INFO | server.py:334 - 正在关闭服务...
+2025-05-20 19:45:34 | INFO | server.py:576 - 正在关闭服务器...
+2025-05-20 19:45:34 | INFO | server.py:606 - 等待chat线程结束...
+2025-05-20 19:45:34 | INFO | server.py:606 - 等待monitor线程结束...
+2025-05-20 19:45:34 | INFO | server.py:606 - 等待weather_time线程结束...
+2025-05-20 19:45:35 | INFO | server.py:606 - 等待music线程结束...
+2025-05-20 19:45:35 | INFO | server.py:610 - 服务器已关闭
+2025-05-20 19:58:12 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 19:58:12 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 19:58:12 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 19:58:12 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 19:58:12 | INFO | server.py:563 - 传感器数据更新线程已启动
+2025-05-20 19:58:12 | INFO | server.py:426 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 19:58:12 | INFO | server.py:472 - 已更新QQMusicApi配置: QQ=877770086, 端口=3300
+2025-05-20 19:58:12 | INFO | server.py:426 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 19:58:12 | INFO | server.py:498 - QQ音乐API服务已经在运行
+2025-05-20 19:58:12 | INFO | server.py:610 - 所有服务已启动
+2025-05-20 19:58:12 | INFO | server.py:617 - Web服务器运行在 http://0.0.0.0:5000
+2025-05-20 20:00:00 | INFO | server.py:359 - 整点报时
+2025-05-20 20:00:05 | INFO | server.py:322 - 通知播放停止：自动完成
+2025-05-20 20:02:15 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:02:15 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:02:15 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:02:15 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:02:15 | INFO | server.py:526 - 聊天服务启动成功
+2025-05-20 20:02:15 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:02:15 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:02:15 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:02:15 | INFO | server.py:537 - 天气时间服务启动成功
+2025-05-20 20:02:15 | INFO | server.py:380 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:02:15 | INFO | server.py:452 - QQ音乐API服务已经在运行
+2025-05-20 20:02:15 | INFO | server.py:544 - QQ音乐API服务启动成功
+2025-05-20 20:02:15 | INFO | server.py:552 - 音乐服务启动成功
+2025-05-20 20:02:15 | INFO | server.py:572 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:06:38 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:06:38 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:06:38 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:06:38 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:06:38 | INFO | server.py:526 - 聊天服务启动成功
+2025-05-20 20:06:38 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:06:38 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:06:38 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:06:38 | INFO | server.py:537 - 天气时间服务启动成功
+2025-05-20 20:06:38 | INFO | server.py:380 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:06:38 | INFO | server.py:452 - QQ音乐API服务已经在运行
+2025-05-20 20:06:38 | INFO | server.py:544 - QQ音乐API服务启动成功
+2025-05-20 20:06:38 | INFO | server.py:552 - 音乐服务启动成功
+2025-05-20 20:06:38 | INFO | server.py:572 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:12:28 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:12:28 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:12:28 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:12:28 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:12:28 | INFO | server.py:548 - 聊天服务启动成功
+2025-05-20 20:12:28 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:12:28 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:12:28 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:12:28 | INFO | server.py:559 - 天气时间服务启动成功
+2025-05-20 20:12:28 | INFO | server.py:402 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:12:28 | INFO | server.py:474 - QQ音乐API服务已经在运行
+2025-05-20 20:12:28 | INFO | server.py:566 - QQ音乐API服务启动成功
+2025-05-20 20:12:28 | INFO | server.py:574 - 音乐服务启动成功
+2025-05-20 20:12:28 | INFO | server.py:594 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:12:46 | INFO | chat.py:443 - 收到文本命令: 你好
+2025-05-20 20:12:46 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:12:48 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:12:56 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:12:56 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:12:56 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:12:56 | INFO | chat.py:330 - 回复: 嘿，今天过得怎么样呀？我刚在发呆想着中午该吃啥呢，你午饭吃了吗？
+2025-05-20 20:13:01 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:13:03 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:13:04 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:13:04 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:13:08 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:13:09 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:13:10 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 81300000, 'DisplayText': ''}
+2025-05-20 20:13:10 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:13:18 | INFO | chat.py:443 - 收到文本命令: 播放音乐 奇迹再现
+2025-05-20 20:13:18 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:13:21 | INFO | if_music.py:183 - 搜索音乐：奇迹再现
+2025-05-20 20:13:21 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:13:21 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 20:13:21 | INFO | if_music.py:398 - 0
+2025-05-20 20:13:40 | INFO | chat.py:443 - 收到文本命令: 播放音乐奇迹再现
+2025-05-20 20:13:40 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:13:42 | INFO | if_music.py:183 - 搜索音乐：奇迹再现
+2025-05-20 20:13:42 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:14:02 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:14:02 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:14:02 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:14:02 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:14:02 | INFO | server.py:548 - 聊天服务启动成功
+2025-05-20 20:14:02 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:14:02 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:14:02 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:14:02 | INFO | server.py:559 - 天气时间服务启动成功
+2025-05-20 20:14:02 | INFO | server.py:402 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:14:02 | INFO | server.py:474 - QQ音乐API服务已经在运行
+2025-05-20 20:14:02 | INFO | server.py:566 - QQ音乐API服务启动成功
+2025-05-20 20:14:02 | INFO | server.py:574 - 音乐服务启动成功
+2025-05-20 20:14:02 | INFO | server.py:594 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:14:11 | INFO | chat.py:443 - 收到文本命令: 播放音乐奇迹再现
+2025-05-20 20:14:11 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:14:13 | INFO | if_music.py:183 - 搜索音乐：奇迹再现
+2025-05-20 20:14:13 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:14:13 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 20:14:14 | INFO | if_music.py:398 - 0
+2025-05-20 20:14:45 | INFO | chat.py:389 - 收到唤醒命令
+2025-05-20 20:14:47 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:14:48 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:14:48 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:14:53 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:14:53 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:14:55 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 86000000, 'DisplayText': ''}
+2025-05-20 20:14:55 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:15:44 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:15:44 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:15:44 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:15:44 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:15:44 | INFO | server.py:548 - 聊天服务启动成功
+2025-05-20 20:15:44 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:15:44 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:15:44 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:15:44 | INFO | server.py:559 - 天气时间服务启动成功
+2025-05-20 20:15:44 | INFO | server.py:402 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:15:44 | INFO | server.py:474 - QQ音乐API服务已经在运行
+2025-05-20 20:15:44 | INFO | server.py:566 - QQ音乐API服务启动成功
+2025-05-20 20:15:44 | INFO | server.py:574 - 音乐服务启动成功
+2025-05-20 20:15:44 | INFO | server.py:594 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:15:50 | INFO | chat.py:443 - 收到文本命令: 播放音乐
+2025-05-20 20:15:50 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:15:53 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:15:55 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 20:15:55 | INFO | if_music.py:167 - 开始播放音乐
+2025-05-20 20:15:55 | INFO | if_music.py:550 - adivce is equal to order ,start get list
+2025-05-20 20:15:55 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:15:56 | INFO | if_music.py:550 - adivce is equal to order ,start get list
+2025-05-20 20:15:56 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:15:56 | INFO | if_music.py:380 - {'songname': 'Crush', 'singer': '周深', 'songmid': '003ms8cq2bGiKG'}
+2025-05-20 20:15:56 | INFO | if_music.py:380 - {'songname': '千万次想象', 'singer': '张杰', 'songmid': '003n39jA2WcWEh'}
+2025-05-20 20:15:56 | INFO | if_music.py:380 - {'songname': '金鳞', 'singer': '黄子弘凡', 'songmid': '0014MTdJ1zH7oc'}
+2025-05-20 20:15:56 | INFO | if_music.py:380 - {'songname': '深深', 'singer': '阿梨粤', 'songmid': '000Dm6Rt2fopFP'}
+2025-05-20 20:15:56 | INFO | if_music.py:552 - 0
+2025-05-20 20:15:57 | INFO | if_music.py:525 - 来自周深的Crush
+2025-05-20 20:16:04 | INFO | if_music.py:532 - start play advice song
+2025-05-20 20:16:04 | INFO | if_music.py:604 - Music service : start play
+2025-05-20 20:17:12 | INFO | chat.py:443 - 收到文本命令: 下一首。
+2025-05-20 20:17:12 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:17:15 | INFO | if_music.py:198 - 切换到下一首音乐
+2025-05-20 20:17:15 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:17:15 | INFO | if_music.py:540 - music stopping
+2025-05-20 20:17:15 | INFO | if_music.py:583 - Prepare for next music
+2025-05-20 20:17:15 | INFO | if_music.py:552 - 2
+2025-05-20 20:17:16 | INFO | if_music.py:525 - 来自黄子弘凡的金鳞
+2025-05-20 20:17:23 | INFO | if_music.py:532 - start play advice song
+2025-05-20 20:17:28 | INFO | chat.py:443 - 收到文本命令: 下一首。
+2025-05-20 20:17:28 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:17:31 | INFO | if_music.py:198 - 切换到下一首音乐
+2025-05-20 20:17:31 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:17:31 | INFO | if_music.py:540 - music stopping
+2025-05-20 20:17:31 | INFO | if_music.py:583 - Prepare for next music
+2025-05-20 20:17:31 | INFO | if_music.py:552 - 3
+2025-05-20 20:17:32 | INFO | if_music.py:525 - 来自阿梨粤的深深
+2025-05-20 20:17:39 | INFO | if_music.py:532 - start play advice song
+2025-05-20 20:19:15 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:19:15 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:19:15 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:19:15 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:19:15 | INFO | server.py:548 - 聊天服务启动成功
+2025-05-20 20:19:15 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:19:15 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:19:15 | INFO | server.py:559 - 天气时间服务启动成功
+2025-05-20 20:19:15 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:19:15 | INFO | server.py:402 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:19:15 | INFO | server.py:474 - QQ音乐API服务已经在运行
+2025-05-20 20:19:15 | INFO | server.py:566 - QQ音乐API服务启动成功
+2025-05-20 20:19:15 | INFO | server.py:574 - 音乐服务启动成功
+2025-05-20 20:19:15 | INFO | server.py:594 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:19:27 | INFO | chat.py:443 - 收到文本命令: 播放音乐奇迹再现
+2025-05-20 20:19:27 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:19:30 | INFO | if_music.py:183 - 搜索音乐：奇迹再现
+2025-05-20 20:19:30 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:19:30 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 20:19:30 | DEBUG | if_music.py:400 - API响应: {"result":100,"data":{"album":{"count":2,"itemlist":[{"docid":"25537104","id":"25537104","mid":"000CGwq02XY8kE","name":"奇迹再现（DJ浪帝版）","pic":"http://y.gtimg.cn/music/photo_new/T002R180x180M000000CGwq02X...
+2025-05-20 20:19:30 | INFO | if_music.py:420 - 检查歌曲 1/4
+2025-05-20 20:19:30 | WARNING | if_music.py:431 - 歌曲URL响应中没有'data'字段，尝试下一首
+2025-05-20 20:19:30 | INFO | if_music.py:420 - 检查歌曲 2/4
+2025-05-20 20:19:31 | WARNING | if_music.py:431 - 歌曲URL响应中没有'data'字段，尝试下一首
+2025-05-20 20:19:31 | INFO | if_music.py:420 - 检查歌曲 3/4
+2025-05-20 20:19:31 | WARNING | if_music.py:431 - 歌曲URL响应中没有'data'字段，尝试下一首
+2025-05-20 20:19:31 | INFO | if_music.py:420 - 检查歌曲 4/4
+2025-05-20 20:19:31 | WARNING | if_music.py:431 - 歌曲URL响应中没有'data'字段，尝试下一首
+2025-05-20 20:19:31 | INFO | if_music.py:451 - quick search没有找到可播放歌曲，尝试深度搜索
+2025-05-20 20:19:31 | INFO | if_music.py:466 - 开始深度搜索
+2025-05-20 20:19:31 | DEBUG | if_music.py:477 - 深度搜索API响应: {"result":100,"data":{"list":[{"singer":[{"id":19315,"mid":"004Ff3Bj0f0vAC","name":"毛华锋","pmid":"","title":"毛华锋","type":0,"uin":0}],"name":"奇迹再现","songid":103972826,"songmid":"002YPtce1yOIBO","songnam...
+2025-05-20 20:19:32 | INFO | if_music.py:596 - 来自迪迦奥特曼动漫片头曲的奇迹再现
+2025-05-20 20:19:41 | INFO | if_music.py:606 - 开始播放搜索到的歌曲
+2025-05-20 20:20:50 | INFO | chat.py:443 - 收到文本命令: 播放 唯一
+2025-05-20 20:20:50 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:20:53 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:20:53 | INFO | if_music.py:752 - Music service : turn down the volume
+2025-05-20 20:20:56 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:20:56 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:20:56 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:20:56 | INFO | chat.py:330 - 回复: 哇塞 突然放王力宏的歌！这首《唯一》真的超经典，每次听到"你就是我的唯一"那句都会跟着哼~ 
+
+诶你最近是不是在单曲循环这首歌啊？我猜你肯定有个特别的人在心里吧？要不要聊聊看？
+2025-05-20 20:21:07 | INFO | chat.py:443 - 收到文本命令: 播放王力宏的唯一
+2025-05-20 20:21:07 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:21:07 | DEBUG | tts_stream.py:102 - 正在停止TTS播放
+2025-05-20 20:21:08 | DEBUG | tts_stream.py:114 - TTS播放已停止
+2025-05-20 20:21:08 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:21:08 | WARNING | chat.py:112 - 对话被中断
+2025-05-20 20:21:09 | INFO | if_music.py:755 - Music service : change the volume
+2025-05-20 20:21:10 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:21:11 | INFO | if_music.py:752 - Music service : turn down the volume
+2025-05-20 20:21:15 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:21:15 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:21:15 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:21:15 | INFO | chat.py:330 - 回复: 哈哈 看来你今天真的很想听这首呢！王力宏的声音一出来就让人起鸡皮疙瘩，特别是副歌部分那个转音简直绝了。
+
+我猜你可能是想起某个特别的人了吧？要不要边听边聊聊最近发生的事？说不定我还能给你支支招哦~
+2025-05-20 20:21:31 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:21:32 | INFO | if_music.py:755 - Music service : change the volume
+2025-05-20 20:21:33 | INFO | chat.py:443 - 收到文本命令: 播放音乐唯一
+2025-05-20 20:21:33 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:21:33 | INFO | if_music.py:183 - 搜索音乐：唯一
+2025-05-20 20:21:33 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:21:34 | INFO | if_music.py:681 - music stopping
+2025-05-20 20:21:34 | DEBUG | if_music.py:400 - API响应: {"result":100,"data":{"album":{"count":2,"itemlist":[{"docid":"13928","id":"13928","mid":"000D1ceU2ibOvS","name":"唯一","pic":"http://y.gtimg.cn/music/photo_new/T002R180x180M000000D1ceU2ibOvS_3.jpg","si...
+2025-05-20 20:21:34 | INFO | if_music.py:420 - 检查歌曲 1/4
+2025-05-20 20:21:34 | INFO | if_music.py:435 - 当前歌曲无法播放，查找下一首
+2025-05-20 20:21:34 | INFO | if_music.py:420 - 检查歌曲 2/4
+2025-05-20 20:21:34 | INFO | if_music.py:435 - 当前歌曲无法播放，查找下一首
+2025-05-20 20:21:34 | INFO | if_music.py:420 - 检查歌曲 3/4
+2025-05-20 20:21:34 | INFO | if_music.py:435 - 当前歌曲无法播放，查找下一首
+2025-05-20 20:21:34 | INFO | if_music.py:420 - 检查歌曲 4/4
+2025-05-20 20:21:35 | INFO | if_music.py:596 - 来自十六的月的唯一
+2025-05-20 20:21:41 | INFO | if_music.py:606 - 开始播放搜索到的歌曲
+2025-05-20 20:24:57 | INFO | if_music.py:681 - music stopping
+2025-05-20 20:24:57 | INFO | if_music.py:732 - Music service  : next music
+2025-05-20 20:24:57 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:24:57 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:24:57 | INFO | if_music.py:380 - {'songname': '水星记', 'singer': '郭顶', 'songmid': '00485V8K4InqbZ'}
+2025-05-20 20:24:57 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:24:57 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:24:58 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:24:58 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:24:58 | INFO | if_music.py:380 - {'songname': '我以渺小爱你', 'singer': '周深', 'songmid': '000EpEPF1ISlQO'}
+2025-05-20 20:24:58 | INFO | if_music.py:693 - 1
+2025-05-20 20:24:59 | INFO | if_music.py:666 - 来自周深的我以渺小爱你
+2025-05-20 20:25:06 | INFO | if_music.py:673 - start play advice song
+2025-05-20 20:25:06 | INFO | if_music.py:734 - music is playing
+2025-05-20 20:25:30 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:25:30 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:25:30 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:25:30 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:25:30 | INFO | server.py:621 - 聊天服务启动成功
+2025-05-20 20:25:30 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:25:30 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:25:30 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:25:30 | INFO | server.py:632 - 天气时间服务启动成功
+2025-05-20 20:25:30 | INFO | server.py:475 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:25:30 | INFO | server.py:547 - QQ音乐API服务已经在运行
+2025-05-20 20:25:30 | INFO | server.py:639 - QQ音乐API服务启动成功
+2025-05-20 20:25:30 | INFO | server.py:647 - 音乐服务启动成功
+2025-05-20 20:25:30 | INFO | server.py:667 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:25:43 | INFO | chat.py:443 - 收到文本命令: 你好
+2025-05-20 20:25:43 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:25:45 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:25:47 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:25:47 | INFO | chat.py:330 - 回复: 嘿，今天过得怎么样呀？我刚泡了杯热可可，暖暖的特别舒服。你最近有什么开心的事想分享吗？
+2025-05-20 20:25:47 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:26:07 | INFO | chat.py:443 - 收到文本命令: 你在干什么
+2025-05-20 20:26:07 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:26:09 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:26:12 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:26:12 | INFO | chat.py:330 - 回复: 哈哈，其实我刚刚在偷偷刷美食视频，看到好多诱人的甜点！不过现在当然是专心陪你聊天啦。对了，你今天吃午饭了吗？
+2025-05-20 20:26:12 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:26:48 | INFO | server.py:348 - 流式响应超时，断开连接
+2025-05-20 20:27:24 | INFO | server.py:348 - 流式响应超时，断开连接
+2025-05-20 20:28:00 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:28:00 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:28:00 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:28:00 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:28:00 | INFO | server.py:623 - 聊天服务启动成功
+2025-05-20 20:28:00 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:28:00 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:28:00 | INFO | server.py:634 - 天气时间服务启动成功
+2025-05-20 20:28:00 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:28:00 | INFO | server.py:477 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:28:00 | INFO | server.py:549 - QQ音乐API服务已经在运行
+2025-05-20 20:28:00 | INFO | server.py:641 - QQ音乐API服务启动成功
+2025-05-20 20:28:00 | INFO | server.py:649 - 音乐服务启动成功
+2025-05-20 20:28:00 | INFO | server.py:669 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:28:10 | INFO | chat.py:443 - 收到文本命令: 你好
+2025-05-20 20:28:10 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:28:13 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:28:15 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:28:15 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:28:15 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:28:15 | INFO | chat.py:330 - 回复: 嘿，今天过得怎么样呀？我刚泡了杯热可可，暖暖的特别舒服~
+2025-05-20 20:28:20 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:28:22 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:28:23 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:28:23 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:28:27 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:28:27 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:28:28 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 68200000, 'DisplayText': ''}
+2025-05-20 20:28:28 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:28:32 | INFO | chat.py:389 - 收到唤醒命令
+2025-05-20 20:28:35 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:28:35 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:28:35 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:28:40 | INFO | chat.py:443 - 收到文本命令: 下一首。
+2025-05-20 20:28:40 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:28:40 | DEBUG | tts_stream.py:102 - 正在停止TTS播放
+2025-05-20 20:28:40 | DEBUG | tts_stream.py:114 - TTS播放已停止
+2025-05-20 20:28:40 | WARNING | chat.py:112 - 对话被中断
+2025-05-20 20:28:41 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:29:01 | INFO | chat.py:443 - 收到文本命令: 播放音乐
+2025-05-20 20:29:01 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:29:02 | ERROR | chat.py:122 - 聊天服务错误，程序即将退出
+2025-05-20 20:29:20 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:29:20 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:29:20 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:29:20 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:29:20 | INFO | server.py:623 - 聊天服务启动成功
+2025-05-20 20:29:20 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:29:20 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:29:20 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:29:20 | INFO | server.py:634 - 天气时间服务启动成功
+2025-05-20 20:29:20 | INFO | server.py:477 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:29:20 | INFO | server.py:549 - QQ音乐API服务已经在运行
+2025-05-20 20:29:20 | INFO | server.py:641 - QQ音乐API服务启动成功
+2025-05-20 20:29:20 | INFO | server.py:649 - 音乐服务启动成功
+2025-05-20 20:29:20 | INFO | server.py:669 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:29:29 | INFO | chat.py:443 - 收到文本命令: 播放音乐
+2025-05-20 20:29:29 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:29:32 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:29:34 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 20:29:34 | INFO | if_music.py:167 - 开始播放音乐
+2025-05-20 20:29:34 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:29:34 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:29:35 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:29:35 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:29:35 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:29:35 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:29:36 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:29:36 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:29:36 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:29:36 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:29:36 | INFO | if_music.py:380 - {'songname': '去明天', 'singer': '周深', 'songmid': '004Z5vja1aaGKB'}
+2025-05-20 20:29:36 | INFO | if_music.py:693 - 0
+2025-05-20 20:29:37 | INFO | if_music.py:666 - 来自周深的去明天
+2025-05-20 20:29:44 | INFO | if_music.py:673 - start play advice song
+2025-05-20 20:29:44 | INFO | if_music.py:745 - Music service : start play
+2025-05-20 20:32:21 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:32:21 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:32:21 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:32:21 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:32:21 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 20:32:21 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:32:21 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:32:21 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:32:21 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 20:32:21 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:32:21 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 20:32:21 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 20:32:21 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 20:32:21 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:32:40 | INFO | chat.py:443 - 收到文本命令: 播放音乐
+2025-05-20 20:32:40 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:32:43 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:32:45 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 20:32:45 | INFO | if_music.py:167 - 开始播放音乐
+2025-05-20 20:32:45 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-20 20:32:45 | INFO | if_music.py:341 - cookie is normal
+2025-05-20 20:32:46 | INFO | if_music.py:380 - {'songname': '奉时光予你', 'singer': '周深', 'songmid': '003gG3oH2gKIAF'}
+2025-05-20 20:32:46 | INFO | if_music.py:380 - {'songname': 'Upside Down', 'singer': 'JVKE', 'songmid': '003Nw4jX2Cn1oq'}
+2025-05-20 20:32:46 | INFO | if_music.py:693 - 0
+2025-05-20 20:32:47 | INFO | if_music.py:666 - 来自周深的奉时光予你
+2025-05-20 20:32:54 | INFO | if_music.py:673 - start play advice song
+2025-05-20 20:32:54 | INFO | if_music.py:745 - Music service : start play
+2025-05-20 20:33:21 | INFO | server.py:107 - 收到配置更新请求: {'music_volume': 0.8, 'general_volume': 0.9, 'wakebyhw': False, 'Noticenotify': True, 'timenotify': True, 'MusicPlay': True}
+2025-05-20 20:33:21 | INFO | config.py:98 - Changed_params:{'music_volume': 0.8}
+2025-05-20 20:33:21 | INFO | config.py:98 - Changed_params:{'general_volume': 0.9}
+2025-05-20 20:33:21 | INFO | server.py:127 - 已更新配置项: ['music_volume', 'general_volume', 'wakebyhw', 'Noticenotify', 'timenotify', 'MusicPlay']
+2025-05-20 20:33:22 | INFO | if_music.py:755 - Music service : change the volume
+2025-05-20 20:33:30 | INFO | server.py:107 - 收到配置更新请求: {'music_volume': 0.1, 'general_volume': 1, 'wakebyhw': False, 'Noticenotify': True, 'timenotify': True, 'MusicPlay': True}
+2025-05-20 20:33:30 | INFO | config.py:98 - Changed_params:{'music_volume': 0.1}
+2025-05-20 20:33:30 | INFO | config.py:98 - Changed_params:{'general_volume': 1}
+2025-05-20 20:33:30 | INFO | server.py:127 - 已更新配置项: ['music_volume', 'general_volume', 'wakebyhw', 'Noticenotify', 'timenotify', 'MusicPlay']
+2025-05-20 20:33:30 | INFO | if_music.py:755 - Music service : change the volume
+2025-05-20 20:33:41 | INFO | server.py:107 - 收到配置更新请求: {'music_volume': 1, 'general_volume': 0.45, 'wakebyhw': False, 'Noticenotify': True, 'timenotify': True, 'MusicPlay': True}
+2025-05-20 20:33:41 | INFO | config.py:98 - Changed_params:{'music_volume': 1}
+2025-05-20 20:33:41 | INFO | config.py:98 - Changed_params:{'general_volume': 0.45}
+2025-05-20 20:33:41 | INFO | server.py:127 - 已更新配置项: ['music_volume', 'general_volume', 'wakebyhw', 'Noticenotify', 'timenotify', 'MusicPlay']
+2025-05-20 20:33:41 | INFO | if_music.py:755 - Music service : change the volume
+2025-05-20 20:41:07 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:41:07 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:41:07 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:41:07 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:41:07 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 20:41:07 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:41:07 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:41:07 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:41:07 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 20:41:07 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:41:07 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 20:41:07 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 20:41:07 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 20:41:07 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:41:21 | INFO | server.py:392 - 通知播放停止：自动完成
+2025-05-20 20:41:27 | INFO | server.py:392 - 通知播放停止：自动完成
+2025-05-20 20:41:32 | INFO | server.py:107 - 收到配置更新请求: {'music_volume': 0.25, 'general_volume': 1, 'wakebyhw': False, 'Noticenotify': True, 'timenotify': True, 'MusicPlay': False}
+2025-05-20 20:41:32 | INFO | config.py:98 - Changed_params:{'general_volume': 1}
+2025-05-20 20:41:32 | INFO | server.py:127 - 已更新配置项: ['music_volume', 'general_volume', 'wakebyhw', 'Noticenotify', 'timenotify', 'MusicPlay']
+2025-05-20 20:41:39 | INFO | chat.py:443 - 收到文本命令: aaaaaaa
+2025-05-20 20:41:39 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:41:42 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:41:44 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:41:44 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:41:44 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:41:44 | INFO | chat.py:330 - 回复: 哈哈，你是不是在测试我的反应呀？还是键盘被猫踩到了？
+2025-05-20 20:41:48 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:41:50 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:41:51 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:41:51 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:41:57 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:41:57 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:42:00 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 118200000, 'DisplayText': ''}
+2025-05-20 20:42:00 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:42:09 | INFO | server.py:392 - 通知播放停止：自动完成
+2025-05-20 20:42:27 | INFO | server.py:392 - 通知播放停止：自动完成
+2025-05-20 20:42:32 | INFO | chat.py:443 - 收到文本命令: 识别啊
+2025-05-20 20:42:32 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:42:34 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:42:37 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:42:37 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:42:37 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:42:37 | INFO | chat.py:330 - 回复: 哎呀，我这不是在努力理解你嘛～不过你突然这么简短，我都有点懵了。要不咱们聊点别的？比如你今天遇到什么好玩的事了吗？
+2025-05-20 20:42:48 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:42:50 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:42:51 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:42:51 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:42:54 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:42:54 | INFO | server.py:107 - 收到配置更新请求: {'music_volume': 0.25, 'general_volume': 0.1, 'wakebyhw': False, 'Noticenotify': True, 'timenotify': True, 'MusicPlay': False}
+2025-05-20 20:42:54 | INFO | config.py:98 - Changed_params:{'general_volume': 0.1}
+2025-05-20 20:42:54 | INFO | server.py:127 - 已更新配置项: ['music_volume', 'general_volume', 'wakebyhw', 'Noticenotify', 'timenotify', 'MusicPlay']
+2025-05-20 20:42:55 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:42:56 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 58700000, 'DisplayText': ''}
+2025-05-20 20:42:56 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:43:07 | INFO | server.py:392 - 通知播放停止：自动完成
+2025-05-20 20:43:10 | INFO | server.py:107 - 收到配置更新请求: {'music_volume': 0.25, 'general_volume': 0.05, 'wakebyhw': False, 'Noticenotify': True, 'timenotify': True, 'MusicPlay': False}
+2025-05-20 20:43:10 | INFO | config.py:98 - Changed_params:{'general_volume': 0.05}
+2025-05-20 20:43:10 | INFO | server.py:127 - 已更新配置项: ['music_volume', 'general_volume', 'wakebyhw', 'Noticenotify', 'timenotify', 'MusicPlay']
+2025-05-20 20:43:31 | INFO | server.py:392 - 通知播放停止：自动完成
+2025-05-20 20:43:32 | INFO | server.py:107 - 收到配置更新请求: {'music_volume': 0.25, 'general_volume': 1, 'wakebyhw': False, 'Noticenotify': True, 'timenotify': True, 'MusicPlay': False}
+2025-05-20 20:43:32 | INFO | config.py:98 - Changed_params:{'general_volume': 1}
+2025-05-20 20:43:32 | INFO | server.py:127 - 已更新配置项: ['music_volume', 'general_volume', 'wakebyhw', 'Noticenotify', 'timenotify', 'MusicPlay']
+2025-05-20 20:43:40 | INFO | chat.py:443 - 收到文本命令: 啊啊啊啊啊啊啊
+2025-05-20 20:43:40 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:43:42 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:43:45 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:43:45 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:43:45 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:43:45 | INFO | chat.py:330 - 回复: 哇哦，听起来你超级激动的样子！是中了彩票还是看到超可爱的小猫了？快跟我分享一下你的快乐！
+2025-05-20 20:43:52 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:43:54 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:43:54 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:43:54 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:44:00 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:44:01 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:44:03 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 118600000, 'DisplayText': ''}
+2025-05-20 20:44:03 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:44:05 | INFO | server.py:460 - 正在关闭服务...
+2025-05-20 20:44:05 | INFO | server.py:702 - 正在关闭服务器...
+2025-05-20 20:44:05 | INFO | server.py:732 - 等待chat线程结束...
+2025-05-20 20:44:06 | INFO | server.py:732 - 等待monitor线程结束...
+2025-05-20 20:44:06 | INFO | server.py:732 - 等待weather_time线程结束...
+2025-05-20 20:44:07 | INFO | server.py:732 - 等待music线程结束...
+2025-05-20 20:44:07 | INFO | server.py:736 - 服务器已关闭
+2025-05-20 20:44:09 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:44:09 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:44:09 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:44:09 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:44:09 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 20:44:09 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:44:09 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:44:09 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:44:09 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 20:44:09 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:44:09 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 20:44:09 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 20:44:09 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 20:44:09 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:47:39 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:47:39 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:47:39 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:47:39 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:47:39 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 20:47:39 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:47:39 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:47:39 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:47:39 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 20:47:39 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:47:39 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 20:47:39 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 20:47:39 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 20:47:39 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:47:45 | INFO | chat.py:443 - 收到文本命令: 你好啊
+2025-05-20 20:47:45 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:47:47 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:47:49 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:47:49 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:47:49 | INFO | chat.py:330 - 回复: 嘿，今天过得怎么样呀？我刚在发呆想着周末要不要去尝试那家新开的火锅店呢～
+2025-05-20 20:47:50 | DEBUG | tts_stream.py:170 - TTS输入流已关闭
+2025-05-20 20:47:55 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:47:58 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:47:58 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:47:58 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:48:01 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:48:02 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:48:03 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 46700000, 'DisplayText': ''}
+2025-05-20 20:48:03 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:48:06 | INFO | chat.py:443 - 收到文本命令: 什么火锅店
+2025-05-20 20:48:06 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:48:09 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:48:12 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:48:12 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:48:12 | INFO | chat.py:330 - 回复: 就是商场转角那家"辣翻天"！听说他们家的牛油锅底特别香，还有免费续杯的酸梅汤。不过我一个人去有点孤单，你要不要也考虑去尝尝？
+2025-05-20 20:48:13 | DEBUG | tts_stream.py:170 - TTS输入流已关闭
+2025-05-20 20:48:23 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:48:25 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:48:25 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:48:25 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:48:31 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:48:32 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:48:34 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 119800000, 'DisplayText': ''}
+2025-05-20 20:48:34 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:52:15 | INFO | chat.py:443 - 收到文本命令: 现在的温度是多少
+2025-05-20 20:52:15 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:52:18 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:52:24 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:52:24 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:52:24 | INFO | chat.py:330 - 回复: 哈哈，突然聊天气啦？我猜你那边是不是特别热或者特别冷？不过作为你的朋友我得老实说，我可没有实时温度传感器这种高科技装备。要不你告诉我你在哪个城市，我可以帮你查查看？或者咱们继续聊火锅？那家店据说空调开得超足的！
+2025-05-20 20:52:25 | DEBUG | tts_stream.py:170 - TTS输入流已关闭
+2025-05-20 20:52:30 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:52:30 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:52:30 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:52:30 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:52:30 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 20:52:30 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:52:30 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:52:30 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:52:30 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 20:52:30 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:52:30 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 20:52:30 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 20:52:30 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 20:52:30 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:52:42 | INFO | chat.py:443 - 收到文本命令: 鄄城的天气
+2025-05-20 20:52:42 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:52:44 | INFO | if_time_and_weather.py:69 - detected keyword weather
+2025-05-20 20:52:44 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:52:45 | INFO | if_time_and_weather.py:88 - detected city: 鄄城
+2025-05-20 20:52:45 | INFO | if_time_and_weather.py:128 - 成功获取城市ID: 101121002 (城市: 鄄城)
+2025-05-20 20:53:07 | INFO | chat.py:443 - 收到文本命令: 好
+2025-05-20 20:53:07 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:53:09 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:53:09 | INFO | chat.py:443 - 收到文本命令: 基于以下气象数据，以口语化的方式给出今日出门建议：
+城市：鄄城
+户外状况：晴
+气温：31°C
+体感温度：30°C
+空气湿度：52%
+风向：东北风
+风力等级：4级
+请给出穿着、交通方式、是否携带雨具等方面的建议。作为语音助手回答，语气自然，不要分点，控制在100字以内。
+2025-05-20 20:53:09 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:53:09 | DEBUG | tts_stream.py:102 - 正在停止TTS播放
+2025-05-20 20:53:09 | DEBUG | tts_stream.py:114 - TTS播放已停止
+2025-05-20 20:53:09 | WARNING | chat.py:112 - 对话被中断
+2025-05-20 20:53:14 | INFO | if_time_and_weather.py:302 - 已发送天气信息给大模型，等待出行建议
+2025-05-20 20:53:16 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:53:21 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:53:21 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:53:21 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:53:21 | INFO | chat.py:330 - 回复: 哇塞鄄城今天是个大晴天呢！31度不算特别热但有4级风还挺舒服的。建议穿个短袖配薄长裤或者裙子就行啦，骑车的话记得戴个帽子防风，这天气走路或者骑共享单车都挺合适的。不用带伞，但可以备个小防晒喷雾放包里~
+2025-05-20 20:53:39 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:53:41 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:53:42 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:53:42 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:53:48 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:53:48 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:53:50 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 42800000, 'Duration': 78000000, 'DisplayText': ''}
+2025-05-20 20:53:50 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 20:54:08 | INFO | chat.py:443 - 收到文本命令: 播放音乐 稻香
+2025-05-20 20:54:08 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:54:11 | INFO | if_music.py:183 - 搜索音乐：稻香
+2025-05-20 20:54:11 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:54:11 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-20 20:54:11 | DEBUG | if_music.py:400 - API响应: {"result":100,"data":{"album":{"count":2,"itemlist":[{"docid":"52616075","id":"52616075","mid":"0039qQsU3Thnb5","name":"稻香 (Remix摇滚版)","pic":"http://y.gtimg.cn/music/photo_new/T002R180x180M0000039qQsU...
+2025-05-20 20:54:11 | INFO | if_music.py:420 - 检查歌曲 1/4
+2025-05-20 20:54:11 | WARNING | if_music.py:431 - 歌曲URL响应中没有'data'字段，尝试下一首
+2025-05-20 20:54:11 | INFO | if_music.py:420 - 检查歌曲 2/4
+2025-05-20 20:54:11 | WARNING | if_music.py:431 - 歌曲URL响应中没有'data'字段，尝试下一首
+2025-05-20 20:54:11 | INFO | if_music.py:420 - 检查歌曲 3/4
+2025-05-20 20:54:12 | WARNING | if_music.py:431 - 歌曲URL响应中没有'data'字段，尝试下一首
+2025-05-20 20:54:12 | INFO | if_music.py:420 - 检查歌曲 4/4
+2025-05-20 20:54:12 | WARNING | if_music.py:431 - 歌曲URL响应中没有'data'字段，尝试下一首
+2025-05-20 20:54:12 | INFO | if_music.py:451 - quick search没有找到可播放歌曲，尝试深度搜索
+2025-05-20 20:54:12 | INFO | if_music.py:466 - 开始深度搜索
+2025-05-20 20:54:12 | DEBUG | if_music.py:477 - 深度搜索API响应: {"result":100,"data":{"list":[{"singer":[{"id":4558,"mid":"0025NhlN2yWrP4","name":"周杰伦","pmid":"","title":"周杰伦","type":0,"uin":0}],"name":"稻香","songid":449205,"songmid":"003aAYrm3GE0Ac","songname":"稻香...
+2025-05-20 20:54:13 | INFO | if_music.py:596 - 来自贝瓦儿歌的稻香 (童声版)
+2025-05-20 20:54:20 | INFO | if_music.py:606 - 开始播放搜索到的歌曲
+2025-05-20 20:56:32 | INFO | chat.py:443 - 收到文本命令: 现在的室温是22度
+2025-05-20 20:56:32 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:56:35 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:56:35 | INFO | if_music.py:752 - Music service : turn down the volume
+2025-05-20 20:56:38 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:56:38 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:56:38 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:56:38 | INFO | chat.py:330 - 回复: 22度啊，这温度简直不要太舒服！我要是能选的话，最爱的就是这个温度了。穿个薄长袖或者卫衣刚刚好，窝在沙发里追剧简直完美。你是在家还是在办公室呀？
+2025-05-20 20:56:51 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:56:52 | INFO | if_music.py:755 - Music service : change the volume
+2025-05-20 20:56:53 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:56:54 | INFO | if_music.py:752 - Music service : turn down the volume
+2025-05-20 20:56:54 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:56:54 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:56:55 | INFO | chat.py:443 - 收到文本命令: 现在温度是多少
+2025-05-20 20:56:55 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:56:55 | DEBUG | tts_stream.py:102 - 正在停止TTS播放
+2025-05-20 20:56:55 | DEBUG | tts_stream.py:114 - TTS播放已停止
+2025-05-20 20:56:55 | WARNING | chat.py:112 - 对话被中断
+2025-05-20 20:56:56 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:57:13 | INFO | chat.py:443 - 收到文本命令: 现在温度是多少
+2025-05-20 20:57:13 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:57:13 | ERROR | chat.py:122 - 聊天服务错误，程序即将退出
+2025-05-20 20:57:21 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 20:57:21 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 20:57:21 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 20:57:21 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 20:57:21 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 20:57:21 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 20:57:21 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 20:57:21 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 20:57:21 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 20:57:21 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 20:57:21 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 20:57:21 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 20:57:21 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 20:57:21 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 20:57:49 | INFO | chat.py:443 - 收到文本命令: 现在的室温是22度，我问你现在室温是多少
+2025-05-20 20:57:49 | INFO | chat.py:98 - 热词触发
+2025-05-20 20:57:51 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:57:54 | DEBUG | deepseek_stream_with_tts.py:164 - 接收到包含[DONE]的消息: [DONE]
+2025-05-20 20:57:54 | DEBUG | tts_stream.py:153 - 收到结束标记，当前对话TTS完成
+2025-05-20 20:57:54 | DEBUG | tts_stream.py:168 - TTS输入流已关闭
+2025-05-20 20:57:54 | INFO | chat.py:330 - 回复: 哈哈，22度也太舒服了吧！这种温度穿个薄外套刚刚好，我都想和你一起窝在沙发里追剧了～你那边天气怎么样呀？
+2025-05-20 20:58:02 | INFO | chat.py:218 - 对话结束
+2025-05-20 20:58:04 | INFO | chat.py:153 - 开始新对话
+2025-05-20 20:58:05 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 20:58:05 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 20:58:09 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 20:58:09 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 20:58:11 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 77000000, 'DisplayText': ''}
+2025-05-20 20:58:11 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 21:00:01 | INFO | server.py:429 - 整点报时
+2025-05-20 21:00:06 | INFO | server.py:392 - 通知播放停止：自动完成
+2025-05-20 21:07:57 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 21:07:57 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 21:07:57 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 21:07:57 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 21:07:57 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 21:07:57 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 21:07:57 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 21:07:57 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 21:07:57 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 21:07:57 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 21:07:57 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 21:07:57 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 21:07:57 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 21:07:57 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 21:08:10 | INFO | chat.py:443 - 收到文本命令: 室温多少
+2025-05-20 21:08:10 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:08:12 | INFO | if_time_and_weather.py:85 - detected keyword sensor
+2025-05-20 21:08:12 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:08:14 | INFO | if_time_and_weather.py:373 - 获取到传感器数据: 温度=19.0°C, 湿度=48.4%
+2025-05-20 21:08:57 | INFO | server.py:460 - 正在关闭服务...
+2025-05-20 21:08:57 | INFO | server.py:702 - 正在关闭服务器...
+2025-05-20 21:08:57 | INFO | server.py:732 - 等待chat线程结束...
+2025-05-20 21:08:58 | INFO | server.py:732 - 等待weather_time线程结束...
+2025-05-20 21:08:58 | INFO | server.py:732 - 等待music线程结束...
+2025-05-20 21:08:59 | INFO | server.py:736 - 服务器已关闭
+2025-05-20 21:12:48 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 21:12:48 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 21:12:48 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 21:12:48 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 21:12:48 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 21:12:48 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 21:12:48 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 21:12:48 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 21:12:48 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 21:12:48 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 21:12:48 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 21:12:48 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 21:12:48 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 21:12:48 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 21:12:54 | INFO | chat.py:443 - 收到文本命令: 现在的时间
+2025-05-20 21:12:54 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:12:57 | INFO | if_time_and_weather.py:64 - detected keyword time
+2025-05-20 21:12:57 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:13:01 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:13:01 | INFO | if_time_and_weather.py:212 - 时间通知结束，已触发对话激活
+2025-05-20 21:13:04 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:13:04 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 21:13:04 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 21:13:06 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 21:13:07 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 21:13:08 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 27600000, 'DisplayText': ''}
+2025-05-20 21:13:08 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 21:13:14 | INFO | chat.py:443 - 收到文本命令: 西安的天气
+2025-05-20 21:13:14 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:13:16 | INFO | if_time_and_weather.py:78 - detected keyword weather
+2025-05-20 21:13:16 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:13:16 | INFO | if_time_and_weather.py:104 - detected city: 西安
+2025-05-20 21:13:17 | INFO | if_time_and_weather.py:144 - 成功获取城市ID: 101110101 (城市: 西安)
+2025-05-20 21:13:30 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:13:30 | INFO | if_time_and_weather.py:262 - 天气通知结束，已触发对话激活，等待用户回应
+2025-05-20 21:13:32 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:13:32 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 21:13:32 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 21:13:34 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 21:13:35 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 21:13:35 | INFO | chat.py:443 - 收到文本命令: 不用
+2025-05-20 21:13:35 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:13:35 | DEBUG | tts_stream.py:102 - 正在停止TTS播放
+2025-05-20 21:13:35 | DEBUG | tts_stream.py:114 - TTS播放已停止
+2025-05-20 21:13:35 | WARNING | chat.py:112 - 对话被中断
+2025-05-20 21:13:36 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 36200000, 'DisplayText': ''}
+2025-05-20 21:13:36 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 21:14:01 | INFO | chat.py:443 - 收到文本命令: 不用
+2025-05-20 21:14:01 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:14:02 | ERROR | chat.py:122 - 聊天服务错误，程序即将退出
+2025-05-20 21:14:17 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-20 21:14:17 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-20 21:14:17 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-20 21:14:17 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-20 21:14:17 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-20 21:14:17 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-20 21:14:17 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-20 21:14:17 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-20 21:14:17 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-20 21:14:17 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-20 21:14:17 | INFO | server.py:566 - QQ音乐API服务已经在运行
+2025-05-20 21:14:17 | INFO | server.py:658 - QQ音乐API服务启动成功
+2025-05-20 21:14:17 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-20 21:14:17 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-20 21:14:23 | INFO | chat.py:443 - 收到文本命令: 西安的天气
+2025-05-20 21:14:23 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:14:26 | INFO | if_time_and_weather.py:78 - detected keyword weather
+2025-05-20 21:14:26 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:14:26 | INFO | if_time_and_weather.py:104 - detected city: 西安
+2025-05-20 21:14:26 | INFO | if_time_and_weather.py:144 - 成功获取城市ID: 101110101 (城市: 西安)
+2025-05-20 21:14:39 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:14:39 | INFO | if_time_and_weather.py:262 - 天气通知结束，已触发对话激活，等待用户回应
+2025-05-20 21:14:42 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:14:42 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 21:14:42 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 21:14:44 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 21:14:45 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 21:14:46 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 32300000, 'DisplayText': ''}
+2025-05-20 21:14:46 | INFO | chat.py:261 - 识别结果: 
+2025-05-20 21:15:03 | INFO | chat.py:443 - 收到文本命令: 室温
+2025-05-20 21:15:03 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:15:05 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:15:23 | INFO | chat.py:443 - 收到文本命令: 室温
+2025-05-20 21:15:23 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:15:26 | INFO | if_time_and_weather.py:87 - detected keyword sensor
+2025-05-20 21:15:26 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:15:29 | INFO | if_time_and_weather.py:399 - 获取到传感器数据: 温度=24.0°C, 湿度=37.1%
+2025-05-20 21:15:36 | INFO | chat.py:98 - 热词触发
+2025-05-20 21:15:36 | INFO | if_time_and_weather.py:380 - 温湿度通知结束，已触发对话激活
+2025-05-20 21:15:39 | INFO | chat.py:153 - 开始新对话
+2025-05-20 21:15:39 | INFO | chat.py:242 - 准备开始录音
+2025-05-20 21:15:39 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-20 21:15:45 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-20 21:15:46 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-20 21:15:48 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 119800000, 'DisplayText': ''}
+2025-05-20 21:15:48 | INFO | chat.py:261 - 识别结果: 
+2025-05-21 16:07:59 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-21 16:07:59 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-21 16:07:59 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-21 16:07:59 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-21 16:07:59 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-21 16:07:59 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-21 16:07:59 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-21 16:07:59 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-21 16:07:59 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-21 16:07:59 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-21 16:08:01 | INFO | server.py:569 - QQ音乐API服务未运行，正在启动...
+2025-05-21 16:08:01 | INFO | server.py:540 - 已更新QQMusicApi配置: QQ=877770086, 端口=3300
+2025-05-21 16:08:01 | ERROR | server.py:626 - 启动QQ音乐API时出错: [WinError 2] 系统找不到指定的文件。
+2025-05-21 16:08:01 | WARNING | server.py:660 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-21 16:08:01 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-21 16:08:01 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-21 16:08:17 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-21 16:08:17 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-21 16:08:17 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-21 16:08:17 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-21 16:08:17 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-21 16:08:17 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-21 16:08:17 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-21 16:08:17 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-21 16:08:17 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-21 16:08:17 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-21 16:08:19 | INFO | server.py:569 - QQ音乐API服务未运行，正在启动...
+2025-05-21 16:08:19 | INFO | server.py:540 - 已更新QQMusicApi配置: QQ=877770086, 端口=3300
+2025-05-21 16:08:19 | ERROR | server.py:626 - 启动QQ音乐API时出错: [WinError 2] 系统找不到指定的文件。
+2025-05-21 16:08:19 | WARNING | server.py:660 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-21 16:08:19 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-21 16:08:19 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-21 16:08:47 | INFO | chat.py:443 - 收到文本命令: 温度
+2025-05-21 16:08:47 | INFO | chat.py:98 - 热词触发
+2025-05-21 16:08:49 | INFO | if_time_and_weather.py:87 - detected keyword sensor
+2025-05-21 16:08:49 | INFO | chat.py:153 - 开始新对话
+2025-05-21 16:08:52 | INFO | if_time_and_weather.py:399 - 获取到传感器数据: 温度=37.7°C, 湿度=70.1%
+2025-05-21 16:09:02 | INFO | chat.py:98 - 热词触发
+2025-05-21 16:09:02 | INFO | if_time_and_weather.py:380 - 温湿度通知结束，已触发对话激活
+2025-05-21 16:09:05 | INFO | chat.py:153 - 开始新对话
+2025-05-21 16:09:05 | INFO | chat.py:242 - 准备开始录音
+2025-05-21 16:09:05 | INFO | speechpoint.py:30 - 正在获取声音中...
+2025-05-21 16:09:07 | INFO | speechpoint.py:38 - 声音获取完成.
+2025-05-21 16:09:08 | DEBUG | azure_reco.py:48 - 发送语音识别请求(尝试 1/2)
+2025-05-21 16:09:09 | DEBUG | azure_reco.py:77 - 识别响应: {'RecognitionStatus': 'Success', 'Offset': 0, 'Duration': 29700000, 'DisplayText': ''}
+2025-05-21 16:09:09 | INFO | chat.py:261 - 识别结果: 
+2025-05-21 16:09:21 | INFO | server.py:107 - 收到配置更新请求: {'music_volume': 0.25, 'general_volume': 0.5, 'wakebyhw': False, 'Noticenotify': True, 'timenotify': True, 'MusicPlay': True}
+2025-05-21 16:09:21 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-21 16:09:21 | INFO | server.py:127 - 已更新配置项: ['music_volume', 'general_volume', 'wakebyhw', 'Noticenotify', 'timenotify', 'MusicPlay']
+2025-05-21 16:09:21 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-21 16:09:23 | WARNING | if_music.py:275 - HTTPConnectionPool(host='127.0.0.1', port=3300): Max retries exceeded with url: /user/getCookie?id=877770086 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002B825CAF9D0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+2025-05-21 16:09:30 | WARNING | if_music.py:275 - HTTPConnectionPool(host='127.0.0.1', port=3300): Max retries exceeded with url: /user/getCookie?id=877770086 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002B826D263F0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+2025-05-21 16:09:39 | ERROR | if_music.py:331 - cookie_get wrong ,check if service on ,return
+2025-05-21 16:09:39 | INFO | if_music.py:306 - start set cookie
+2025-05-21 16:11:55 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-21 16:11:55 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-21 16:11:55 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-21 16:11:55 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-21 16:11:55 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-21 16:11:55 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-21 16:11:55 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-21 16:11:55 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-21 16:11:55 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-21 16:11:55 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-21 16:11:57 | INFO | server.py:569 - QQ音乐API服务未运行，正在启动...
+2025-05-21 16:11:57 | INFO | server.py:540 - 已更新QQMusicApi配置: QQ=877770086, 端口=3300
+2025-05-21 16:11:57 | ERROR | server.py:626 - 启动QQ音乐API时出错: [WinError 2] 系统找不到指定的文件。
+2025-05-21 16:11:57 | WARNING | server.py:660 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-21 16:11:57 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-21 16:11:57 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-21 16:13:38 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-21 16:13:38 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-21 16:13:38 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-21 16:13:38 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-21 16:13:38 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-21 16:13:38 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-21 16:13:38 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-21 16:13:38 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-21 16:13:38 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-21 16:13:38 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-21 16:13:40 | INFO | server.py:569 - QQ音乐API服务未运行，正在启动...
+2025-05-21 16:13:40 | INFO | server.py:540 - 已更新QQMusicApi配置: QQ=877770086, 端口=3300
+2025-05-21 16:13:40 | ERROR | server.py:626 - 启动QQ音乐API时出错: [WinError 2] 系统找不到指定的文件。
+2025-05-21 16:13:40 | WARNING | server.py:660 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-21 16:13:40 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-21 16:13:40 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-21 16:13:55 | INFO | chat.py:443 - 收到文本命令: 播放音乐
+2025-05-21 16:13:55 | INFO | chat.py:98 - 热词触发
+2025-05-21 16:13:58 | INFO | chat.py:153 - 开始新对话
+2025-05-21 16:14:01 | INFO | config.py:98 - Changed_params:{'MusicPlay': True}
+2025-05-21 16:14:01 | INFO | if_music.py:167 - 开始播放音乐
+2025-05-21 16:14:01 | INFO | if_music.py:691 - adivce is equal to order ,start get list
+2025-05-21 16:14:03 | WARNING | if_music.py:275 - HTTPConnectionPool(host='127.0.0.1', port=3300): Max retries exceeded with url: /user/getCookie?id=877770086 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002307FFADF90>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+2025-05-21 16:14:10 | WARNING | if_music.py:275 - HTTPConnectionPool(host='127.0.0.1', port=3300): Max retries exceeded with url: /user/getCookie?id=877770086 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002307FFAFED0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+2025-05-21 16:14:18 | ERROR | if_music.py:331 - cookie_get wrong ,check if service on ,return
+2025-05-21 16:14:18 | INFO | if_music.py:306 - start set cookie
+2025-05-21 16:23:20 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-21 16:23:20 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-21 16:23:20 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-21 16:23:20 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-21 16:23:20 | INFO | server.py:640 - 聊天服务启动成功
+2025-05-21 16:23:20 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-21 16:23:20 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-21 16:23:20 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-21 16:23:20 | INFO | server.py:651 - 天气时间服务启动成功
+2025-05-21 16:23:20 | INFO | server.py:494 - 自动找到QQMusicApi路径: C:\Users\pupuo\Desktop\PI-Assistant-2.2\QQMusicApi
+2025-05-21 16:23:22 | INFO | server.py:569 - QQ音乐API服务未运行，正在启动...
+2025-05-21 16:23:22 | INFO | server.py:540 - 已更新QQMusicApi配置: QQ=877770086, 端口=3300
+2025-05-21 16:23:22 | ERROR | server.py:626 - 启动QQ音乐API时出错: [WinError 2] 系统找不到指定的文件。
+2025-05-21 16:23:22 | WARNING | server.py:660 - QQ音乐API服务启动失败，音乐功能可能无法正常使用
+2025-05-21 16:23:22 | INFO | server.py:666 - 音乐服务启动成功
+2025-05-21 16:23:22 | INFO | server.py:686 - 所有服务启动完成，PI-Assistant 正在运行
+2025-05-21 16:28:38 | DEBUG | tts_stream.py:70 - 音频输出流已初始化
+2025-05-21 16:28:38 | DEBUG | tts_stream.py:46 - Azure TTS服务已配置
+2025-05-21 16:28:38 | DEBUG | deepseek_stream_with_tts.py:55 - TTS线程已启动
+2025-05-21 16:28:38 | INFO | tts_stream.py:118 - 流式TTS服务已启动
+2025-05-21 16:28:38 | INFO | server.py:473 - 聊天服务启动成功
+2025-05-21 16:28:38 | INFO | deepseek_stream_with_tts.py:251 - 未找到保存的对话记录，初始化新对话
+2025-05-21 16:28:38 | INFO | prompt_and_deal.py:16 - chat_or_standard is True , load chat mode
+2025-05-21 16:28:38 | INFO | deepseek_stream_with_tts.py:66 - 系统提示已初始化
+2025-05-21 16:28:38 | INFO | server.py:484 - 天气时间服务启动成功
+2025-05-21 16:28:38 | INFO | server.py:504 - 所有服务启动完成，PI-Assistant 正在运行
