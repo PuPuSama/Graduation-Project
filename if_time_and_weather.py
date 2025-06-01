@@ -11,8 +11,6 @@ import chat
 
 flag = 0
 city = "北京"  # 默认城市
-weather_info_cache = None  # 缓存天气信息
-waiting_for_advice_response = False  # 是否等待用户回应出行建议请求
 
 # 天气API配置
 WEATHER_API_KEY = "8cc15e673ddf4380a6e28af8a13bec05"  # API密钥
@@ -20,12 +18,7 @@ WEATHER_API_URL = "https://nt4qbhaetu.re.qweatherapi.com/v7/weather/now"  # 天�
 CITY_LOOKUP_URL = "https://nt4qbhaetu.re.qweatherapi.com/geo/v2/city/lookup"  # 城市查询API URL
 
 def timedetect(text):
-    global flag, city, waiting_for_advice_response
-    
-    # 首先检查是否在等待出行建议的响应
-    if waiting_for_advice_response:
-        if handle_advice_response(text):
-            return True
+    global flag, city
     
     # 清理文本，去除标点符号
     clean_text = text.replace('。', '').replace('，', '').replace('？', '').replace('!', '').replace('！', '')
@@ -51,11 +44,11 @@ def timedetect(text):
         '外面天气', '今天气温', '天气好吗'
     ]
     
-    # 温湿度查询关键词列表
-    sensor_keywords = [
-        '温度', '湿度', '温湿度', '室温', '现在温度', '当前温度', 
-        '房间温度', '环境温度', '室内温度', '有多热', '有多冷',
-        '多少度', '屋里温度', '室内湿度', '湿度是多少', '湿度怎么样'
+    # 出行建议关键词列表
+    travel_advice_keywords = [
+        '出行建议', '穿什么', '怎么穿', '出门注意', '今天适合出门吗',
+        '今天穿什么', '出行提示', '需要带伞吗', '需要外套吗', '出门准备',
+        '今天出门', '出门穿什么', '穿衣建议', '出门要带伞吗', '怎么出行'
     ]
     
     # 检查时间查询意图
@@ -81,11 +74,13 @@ def timedetect(text):
             extract_city(clean_text)
             return True
             
-    # 检查温湿度查询意图
-    for keyword in sensor_keywords:
+    # 检查出行建议意图
+    for keyword in travel_advice_keywords:
         if keyword in clean_text:
-            logger.info('detected keyword sensor')
-            flag = 4  # 新的标志值，与已有的1,2,3区分开
+            logger.info('detected keyword travel advice')
+            flag = 4
+            # 尝试提取城市名
+            extract_city(clean_text)
             return True
             
     return False
@@ -207,8 +202,8 @@ def notifytime():
     play('Sound/timenotify.raw')
     config.set(notify_enable=False)
     
-    # 触发聊天服务的激活状态
-    chat.chat_service.handle_hotword_trigger()
+    # 修改: 直接调用chat的hwcallback函数
+    chat.hwcallback()
     logger.info("时间通知结束，已触发对话激活")
 
 def notifydate():
@@ -218,19 +213,16 @@ def notifydate():
     play('Sound/timenotify.raw')
     config.set(notify_enable=False)
     
-    # 触发聊天服务的激活状态
-    chat.chat_service.handle_hotword_trigger()
+    # 修改: 直接调用chat的hwcallback函数
+    chat.hwcallback()
     logger.info("日期通知结束，已触发对话激活")
 
 def notifyweather():
-    """通知当前天气情况并询问是否需要出行建议"""
-    global weather_info_cache, waiting_for_advice_response
+    """通知当前天气情况"""
+    global city
     
     weather_info = get_weather(city)
     if weather_info:
-        # 缓存天气信息以便后续使用
-        weather_info_cache = weather_info
-        
         # 构建天气播报文本
         weather_text = f"{weather_info['city']}当前天气{weather_info['condition']}，"
         weather_text += f"温度{weather_info['temperature']}度，"
@@ -242,34 +234,104 @@ def notifyweather():
         if float(weather_info['precip']) > 0:
             weather_text += f"，降水量{weather_info['precip']}毫米"
         
+        # 更新answer变量，使前端能看到天气信息
+        config.set(answer=weather_text)
+        
         # 保存并播放语音
         tts.ssml_save(weather_text, 'Sound/weathernotify.raw')
         config.set(notify_enable=True)
         play('Sound/ding.wav')
         play('Sound/weathernotify.raw')
-        
-        # 询问是否需要出行建议
-        ask_text = "您需要今日的出行建议吗？"
-        tts.ssml_save(ask_text, 'Sound/askadvice.raw')
-        play('Sound/askadvice.raw')
         config.set(notify_enable=False)
         
-        # 设置标志，表示等待用户回应
-        waiting_for_advice_response = True
+        # 天气播报完成后触发对话激活
+        try:
+            chat.hwcallback()
+        except Exception as e:
+            logger.error(f"调用hwcallback出错: {e}")
+            # 即使出错也不中断流程
         
-        # 触发聊天服务的激活状态
-        chat.chat_service.handle_hotword_trigger()
-        logger.info("天气通知结束，已触发对话激活，等待用户回应")
+        logger.info("天气通知结束，已触发对话激活")
     else:
-        tts.ssml_save(f"抱歉，无法获取{city}的天气信息", 'Sound/weathernotify.raw')
+        error_text = f"抱歉，无法获取{city}的天气信息"
+        
+        # 更新answer变量，使前端显示错误信息
+        config.set(answer=error_text)
+        
+        # 保存并播放错误语音
+        tts.ssml_save(error_text, 'Sound/weathernotify.raw')
         config.set(notify_enable=True)
         play('Sound/ding.wav')
         play('Sound/weathernotify.raw')
         config.set(notify_enable=False)
         
-        # 触发聊天服务的激活状态
-        chat.chat_service.handle_hotword_trigger()
+        # 错误提示后触发对话激活
+        try:
+            chat.hwcallback()
+        except Exception as e:
+            logger.error(f"调用hwcallback出错: {e}")
+            # 即使出错也不中断流程
+        
         logger.info("天气通知结束，已触发对话激活")
+
+def notifytraveladvice():
+    """提供出行建议"""
+    global city
+    
+    # 获取天气信息
+    weather_info = get_weather(city)
+    if weather_info:
+        # 构建提示文本
+        prompt = f"基于以下气象数据，以口语化的方式给出今日出门建议：\n"
+        prompt += f"城市：{weather_info['city']}\n"
+        prompt += f"户外状况：{weather_info['condition']}\n"
+        prompt += f"气温：{weather_info['temperature']}°C\n"
+        prompt += f"体感温度：{weather_info['feels_like']}°C\n"
+        prompt += f"空气湿度：{weather_info['humidity']}%\n"
+        prompt += f"风向：{weather_info['wind_dir']}\n"
+        prompt += f"风力等级：{weather_info['wind_scale']}级\n"
+        
+        if float(weather_info['precip']) > 0:
+            prompt += f"降水量：{weather_info['precip']}毫米\n"
+            
+        prompt += "请给出穿着、交通方式、是否携带雨具等方面的建议。作为语音助手回答，语气自然，不要分点，控制在100字以内。"
+        
+        # 更新answer变量，告知用户正在生成建议
+        processing_text = f"正在为您生成{weather_info['city']}的出行建议..."
+        config.set(answer=processing_text)
+        
+        # 播放处理提示音
+        tts.ssml_save(processing_text, 'Sound/generating.raw')
+        config.set(notify_enable=True)
+        play('Sound/ding.wav')
+        play('Sound/generating.raw')
+        config.set(notify_enable=False)
+        
+        # 设置命令，让大模型生成出行建议
+        config.set(command=prompt)
+        
+        logger.info(f"已发送出行建议请求，城市: {city}")
+    else:
+        error_text = f"抱歉，无法获取{city}的天气信息，无法提供出行建议"
+        
+        # 更新answer变量，使前端显示错误信息
+        config.set(answer=error_text)
+        
+        # 保存并播放错误语音
+        tts.ssml_save(error_text, 'Sound/weathernotify.raw')
+        config.set(notify_enable=True)
+        play('Sound/ding.wav')
+        play('Sound/weathernotify.raw')
+        config.set(notify_enable=False)
+        
+        # 错误提示后触发对话激活
+        try:
+            chat.hwcallback()
+        except Exception as e:
+            logger.error(f"调用hwcallback出错: {e}")
+            # 即使出错也不中断流程
+        
+        logger.info("出行建议请求失败，已触发对话激活")
 
 def admin():
     global flag
@@ -283,124 +345,8 @@ def admin():
         if flag == 3:
             notifyweather()
             flag = 0
-        if flag == 4:  # 添加对温湿度查询标志的处理
-            notifysensor()
+        if flag == 4:
+            notifytraveladvice()
             flag = 0
         time.sleep(1)
 
-def is_confirmation(text):
-    """检查文本是否表示确认"""
-    positive_responses = ['是', '需要', '好的', '可以', '好', '对', '是的', '嗯', '确认', '要']
-    clean_text = text.replace('。', '').replace('，', '').replace('？', '').replace('!', '').replace('！', '')
-    
-    for response in positive_responses:
-        if response in clean_text:
-            return True
-    return False
-
-def handle_advice_response(text):
-    """处理用户对出行建议询问的回应"""
-    global waiting_for_advice_response, weather_info_cache
-    
-    if not waiting_for_advice_response:
-        return False
-        
-    waiting_for_advice_response = False  # 重置等待标志
-    
-    if is_confirmation(text):
-        # 用户确认需要出行建议
-        if weather_info_cache:
-            # 准备发送给大模型的天气信息
-            weather_prompt = f"基于以下气象数据，以口语化的方式给出今日出门建议：\n"
-            weather_prompt += f"城市：{weather_info_cache['city']}\n"
-            weather_prompt += f"户外状况：{weather_info_cache['condition']}\n"
-            weather_prompt += f"气温：{weather_info_cache['temperature']}°C\n"
-            weather_prompt += f"体感温度：{weather_info_cache['feels_like']}°C\n"
-            weather_prompt += f"空气湿度：{weather_info_cache['humidity']}%\n"
-            weather_prompt += f"风向：{weather_info_cache['wind_dir']}\n"
-            weather_prompt += f"风力等级：{weather_info_cache['wind_scale']}级\n"
-            
-            if float(weather_info_cache['precip']) > 0:
-                weather_prompt += f"降水量：{weather_info_cache['precip']}毫米\n"
-                
-            weather_prompt += "请给出穿着、交通方式、是否携带雨具等方面的建议。作为语音助手回答，语气自然，不要分点，控制在100字以内。"
-            
-            # 通过command发送给大模型处理
-            config.set(command=weather_prompt)
-            
-            # 告知用户正在生成建议
-            tts.ssml_save("好的，正在为您生成出行建议...", 'Sound/generating.raw')
-            config.set(notify_enable=True)
-            play('Sound/generating.raw')
-            config.set(notify_enable=False)
-            
-            logger.info("已发送天气信息给大模型，等待出行建议")
-            return True
-    else:
-        # 用户不需要出行建议
-        tts.ssml_save("好的，如果之后需要出行建议请随时告诉我", 'Sound/noadvice.raw')
-        config.set(notify_enable=True)
-        play('Sound/noadvice.raw')
-        config.set(notify_enable=False)
-        return True
-        
-    return False
-
-def notifysensor():
-    """通知当前温湿度情况"""
-    sensor_data = get_sensor_data()
-    if sensor_data:
-        # 构建温湿度播报文本
-        sensor_text = f"当前室内温度{sensor_data['temperature']}度，"
-        sensor_text += f"湿度{sensor_data['humidity']}%"
-        
-        # 添加简单的温度状态描述
-        if float(sensor_data['temperature']) > 30:
-            sensor_text += "，温度较高，注意防暑"
-        elif float(sensor_data['temperature']) < 15:
-            sensor_text += "，温度较低，注意保暖"
-        else:
-            sensor_text += "，温度适宜"
-        
-        # 湿度状态
-        if float(sensor_data['humidity']) > 70:
-            sensor_text += "，湿度较高"
-        elif float(sensor_data['humidity']) < 30:
-            sensor_text += "，湿度较低，注意保湿"
-        
-        # 保存并播放语音
-        tts.ssml_save(sensor_text, 'Sound/sensornotify.raw')
-        config.set(notify_enable=True)
-        play('Sound/ding.wav')
-        play('Sound/sensornotify.raw')
-        config.set(notify_enable=False)
-        
-        # 触发聊天服务的激活状态
-        chat.chat_service.handle_hotword_trigger()
-        logger.info("温湿度通知结束，已触发对话激活")
-    else:
-        tts.ssml_save("抱歉，无法获取当前的温湿度数据", 'Sound/sensornotify.raw')
-        config.set(notify_enable=True)
-        play('Sound/ding.wav')
-        play('Sound/sensornotify.raw')
-        config.set(notify_enable=False)
-        
-        # 触发聊天服务的激活状态
-        chat.chat_service.handle_hotword_trigger()
-        logger.info("温湿度通知结束，已触发对话激活")
-
-def get_sensor_data():
-    """获取当前温湿度数据"""
-    try:
-        # 使用requests库调用API获取传感器数据
-        response = requests.get('http://localhost:5000/api/sensor_data')
-        if response.status_code == 200:
-            sensor_data = response.json()
-            logger.info(f"获取到传感器数据: 温度={sensor_data['temperature']}°C, 湿度={sensor_data['humidity']}%")
-            return sensor_data
-        else:
-            logger.error(f"获取传感器数据失败: HTTP {response.status_code}")
-            return None
-    except Exception as e:
-        logger.error(f"获取传感器数据时出错: {e}")
-        return None
