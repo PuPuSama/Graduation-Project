@@ -13,8 +13,8 @@ parmas = {
     "command": "",
     "answer": "晓晓已上线，有什么可以帮您的吗？",
     "general_volume": 0.5,
-    "wakebyhw": False,
-    "hw_started": False,
+    "wakebyhw":True,
+    "hw_started": True,
     "Noticenotify": True,
     "timenotify": True,
     # ... 可以添加更多的参数

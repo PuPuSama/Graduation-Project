@@ -91,7 +91,7 @@ def admin():
               and deepseek_stream_with_tts.tts_manager.tts_task.get()))):  #播放完成返回信息(流式)
             
             if use_deepseek and chat_or_standard is True: #为deepseek模型添加延时
-                time.sleep(2)
+                time.sleep(0.5)
             
             t1 = Thread(target=work)
             t1.setDaemon(True)
@@ -148,7 +148,7 @@ def work():
     actived = 0
     if allow_running and ((text_enable or manual_enable) is False):
         try:
-            play('Sound/ding.wav')
+            play('Sound/wozai.raw')
             logger.info('prepare to start record')
             speechpoint.record_file()
             play('Sound/dong.wav')
@@ -341,8 +341,6 @@ def startchat():
             
     # 修改：无论配置如何，都启动语音唤醒服务
     if porcupine_enable:
-        # 确保wakebyhw和hw_started状态正确设置
-        config.set(wakebyhw=True, hw_started=True)
         t3 = Thread(target=porcupine.start, args=(hwcallback,))
         t3.setDaemon(True)
         t3.start()

@@ -55,4 +55,4 @@ def ssml_save(text,filename):
 
 
 if __name__=="__main__":
-    ssml_save("蛋卷已上线",'Sound/welcome.raw')
+    ssml_save("我在",'Sound/wozai.raw')
