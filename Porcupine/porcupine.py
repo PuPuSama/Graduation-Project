@@ -1,10 +1,10 @@
 import pvporcupine
 from pvrecorder import PvRecorder
-from const_config import porcupine_key,porcupine_keyword_name,porcupinepath
+from const_config import porcupine_key,porcupine_keyword_name,porcupinepath,porcupine_model_path
 from loguru import logger
 import os
 porcupine_keyword_name = os.path.join(porcupinepath, porcupine_keyword_name)
-porcupine = pvporcupine.create(access_key=porcupine_key, keyword_paths=[porcupine_keyword_name])
+porcupine = pvporcupine.create(access_key=porcupine_key, keyword_paths=[porcupine_keyword_name],model_path=porcupine_model_path)
 recoder = PvRecorder(device_index=-1, frame_length=porcupine.frame_length)
 logger.info('porcupine service is loaded')
 

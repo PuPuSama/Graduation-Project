@@ -55,5 +55,4 @@ def ssml_save(text,filename):
 
 
 if __name__=="__main__":
-    ssml_save("夜深了,祝您晚安",'Sound/goodnight.raw')
-
+    ssml_save("蛋卷已上线",'Sound/welcome.raw')

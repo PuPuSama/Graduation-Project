@@ -11,21 +11,12 @@ use_online_recognize=True #系统现在仅支持线上语音识别服务，离�
 azure_key='2jTGJMnQmakNysRaNfckH8lazl5OL7BVgSVIV37MEtGzuhpPjBmNJQQJ99BCAC3pKaRXJ3w3AAAYACOGscFz'   #使用线上语音识别需填写 Azrue key
 
 
-#########语音唤醒模块(二选一)###########
-snowboy_enable=False #是否加载snowboy模块，需提前安装好
-snowboypath="/home/pi/xiaoxiao/snowboy" #snowboy位置（如果开启snowboy）
+#########语音唤醒模块###########
+porcupine_enable=True   #是否加载porcupine模块 (推荐，跨平台)
+porcupine_key="S86djrdnd5xbeM8ezjjPJyuygJ9KgFz+roS8tGEKR+WqQb13KRk+tg=="#需要填写密钥
+porcupinepath="/home/pi/Graduation-Project/Porcupine" #porcupine位置
+porcupine_keyword_name="蛋卷_zh_raspberry-pi_v3_0_0.ppn" #唤醒词文件名
+porcupine_model_path="/home/pi/Graduation-Project/Porcupine/porcupine_params_zh.pv" #模型文件位置
 
-porcupine_enable=False #是否加载porcupine模块 (推荐，跨平台)
-porcupine_key="xxxxxxxxxxxxxxxxx"#需要填写密钥
-porcupinepath="/home/pi/xiaoxiao/Porcupine" #porcupine位置
-porcupine_keyword_name="happiness_en_raspberry-pi_v3_0_0.ppn" #唤醒词文件名
-
-#注:唤醒功能默认关闭，运行时需要在ip:5000将wakebyhw手动勾选，开启唤醒功能
 ##############
-
-proxy= {'http':'http://127.0.0.1:10810',
-        'https':'http://127.0.0.1:10810'} #openai以及duckduckgo的代理
 gpio_wake_enable=False  #按键唤醒，如果相应引脚接有外设的情况下开启
-
-
-

@@ -10,7 +10,7 @@ from loguru import logger
 import chat
 
 flag = 0
-city = "北京"  # 默认城市
+city = "西安"  # 默认城市
 
 # 天气API配置
 WEATHER_API_KEY = "8cc15e673ddf4380a6e28af8a13bec05"  # API密钥

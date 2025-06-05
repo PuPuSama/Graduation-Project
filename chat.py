@@ -1,12 +1,8 @@
 import sys
-from const_config import snowboy_enable,gpio_wake_enable,use_online_recognize,\
+from const_config import gpio_wake_enable,use_online_recognize,\
     use_deepseek,chat_or_standard,porcupine_enable
 
-if snowboy_enable:
-    from const_config import snowboypath
-    sys.path.append(snowboypath)
-    from snowboy import hotwordBymic
-elif porcupine_enable:
+if porcupine_enable:
     from const_config import porcupinepath
     sys.path.append(porcupinepath)
     from Porcupine import porcupine
@@ -283,9 +279,7 @@ def inter():
             continue
         elif cmd == 'stop' or (config.get("wakebyhw") is False and config.get("hw_started") is True):
             try:
-                if snowboy_enable:
-                    hotwordBymic.terminate()
-                elif porcupine_enable:
+                if porcupine_enable:
                     porcupine.terminate()
                 config.set(wakebyhw=False, hw_started=False)  # 同时设置 hw_started 状态
             except:
@@ -298,12 +292,9 @@ def inter():
             continue
 
         # 在 "start" 命令中
-        elif (snowboy_enable or porcupine_enable) is True and (cmd == 'start' or (config.get("wakebyhw") is True and config.get("hw_started") is False)):
+        elif porcupine_enable is True and (cmd == 'start' or (config.get("wakebyhw") is True and config.get("hw_started") is False)):
             if t3 is None:
-                if snowboy_enable:
-                    t3 = Thread(target=hotwordBymic.start, args=(hwcallback,))
-                elif porcupine_enable:
-                    t3 = Thread(target=porcupine.start, args=(hwcallback,))
+                t3 = Thread(target=porcupine.start, args=(hwcallback,))
                 t3.setDaemon(True)
                 t3.start()
                 config.set(wakebyhw = True,hw_started=True)  # 设置 hw_started 状态
@@ -348,13 +339,14 @@ def startchat():
         else:
             deepseek.read()
             
-    if (snowboy_enable or porcupine_enable) is True and config.get("wakebyhw") is True:
-        if snowboy_enable:
-            t3 = Thread(target=hotwordBymic.start, args=(hwcallback,))
-        elif porcupine_enable:
-            t3 = Thread(target=porcupine.start, args=(hwcallback,))
+    # 修改：无论配置如何，都启动语音唤醒服务
+    if porcupine_enable:
+        # 确保wakebyhw和hw_started状态正确设置
+        config.set(wakebyhw=True, hw_started=True)
+        t3 = Thread(target=porcupine.start, args=(hwcallback,))
         t3.setDaemon(True)
         t3.start()
+        logger.info('语音唤醒服务已自动启动')
         
     if gpio_wake_enable:
         GPIO.setmode(GPIO.BCM)
@@ -368,7 +360,7 @@ def startchat():
         t5.start()
 
     play('Sound/ding.wav')
-    play('Sound/welcome.wav')
+    play('Sound/welcome.raw')
     admin()
 
 
