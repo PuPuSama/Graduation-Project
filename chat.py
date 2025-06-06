@@ -148,7 +148,7 @@ def work():
     actived = 0
     if allow_running and ((text_enable or manual_enable) is False):
         try:
-            play('Sound/wozai.raw')
+            play('Sound/ding.wav')
             logger.info('prepare to start record')
             speechpoint.record_file()
             play('Sound/dong.wav')
