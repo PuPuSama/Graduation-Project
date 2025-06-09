@@ -4,173 +4,447 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>语音助手配置</title>
+    <title>智能家居控制中心</title>
     <style>
+        /* 卡片式设计风格 */
         :root {
-            --primary-color: #4CAF50;
-            --primary-hover: #45a049;
-            --text-color: #333;
-            --bg-color: #f4f4f4;
-            --card-bg: white;
-            --border-color: #ccc;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --item-bg: #f9f9f9;
-            --item-hover: #e9e9e9;
-            --answer-bg: #f0f0f0;
-            --spacing-sm: 5px;
-            --spacing-md: 10px;
-            --spacing-lg: 20px;
-            --border-radius: 4px;
-            --box-shadow: 0 0 10px var(--shadow-color);
+            --primary-color: #007aff; /* 苹果蓝 */
+            --success-color: #34c759; /* 苹果绿 */
+            --warning-color: #ff9500; /* 苹果橙 */
+            --danger-color: #ff3b30; /* 苹果红 */
+            --text-color: #1d1d1f;
+            --secondary-text: #86868b;
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --border-color: #d2d2d7;
+            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --spacing: 20px;
         }
         
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
         
         body {
-            font-family: Arial, sans-serif;
             background-color: var(--bg-color);
-            padding: var(--spacing-lg);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding: 20px;
         }
         
         .container {
-            max-width: 600px;
-            margin: auto;
-            background: var(--card-bg);
-            padding: var(--spacing-lg);
-            box-shadow: var(--box-shadow);
-            border-radius: var(--border-radius);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
         }
         
         h1 {
-            margin-bottom: var(--spacing-lg);
-            text-align: center;
+            font-weight: 600;
+            font-size: 32px;
+            margin-bottom: 10px;
         }
         
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: var(--spacing-sm);
+        h2 {
+            font-weight: 500;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-color);
         }
         
-        .form-group {
-            margin-bottom: var(--spacing-lg);
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--card-shadow);
         }
         
-        input[type="text"],
-        select {
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin: 0;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        /* 传感器数据卡片 */
+        .sensor-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: var(--card-bg);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .sensor-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .sensor-value {
+            font-size: 28px;
+            font-weight: 500;
+            margin: 10px 0;
+        }
+        
+        .sensor-label {
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+        
+        /* 表单元素 */
+        .input-group {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        input[type="text"], select {
             width: 100%;
-            padding: 8px 12px;
-            margin: 8px 0;
-            display: inline-block;
+            padding: 12px;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+        }
+        
+        input[type="text"]:focus, select:focus {
+            border-color: var(--primary-color);
+            outline: none;
         }
         
         button {
             background-color: var(--primary-color);
             color: white;
-            padding: 10px 20px;
-            margin: 8px 0;
             border: none;
-            border-radius: var(--border-radius);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.2s ease;
         }
         
         button:hover {
-            background-color: var(--primary-hover);
+            opacity: 0.9;
         }
         
-        #answer {
-            display: block;
-            background-color: var(--answer-bg);
-            padding: var(--spacing-md);
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            min-height: 20px;
-            width: 100%;
-            overflow-wrap: break-word;
-            margin-top: var(--spacing-sm);
+        .send-btn {
+            margin-left: 10px;
+            white-space: nowrap;
         }
         
-        .flex-container {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-lg);
+        /* 开关样式 */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 51px;
+            height: 31px;
+            margin: 10px 0;
         }
         
-        .select-input,
-        .text-input {
-            flex-grow: 1;
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
         
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-lg);
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e4e4e4;
+            transition: .3s;
+            border-radius: 34px;
         }
         
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 27px;
+            width: 27px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        input:checked + .slider {
+            background-color: var(--success-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        
+        /* 警报样式 */
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .alert-danger {
+            background-color: var(--danger-color);
+        }
+        
+        .alert-warning {
+            background-color: var(--warning-color);
+        }
+        
+        .alert-info {
+            background-color: var(--primary-color);
+        }
+        
+        /* 复选框样式 */
         .checkbox-container {
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
         }
         
-        input[type="checkbox"] {
-            transform: scale(1.2);
-            margin-right: var(--spacing-md);
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
         }
         
-        @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                margin: 0;
-                padding: var(--spacing-md);
-                box-shadow: none;
+        /* 时间戳 */
+        .timestamp {
+            font-size: 12px;
+            color: var(--secondary-text);
+            text-align: right;
+            margin-top: 10px;
+        }
+        
+        /* 设备控制卡片 */
+        .device-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: var(--card-bg);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .device-name {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr;
             }
             
-            .flex-container {
+            .input-group {
                 flex-direction: column;
-                align-items: stretch;
             }
             
-            .checkbox-group {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .checkbox-container {
-                width: 100%;
-                margin-bottom: var(--spacing-sm);
-            }
-            
-            button {
+            .send-btn {
+                margin-left: 0;
+                margin-top: 10px;
                 width: 100%;
             }
         }
     </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>智能家居控制中心</h1>
+        </div>
+        
+        <!-- 警报区域 -->
+        <div id="alerts-container"></div>
+        
+        <!-- 传感器数据卡片 -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">传感器数据</h2>
+                <button id="refresh-sensor-btn">刷新数据</button>
+            </div>
+            <div class="grid">
+                <div class="sensor-card">
+                    <div class="sensor-icon">🌡️</div>
+                    <div class="sensor-label">温度</div>
+                    <div id="temperature" class="sensor-value">--°C</div>
+                </div>
+                <div class="sensor-card">
+                    <div class="sensor-icon">💧</div>
+                    <div class="sensor-label">湿度</div>
+                    <div id="humidity" class="sensor-value">--%</div>
+                </div>
+                <div class="sensor-card">
+                    <div class="sensor-icon">🔥</div>
+                    <div class="sensor-label">火焰检测</div>
+                    <div id="flame" class="sensor-value">--</div>
+                </div>
+                <div class="sensor-card">
+                    <div class="sensor-icon">☁️</div>
+                    <div class="sensor-label">烟雾检测</div>
+                    <div id="smoke" class="sensor-value">--</div>
+                </div>
+            </div>
+            <div id="sensor-timestamp" class="timestamp">上次更新: --</div>
+            <div class="timestamp" style="margin-top: 5px; color: var(--secondary-text);">数据每分钟自动更新一次，也可点击"刷新数据"按钮立即更新</div>
+        </div>
+        
+        <!-- 设备控制卡片 -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">设备控制</h2>
+            </div>
+            <div class="grid">
+                <div class="device-card">
+                    <div class="device-name">LED灯</div>
+                    <label class="switch">
+                        <input type="checkbox" id="led-switch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="device-card">
+                    <div class="device-name">蜂鸣器</div>
+                    <label class="switch">
+                        <input type="checkbox" id="buzzer-switch">
+                        <span class="slider"></span>
+                    </label>
+                    <button id="emergency-stop" style="margin-top: 10px; background-color: var(--danger-color);">紧急关闭</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 语音助手卡片 -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">语音助手</h2>
+            </div>
+            
+            <!-- 命令输入 -->
+            <form id="command-form" onsubmit="sendCommand(); return false;">
+                <div class="input-group">
+                    <input type="text" id="command" placeholder="输入命令..." autocomplete="off">
+                    <button type="submit" class="send-btn">发送</button>
+                </div>
+            </form>
+            
+            <!-- 快捷命令 -->
+            <div style="margin-bottom: 20px;">
+                <h2>快捷命令</h2>
+                <div class="input-group">
+                    <select id="quick_commands_select">
+                        <option value="">选择快捷命令</option>
+                    </select>
+                    <button id="use-command-btn" class="send-btn">使用</button>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="new_command" placeholder="添加新的快捷命令">
+                    <button id="add_command_btn" class="send-btn">添加</button>
+                </div>
+            </div>
+            
+            <!-- 助手回复 -->
+            <div>
+                <h2>助手回复</h2>
+                <div id="answer" style="padding: 15px; background-color: #f5f5f7; border-radius: 8px; min-height: 60px; margin-bottom: 15px;">
+                    {{ config.get('answer', '') }}
+                </div>
+            </div>
+        </div>
+        
+        <!-- 配置选项卡片 -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">配置选项</h2>
+            </div>
+            <form id="config_form">
+                <!-- 文本配置项 -->
+                <div id="text_configs">
+                    {% for key, value in config.items() %}
+                        {% if key != 'answer' and value is not sameas true and value is not sameas false %}
+                        <div style="margin-bottom: 15px;">
+                            <label for="{{ key }}" style="display: block; margin-bottom: 5px; font-weight: 500;">{{ key }}:</label>
+                            <input type="text" id="{{ key }}" name="{{ key }}" value="{{ value }}">
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <!-- 复选框配置项 -->
+                <h2 style="margin-top: 20px;">开关选项</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px;">
+                    {% for key, value in config.items() %}
+                        {% if value is sameas true or value is sameas false %}
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="{{ key }}" name="{{ key }}" {% if value %}checked{% endif %}>
+                            <label for="{{ key }}">{{ key }}</label>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // 页面加载时执行
         document.addEventListener('DOMContentLoaded', function() {
-            // 初始化
+            // 初始化功能
             loadQuickCommands();
             startAnswerPolling();
+            fetchSensorData();
             setupEventListeners();
+            
+            // 定时刷新传感器数据 - 每分钟自动更新一次
+            setInterval(fetchSensorData, 60000); // 60秒 = 1分钟
         });
-
+        
         // 设置事件监听器
         function setupEventListeners() {
             // 快捷命令选择
-            document.getElementById('quick_commands_select').addEventListener('change', function() {
-                if (this.value) {
-                    document.getElementById('command').value = this.value;
-                    updateConfig('command', this.value);
+            document.getElementById('use-command-btn').addEventListener('click', function() {
+                const select = document.getElementById('quick_commands_select');
+                if (select.value) {
+                    document.getElementById('command').value = select.value;
+                    sendCommand();
                 }
             });
             
@@ -186,8 +460,42 @@
                     updateConfig(this.name, value);
                 });
             });
+            
+            // 刷新按钮 - 点击时立即获取最新传感器数据
+            document.getElementById('refresh-sensor-btn').addEventListener('click', function() {
+                fetchSensorData();
+                showAlert('正在获取最新传感器数据...', 'alert-info');
+            });
+            
+            // LED开关
+            document.getElementById('led-switch').addEventListener('change', function() {
+                controlDevice('led', this.checked);
+            });
+            
+            // 蜂鸣器开关
+            document.getElementById('buzzer-switch').addEventListener('change', function() {
+                controlDevice('buzzer', this.checked);
+            });
+            
+            // 紧急关闭蜂鸣器按钮
+            document.getElementById('emergency-stop').addEventListener('click', function() {
+                controlDevice('buzzer', false);
+                document.getElementById('buzzer-switch').checked = false;
+                showAlert('蜂鸣器已紧急关闭', 'alert-warning');
+            });
         }
-
+        
+        // 发送命令
+        function sendCommand() {
+            const commandInput = document.getElementById('command');
+            const command = commandInput.value.trim();
+            
+            if (!command) return;
+            
+            updateConfig('command', command);
+            commandInput.value = '';
+        }
+        
         // 更新配置
         function updateConfig(key, value) {
             fetch('/update_config', {
@@ -205,8 +513,8 @@
                 console.error('配置更新错误:', error);
             });
         }
-
-        // 轮询获取最新回复
+        
+        // 轮询获取助手回复
         function startAnswerPolling() {
             // 初始获取一次
             fetchLatestAnswer();
@@ -214,7 +522,7 @@
             // 设置定时轮询
             setInterval(fetchLatestAnswer, 3000);
         }
-
+        
         // 获取最新回复
         function fetchLatestAnswer() {
             fetch('/get_answer')
@@ -228,7 +536,7 @@
                     console.error('获取回复错误:', error);
                 });
         }
-
+        
         // 加载快捷命令
         function loadQuickCommands() {
             fetch('/get_quick_commands')
@@ -250,7 +558,7 @@
                     console.error('加载快捷命令错误:', error);
                 });
         }
-
+        
         // 添加新的快捷命令
         function addNewCommand() {
             const input = document.getElementById('new_command');
@@ -276,54 +584,160 @@
                 console.error('添加快捷命令错误:', error);
             });
         }
+        
+        // 获取传感器数据
+        function fetchSensorData() {
+            console.log('正在获取传感器数据...');
+            fetch('/api/sensor_data')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('API响应错误: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('获取到传感器数据:', data);
+                    if (data.hasOwnProperty('temperature') && data.hasOwnProperty('humidity')) {
+                        updateSensorDisplay(data);
+                        updateAlerts(data);
+                    } else {
+                        console.error('传感器数据格式不正确:', data);
+                        if (data.hasOwnProperty('status')) {
+                            showAlert('传感器数据异常: ' + data.status, 'alert-warning');
+                        } else {
+                            showAlert('传感器数据格式不正确', 'alert-warning');
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('获取传感器数据错误:', error);
+                    showAlert('无法获取传感器数据，请检查连接: ' + error.message, 'alert-warning');
+                });
+                
+            // 获取设备状态
+            fetch('/api/device_status')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('API响应错误: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('获取到设备状态:', data);
+                    updateDeviceStatus(data);
+                })
+                .catch(error => {
+                    console.error('获取设备状态错误:', error);
+                });
+        }
+        
+        // 更新传感器显示
+        function updateSensorDisplay(data) {
+            try {
+                // 确保数据类型正确
+                const temp = typeof data.temperature === 'number' ? data.temperature : parseFloat(data.temperature);
+                const humid = typeof data.humidity === 'number' ? data.humidity : parseFloat(data.humidity);
+                
+                document.getElementById('temperature').textContent = isNaN(temp) ? '--°C' : temp + '°C';
+                document.getElementById('humidity').textContent = isNaN(humid) ? '--%' : humid + '%';
+                document.getElementById('flame').textContent = data.flame_detected ? '检测到火焰!' : '正常';
+                document.getElementById('smoke').textContent = data.smoke_detected ? '检测到烟雾!' : '正常';
+                
+                // 设置颜色指示
+                if (data.flame_detected) {
+                    document.getElementById('flame').style.color = 'var(--danger-color)';
+                } else {
+                    document.getElementById('flame').style.color = 'var(--text-color)';
+                }
+                
+                if (data.smoke_detected) {
+                    document.getElementById('smoke').style.color = 'var(--danger-color)';
+                } else {
+                    document.getElementById('smoke').style.color = 'var(--text-color)';
+                }
+                
+                // 更新时间戳
+                if (data.timestamp) {
+                    const date = new Date(data.timestamp * 1000);
+                    document.getElementById('sensor-timestamp').textContent = '上次更新: ' + date.toLocaleString();
+                } else {
+                    document.getElementById('sensor-timestamp').textContent = '上次更新: 未知';
+                }
+            } catch (error) {
+                console.error('更新传感器显示时出错:', error);
+                showAlert('更新传感器显示时出错: ' + error.message, 'alert-warning');
+            }
+        }
+        
+        // 更新警报
+        function updateAlerts(data) {
+            const alertsContainer = document.getElementById('alerts-container');
+            alertsContainer.innerHTML = '';
+            
+            if (data.flame_detected) {
+                showAlert('警告: 检测到火焰!', 'alert-danger');
+            }
+            
+            if (data.smoke_detected) {
+                showAlert('警告: 检测到烟雾!', 'alert-danger');
+            }
+            
+            if (data.temperature > 35) {
+                showAlert('注意: 温度过高 (' + data.temperature + '°C)', 'alert-warning');
+            }
+            
+            if (data.humidity > 80) {
+                showAlert('注意: 湿度过高 (' + data.humidity + '%)', 'alert-warning');
+            }
+        }
+        
+        // 显示警报
+        function showAlert(message, className) {
+            const alertsContainer = document.getElementById('alerts-container');
+            const alert = document.createElement('div');
+            alert.className = 'alert ' + className;
+            alert.textContent = message;
+            alertsContainer.appendChild(alert);
+            
+            // 5秒后自动移除非危险警报
+            if (className !== 'alert-danger') {
+                setTimeout(() => {
+                    alert.remove();
+                }, 5000);
+            }
+        }
+        
+        // 更新设备状态
+        function updateDeviceStatus(data) {
+            document.getElementById('led-switch').checked = data.led;
+            document.getElementById('buzzer-switch').checked = data.buzzer;
+        }
+        
+        // 控制设备
+        function controlDevice(device, state) {
+            console.log(`控制设备: ${device}, 状态: ${state}`);
+            fetch('/api/control_device', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ device, state })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('API响应错误: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('设备控制成功:', data);
+            })
+            .catch(error => {
+                console.error('设备控制错误:', error);
+                showAlert('控制设备失败，请重试', 'alert-warning');
+            });
+        }
     </script>
-</head>
-
-<body>
-    <div class="container">
-        <h1>语音助手配置</h1>
-        
-        <div class="flex-container">
-            <select id="quick_commands_select" class="select-input">
-                <option value="">选择快捷命令</option>
-                <!-- 快捷命令选项将在这里动态加载 -->
-            </select>
-            <input type="text" id="new_command" placeholder="添加快捷指令" class="text-input">
-            <button id="add_command_btn">添加</button>
-        </div>
-        
-        <form id="config_form">
-            <!-- 非复选框配置项 -->
-            <div id="text_configs">
-                {% for key, value in config.items() %}
-                    {% if key != 'answer' and value is not sameas true and value is not sameas false %}
-                    <div class="form-group">
-                        <label for="{{ key }}">{{ key }}:</label>
-                        <input type="text" id="{{ key }}" name="{{ key }}" value="{{ value }}">
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <!-- 复选框配置项 -->
-            <div class="checkbox-group">
-                {% for key, value in config.items() %}
-                    {% if value is sameas true or value is sameas false %}
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="{{ key }}" name="{{ key }}" {% if value %}checked{% endif %}>
-                        <label for="{{ key }}">{{ key }}</label>
-                    </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </form>
-        
-        <!-- 回复显示区域 -->
-        <div class="form-group">
-            <label for="answer">回复:</label>
-            <div id="answer">{{ config.get('answer', '') }}</div>
-        </div>
-    </div>
 </body>
 
-</html>
+</html> 

@@ -3,11 +3,20 @@ import tts
 import requests
 import json
 import re
+import sys
 from config import config
 from play import play
 from loguru import logger
+# 配置日志格式，确保与其他模块一致
+logger.remove()
+logger.add(sys.stdout, colorize=True, format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level}</level> | {message}", level="INFO")
 # 导入聊天服务模块
 import chat
+# 导入MQTT传感器客户端，用于获取室内温湿度数据
+from mqtt_sensor_client import MQTTSensorClient
+
+# 导入server模块，以便访问其全局MQTT客户端实例
+import server
 
 flag = 0
 city = "西安"  # 默认城市
@@ -22,6 +31,17 @@ def timedetect(text):
     
     # 清理文本，去除标点符号
     clean_text = text.replace('。', '').replace('，', '').replace('？', '').replace('!', '').replace('！', '')
+    
+    # 尝试处理LED控制命令
+    try:
+        import led_voice_control
+        led_response = led_voice_control.process_led_command(clean_text)
+        if led_response:
+            logger.info(f"detected LED control command: {clean_text}")
+            flag = 6  # 使用新的标志位表示LED控制命令
+            return True
+    except Exception as e:
+        logger.error(f"处理LED控制命令时出错: {e}")
     
     # 时间查询关键词列表
     time_keywords = [
@@ -49,6 +69,14 @@ def timedetect(text):
         '出行建议', '穿什么', '怎么穿', '出门注意', '今天适合出门吗',
         '今天穿什么', '出行提示', '需要带伞吗', '需要外套吗', '出门准备',
         '今天出门', '出门穿什么', '穿衣建议', '出门要带伞吗', '怎么出行'
+    ]
+    
+    # 室内温度查询关键词列表
+    indoor_temp_keywords = [
+        '室内温度', '家里温度', '屋内温度', '房间温度', '室内多少度', 
+        '家里多少度', '屋里温度', '屋里多少度', '室内湿度', '家里湿度',
+        '现在室内温度', '现在家里温度', '现在屋内温度', '室内温湿度',
+        '家里温湿度', '屋内温湿度', '室内情况', '家里情况'
     ]
     
     # 检查时间查询意图
@@ -81,6 +109,13 @@ def timedetect(text):
             flag = 4
             # 尝试提取城市名
             extract_city(clean_text)
+            return True
+    
+    # 检查室内温度查询意图
+    for keyword in indoor_temp_keywords:
+        if keyword in clean_text:
+            logger.info('detected keyword indoor temperature')
+            flag = 5
             return True
             
     return False
@@ -333,6 +368,171 @@ def notifytraveladvice():
         
         logger.info("出行建议请求失败，已触发对话激活")
 
+def notify_indoor_temperature():
+    """通知室内温度和湿度情况"""
+    # 使用mqtt_manager模块获取温湿度数据
+    import mqtt_manager
+    
+    try:
+        # 获取室内温湿度数据
+        dht11_data = mqtt_manager.get_indoor_temperature()
+        
+        if dht11_data:
+            # 构建室内温湿度播报文本
+            indoor_text = f"当前室内温度{dht11_data['temperature']}度，"
+            indoor_text += f"湿度{dht11_data['humidity']}%"
+            
+            # 添加舒适度评价
+            temp = float(dht11_data['temperature'])
+            humidity = float(dht11_data['humidity'])
+            
+            if 18 <= temp <= 25 and 40 <= humidity <= 60:
+                indoor_text += "，室内环境舒适宜人"
+            elif temp < 18:
+                indoor_text += "，室内温度偏低，注意保暖"
+            elif temp > 25:
+                indoor_text += "，室内温度偏高，注意通风降温"
+            
+            if humidity < 40:
+                indoor_text += "，空气较干燥，建议开加湿器"
+            elif humidity > 60:
+                indoor_text += "，湿度较高，注意通风除湿"
+            
+            # 更新answer变量，使前端能看到温湿度信息
+            config.set(answer=indoor_text)
+            
+            # 保存并播放语音
+            tts.ssml_save(indoor_text, 'Sound/indoornotify.raw')
+            config.set(notify_enable=True)
+            play('Sound/ding.wav')
+            play('Sound/indoornotify.raw')
+            config.set(notify_enable=False)
+            
+            # 播报完成后触发对话激活
+            try:
+                chat.hwcallback()
+            except Exception as e:
+                logger.error(f"调用hwcallback出错: {e}")
+                # 即使出错也不中断流程
+            
+            logger.info("室内温湿度通知结束，已触发对话激活")
+        else:
+            # 如果无法获取数据，尝试创建临时客户端
+            logger.warning("无法通过mqtt_manager获取温湿度数据，尝试创建临时客户端")
+            temp_mqtt_client = mqtt_manager.create_temporary_client()
+            
+            if temp_mqtt_client:
+                try:
+                    # 直接获取DHT11传感器数据
+                    dht11_data = temp_mqtt_client.dht11_sensor.get_formatted_data()
+                    
+                    # 构建室内温湿度播报文本
+                    indoor_text = f"当前室内温度{dht11_data['temperature']}度，"
+                    indoor_text += f"湿度{dht11_data['humidity']}%"
+                    
+                    # 添加舒适度评价
+                    temp = float(dht11_data['temperature'])
+                    humidity = float(dht11_data['humidity'])
+                    
+                    if 18 <= temp <= 25 and 40 <= humidity <= 60:
+                        indoor_text += "，室内环境舒适宜人"
+                    elif temp < 18:
+                        indoor_text += "，室内温度偏低，注意保暖"
+                    elif temp > 25:
+                        indoor_text += "，室内温度偏高，注意通风降温"
+                    
+                    if humidity < 40:
+                        indoor_text += "，空气较干燥，建议开加湿器"
+                    elif humidity > 60:
+                        indoor_text += "，湿度较高，注意通风除湿"
+                    
+                    # 更新answer变量，使前端能看到温湿度信息
+                    config.set(answer=indoor_text)
+                    
+                    # 保存并播放语音
+                    tts.ssml_save(indoor_text, 'Sound/indoornotify.raw')
+                    config.set(notify_enable=True)
+                    play('Sound/ding.wav')
+                    play('Sound/indoornotify.raw')
+                    config.set(notify_enable=False)
+                    
+                    # 播报完成后触发对话激活
+                    try:
+                        chat.hwcallback()
+                    except Exception as e:
+                        logger.error(f"调用hwcallback出错: {e}")
+                        # 即使出错也不中断流程
+                    
+                    logger.info("室内温湿度通知结束，已触发对话激活")
+                except Exception as e:
+                    error_text = f"抱歉，获取室内温湿度信息失败: {str(e)}"
+                    
+                    # 更新answer变量，使前端显示错误信息
+                    config.set(answer=error_text)
+                    
+                    # 保存并播放错误语音
+                    tts.ssml_save(error_text, 'Sound/indoornotify.raw')
+                    config.set(notify_enable=True)
+                    play('Sound/ding.wav')
+                    play('Sound/indoornotify.raw')
+                    config.set(notify_enable=False)
+                    
+                    # 错误提示后触发对话激活
+                    try:
+                        chat.hwcallback()
+                    except Exception as e:
+                        logger.error(f"调用hwcallback出错: {e}")
+                        # 即使出错也不中断流程
+                    
+                    logger.error(f"获取室内温湿度失败: {e}")
+                finally:
+                    # 确保临时资源被释放
+                    if temp_mqtt_client:
+                        temp_mqtt_client.stop()
+                        logger.info("临时MQTT客户端已停止")
+            else:
+                error_text = "抱歉，无法连接到传感器，无法获取室内温湿度"
+                
+                # 更新answer变量，使前端显示错误信息
+                config.set(answer=error_text)
+                
+                # 保存并播放错误语音
+                tts.ssml_save(error_text, 'Sound/indoornotify.raw')
+                config.set(notify_enable=True)
+                play('Sound/ding.wav')
+                play('Sound/indoornotify.raw')
+                config.set(notify_enable=False)
+                
+                # 错误提示后触发对话激活
+                try:
+                    chat.hwcallback()
+                except Exception as e:
+                    logger.error(f"调用hwcallback出错: {e}")
+                    # 即使出错也不中断流程
+                
+                logger.warning("无法创建临时MQTT客户端，无法获取室内温湿度")
+    except Exception as e:
+        error_text = f"抱歉，获取室内温湿度信息失败: {str(e)}"
+        
+        # 更新answer变量，使前端显示错误信息
+        config.set(answer=error_text)
+        
+        # 保存并播放错误语音
+        tts.ssml_save(error_text, 'Sound/indoornotify.raw')
+        config.set(notify_enable=True)
+        play('Sound/ding.wav')
+        play('Sound/indoornotify.raw')
+        config.set(notify_enable=False)
+        
+        # 错误提示后触发对话激活
+        try:
+            chat.hwcallback()
+        except Exception as e:
+            logger.error(f"调用hwcallback出错: {e}")
+            # 即使出错也不中断流程
+        
+        logger.error(f"获取室内温湿度失败: {e}")
+
 def admin():
     global flag
     while(1):
@@ -347,6 +547,13 @@ def admin():
             flag = 0
         if flag == 4:
             notifytraveladvice()
+            flag = 0
+        if flag == 5:
+            notify_indoor_temperature()
+            flag = 0
+        if flag == 6:
+            # LED控制命令已经在timedetect函数中处理完成
+            # 这里只需要重置标志位
             flag = 0
         time.sleep(1)
 

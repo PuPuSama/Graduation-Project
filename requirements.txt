@@ -16,3 +16,4 @@ loguru==0.7.2
 azure-cognitiveservices-speech==1.42.0
 pvporcupine==3.0.5
 pvrecorder==1.2.5
+adafruit-circuitpython-dht==4.0.8
