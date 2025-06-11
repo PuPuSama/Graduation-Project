@@ -2947,3 +2947,21 @@
 2025-06-09 17:00:14 | INFO | server.py:223 - 系统已安全关闭
 2025-06-09 17:01:57 | WARNING | chat.py:156 - listening timed out while waiting for phrase to start
 2025-06-09 17:02:53 | WARNING | chat.py:63 - Conversation was interrupted
+2025-06-09 17:14:16 | WARNING | chat.py:156 - listening timed out while waiting for phrase to start
+2025-06-09 17:14:56 | WARNING | chat.py:63 - Conversation was interrupted
+2025-06-09 17:15:26 | WARNING | fire_alarm.py:214 - 火焰传感器状态(直接读取): 检测到火焰
+2025-06-09 17:15:26 | WARNING | fire_alarm.py:249 - 检测到火灾风险！触发报警...
+2025-06-09 17:18:50 | WARNING | fire_alarm.py:219 - 烟雾传感器状态(直接读取): 检测到烟雾
+2025-06-09 17:18:50 | WARNING | fire_alarm.py:249 - 检测到火灾风险！触发报警...
+2025-06-11 17:08:12 | WARNING | fire_alarm.py:249 - 检测到火灾风险！触发报警...
+2025-06-11 17:09:12 | WARNING | fire_alarm.py:249 - 检测到火灾风险！触发报警...
+2025-06-11 17:10:03 | WARNING | fire_alarm.py:219 - 烟雾传感器状态(直接读取): 检测到烟雾
+2025-06-11 17:10:08 | WARNING | fire_alarm.py:219 - 烟雾传感器状态(直接读取): 检测到烟雾
+2025-06-11 17:10:10 | WARNING | fire_alarm.py:219 - 烟雾传感器状态(直接读取): 检测到烟雾
+2025-06-11 17:28:56 | WARNING | dht11_sensor.py:178 - 连续5次读取DHT11传感器失败
+2025-06-11 19:02:22 | WARNING | fire_alarm.py:219 - 烟雾传感器状态(直接读取): 检测到烟雾
+2025-06-11 19:02:22 | WARNING | fire_alarm.py:249 - 检测到火灾风险！触发报警...
+2025-06-11 19:02:22 | ERROR | fire_alarm.py:317 - 发送邮件失败: [Errno -3] Temporary failure in name resolution
+2025-06-11 19:47:46 | WARNING | fire_alarm.py:219 - 烟雾传感器状态(直接读取): 检测到烟雾
+2025-06-11 19:47:46 | WARNING | fire_alarm.py:249 - 检测到火灾风险！触发报警...
+2025-06-11 19:50:02 | ERROR | fire_alarm.py:317 - 发送邮件失败: [Errno 110] Connection timed out
