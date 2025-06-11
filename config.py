@@ -11,7 +11,7 @@ parmas = {
     "mqtt_message": False,
     # 参量
     "command": "",
-    "answer": "晓晓已上线，有什么可以帮您的吗？",
+    "answer": "蛋卷已上线，有什么可以帮您的吗？",
     "general_volume": 0.5,
     "wakebyhw":True,
     "hw_started": True,

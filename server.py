@@ -46,8 +46,6 @@ SOUND_DIR = "Sound"  # 语音文件目录
 # 整点报时语音缓存
 HOUR_VOICE_CACHE = {}  # 用于缓存不同小时的报时语音
 
-# 导入语音缓存生成器
-from voice_cache_generator import generate_voice_files
 
 def ensure_sound_dir():
     """确保语音文件目录存在"""
@@ -297,12 +295,7 @@ def admin():
         time.sleep(5)  # 从2秒增加到5秒
 
 if __name__ == '__main__':
-    # 在后台预生成语音文件
-    logger.info('开始预生成语音文件...')
-    voice_cache_thread = Thread(target=generate_voice_files)
-    voice_cache_thread.daemon = True
-    voice_cache_thread.start()
-    
+  
     # 注册信号处理
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
