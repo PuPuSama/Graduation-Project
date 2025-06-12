@@ -12,3 +12,10 @@
     }
 }
 
+{
+    "timestamp": "2025-06-12 19:30:43",
+    "changed_params": {
+        "general_volume": 0.6
+    }
+}
+
